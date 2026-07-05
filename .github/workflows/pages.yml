@@ -40,7 +40,7 @@ jobs:
           if [ -z "$STATICRYPT_PASSWORD" ]; then
             echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
           else
-            npx staticrypt features/**/*.html "$STATICRYPT_PASSWORD" --short
+            npx staticrypt features/**/*.html -p "$STATICRYPT_PASSWORD" --short
           fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
