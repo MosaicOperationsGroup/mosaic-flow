@@ -1,0 +1,23 @@
+{
+  "slug": "reporting-gradebook",
+  "title": "Reporting & gradebook",
+  "status": "in-progress",
+  "statusLabel": "In progress — V2 foundation, pre-pilot blockers open",
+  "journey": "Grades and reports are some of the most sensitive information a school produces, and this feature is where Mosaic handles them — from importing rosters and scores, through a teacher-facing gradebook grid, to a locked, published report. An early design review of this feature actually found a real problem before any code shipped: the first draft would have let any staff member see any student's grades, indefinitely, with no record of where an imported number came from. That was fixed before it was built — access is scoped to a teacher's own classes, every import leaves a traceable record, and published reports are frozen, immutable snapshots.",
+  "subfeatures": [
+    { "name": "Reporting period setup", "status": "planned", "note": "Modelling the academic year, courses, sections, and enrolments a report is built on." },
+    { "name": "Grade policy configuration", "status": "planned", "note": "Versioned grading policies and boundaries, configured rather than hard-coded." },
+    { "name": "CSV import & provenance", "status": "in-progress", "note": "Importing rosters and scores with validation, a preview step, and a traceable record of where every number came from." },
+    { "name": "Scoped access (RLS)", "status": "in-progress", "note": "Access narrowed to a teacher's own sections, not organisation-wide — the fix that came out of the early design review." },
+    { "name": "Teacher gradebook grid", "status": "planned", "note": "The main screen for entering scores, flags, and comments." },
+    { "name": "Grade calculation engine", "status": "planned", "note": "Applying policy rules, boundaries, and exemptions to produce a final grade." },
+    { "name": "Approval workflow", "status": "planned", "note": "Submit, review, approve, and lock a report before it's published." },
+    { "name": "Immutable published snapshots", "status": "planned", "note": "Once a report is published, the exact data behind it is frozen — it can never quietly change afterwards." }
+  ],
+  "testing": {
+    "fixtureNote": "The shared fixture includes two class sections with two different teachers, ten students covering every possible grade status, one intentionally missing score and one flagged one, a grading exemption, and both a locked reporting period with a published snapshot and an open one still being worked on — so both the everyday case and the edge cases are represented.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "65782056ae356a77"
+}

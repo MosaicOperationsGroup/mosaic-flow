@@ -1,0 +1,22 @@
+{
+  "slug": "calendar",
+  "title": "Calendar",
+  "status": "in-progress",
+  "statusLabel": "Shaping — early design",
+  "journey": "Having a task assigned to you isn't the same as knowing when you'll actually do it. The calendar turns a pile of assigned work into a realistic day-by-day and week-by-week plan — scheduling tasks into real time, showing what's overlapping or over-committed, and letting staff drag work around as plans change. A basic calendar surface already exists; this feature is the next layer of polish that came directly out of a real testing pass with staff.",
+  "subfeatures": [
+    { "name": "Drag-to-schedule feedback", "status": "planned", "note": "A clear ghost preview and no snap-back lag when dragging a task onto the calendar." },
+    { "name": "Smart time snapping", "status": "planned", "note": "Dragging snaps to sensible intervals that scale with how fast you're dragging." },
+    { "name": "Side-by-side overlaps", "status": "planned", "note": "Overlapping items sit next to each other instead of stacking illegibly." },
+    { "name": "Condensed daily view", "status": "planned", "note": "Fit a full working day on screen without excessive scrolling." },
+    { "name": "Weekly drag-to-reschedule", "status": "planned", "note": "Change a task's time of day directly from the weekly view." },
+    { "name": "Single-click quick-edit", "status": "planned", "note": "Edit a task's name, time, or date inline, without opening the full task view — flagged by staff as a high-priority fix." },
+    { "name": "Due-time display", "status": "planned", "note": "Show the actual due time, not just the day, on the task view." }
+  ],
+  "testing": {
+    "fixtureNote": "This feature doesn't have dedicated fixture coverage yet — it will draw on the same organisation and task fixture used by task management once its scheduling interactions are built.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "b0cea66bd345a035"
+}

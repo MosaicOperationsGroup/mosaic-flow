@@ -1,0 +1,23 @@
+{
+  "slug": "roles-and-permissions",
+  "title": "Roles & permissions",
+  "status": "in-progress",
+  "statusLabel": "In progress — backend live, UI pending",
+  "journey": "Mosaic needs to model people, responsibility posts, groups, and permissions in a way that actually matches how a school works — where a 'seat' (like Head of Year, or SEF Coordinator) is what really carries responsibility, not just an individual person who might move on. This feature is the backbone under almost everything else: it decides who's allowed to see or do what, and it's built so responsibilities follow the post through staff turnover, not just the person. It's the most structurally complete feature in this list — the underlying data and enforcement are live, with the admin-facing screens still to come.",
+  "subfeatures": [
+    { "name": "Responsibility post registry", "status": "shipped", "note": "The underlying table for named posts, and who currently holds each one." },
+    { "name": "Assignable entity registry", "status": "shipped", "note": "A single source of truth for everything a task can be assigned to — people, posts, or groups — kept in sync automatically." },
+    { "name": "Task participant resolution", "status": "shipped", "note": "Server-side logic that works out exactly who a task assignment actually reaches, with conflict detection." },
+    { "name": "Capability & permission model", "status": "shipped", "note": "The registry of what actions exist and who's been granted them." },
+    { "name": "Write-enforcement", "status": "shipped", "note": "Database-level rules that block a write unless the right permission is held — enforced by Postgres, not just the app." },
+    { "name": "Assignment picker (UI)", "status": "planned", "note": "The actual screen for assigning work to a person, post, or group." },
+    { "name": "Conflict review (UI)", "status": "planned", "note": "A screen flagging scheduling conflicts before an assignment is confirmed." },
+    { "name": "Permissions admin screen", "status": "planned", "note": "Where an administrator manages who holds which permission." }
+  ],
+  "testing": {
+    "fixtureNote": "The shared fixture exercises the main ways a permission can reach someone: automatically as an owner or admin, granted directly to a person, granted through a group, and granted through the responsibility post someone holds — plus a deliberate baseline case of a member with no grants at all, to prove access is denied by default rather than by accident.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "077d5acfcbd431fb"
+}

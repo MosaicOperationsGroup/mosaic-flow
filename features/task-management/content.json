@@ -1,0 +1,27 @@
+{
+  "slug": "task-management",
+  "title": "Task management",
+  "status": "in-progress",
+  "statusLabel": "Shaping — V1 foundation in progress",
+  "journey": "Right now, a school's work-to-do lives scattered across email, group chats, spreadsheets, and half-remembered conversations after a meeting. Task management gives every piece of work — from a quick reminder to a whole-team responsibility — one canonical record: who owns it, what state it's in, when it's due, and a real audit trail of what changed and why. The goal is that 'what's outstanding, and whose is it' is always a real answer, not a guess.",
+  "subfeatures": [
+    { "name": "Canonical task record", "status": "in-progress", "note": "The core fields every task has, and how they're stored — the foundation everything else builds on." },
+    { "name": "Status changes & overdue behaviour", "status": "in-progress", "note": "Marking work done, tracking what's overdue, and keeping that in sync with dashboards." },
+    { "name": "Owner & group assignment", "status": "in-progress", "note": "Assigning work to a person or a whole group, without losing individual accountability." },
+    { "name": "Dashboard visibility", "status": "planned", "note": "Surfacing upcoming, overdue, and high-priority work automatically." },
+    { "name": "Workflow-generated tasks", "status": "in-progress", "note": "A workflow template automatically creates the right tasks when it's launched." },
+    { "name": "Audit history", "status": "planned", "note": "A record of every important change to a task, for accountability." },
+    { "name": "Contribution tracking", "status": "planned", "note": "Tracking who did what within a task assigned to a group." },
+    { "name": "Private task visibility", "status": "in-progress", "note": "Making sure a task marked private actually stays private — enforced by the database, not just the interface." }
+  ],
+  "testing": {
+    "fixtureNote": "Tested against a shared fixture organisation of 10 members, of whom 2 (a principal-style owner account and a non-assignable IT admin) can never hold a task — so 'assign to everyone' must always offer exactly 8 people. The same fixture covers every way a task can be assigned (directly, by role, by registry, by group, by responsibility post) and every task state, including a private task that must stay invisible to everyone but its owner.",
+    "expectedOutcomes": [
+      { "criterion": "The assignee picker includes the right people", "expected": "The pool includes the current user plus other people and groups, in both the quick-preview mode and the real signed-in mode — with the same filtering rules applied either way.", "enforcedBy": "tests/task-assignment.spec.ts (partial)" },
+      { "criterion": "\"Assign to all members\" offers exactly 8 people", "expected": "Never the two accounts the fixture marks as non-assignable.", "enforcedBy": "known from the fixture; not yet an automated test" },
+      { "criterion": "A task assigned to a whole group reaches every member", "expected": "One assignment entry is created per member. The signed-in system resolves this on the server; the quick-preview mode approximates it in the browser.", "enforcedBy": "tests/task-assignment.spec.ts" }
+    ]
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "cd10616c50b95059"
+}

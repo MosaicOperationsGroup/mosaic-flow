@@ -1,0 +1,22 @@
+{
+  "slug": "self-evaluation",
+  "title": "Self-evaluation",
+  "status": "in-progress",
+  "statusLabel": "Design accepted for V1 — build starting",
+  "journey": "School self-evaluation and inspection readiness usually lives across shared documents, spreadsheets, evidence folders, and ad-hoc follow-up meetings — hard to keep current and harder to hand over. This feature gives a school one structured workspace to record judgements against a real inspection framework (starting with the UAE framework, with others planned), assign sections of the review to the right staff member, and turn findings directly into tracked follow-up work. The plan for this one went through five rounds of independent review before being accepted — it's the most thoroughly designed feature on this list, and building against that plan is just getting underway.",
+  "subfeatures": [
+    { "name": "Framework & standards model", "status": "planned", "note": "The underlying data model for inspection frameworks, domains, and rating scales." },
+    { "name": "Judgement recording", "status": "planned", "note": "Capturing a rating, confidence level, and rationale for each criterion, with full history." },
+    { "name": "Section assignment", "status": "planned", "note": "Delegating specific domains or criteria to the right staff member." },
+    { "name": "Permissions & access", "status": "planned", "note": "Who can view, judge, or manage which parts of the self-evaluation." },
+    { "name": "UAE framework content", "status": "planned", "note": "The official UAE School Inspection Framework, pre-loaded and ready to use." },
+    { "name": "IB PSP framework content", "status": "planned", "note": "The IB Primary Years self-study framework, as a second supported standard." },
+    { "name": "Review workspace", "status": "planned", "note": "The main screen: pick a framework and academic year, see where the review stands." }
+  ],
+  "testing": {
+    "fixtureNote": "The shared fixture includes one inspection framework, an active review cycle plus one from a prior year, both a whole-school judgement and a subject-specific one, and a case where review work is delegated to a non-management staff member — covering the main shapes this feature needs to handle.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "b5e063fe1e0f087f"
+}

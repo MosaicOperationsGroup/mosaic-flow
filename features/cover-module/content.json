@@ -1,0 +1,22 @@
+{
+  "slug": "cover-module",
+  "title": "Cover module",
+  "status": "in-progress",
+  "statusLabel": "Design accepted — not yet built",
+  "journey": "When a teacher is unexpectedly away, someone still has to be in every one of their classrooms, fast, under real time pressure. Today that means a cover manager juggling a spreadsheet, checking who's free, who's already covering too much, and who actually teaches the subject — every single morning. This feature turns that into a ranked, rules-aware suggestion: who's genuinely free, who's fair to ask next, and a clear record of who covered what. The plan for this went through a full independent design review and was accepted — the next step is actually building it.",
+  "subfeatures": [
+    { "name": "Timetable import", "status": "planned", "note": "Reading a school's timetable file safely, with no student data involved." },
+    { "name": "Absence recording", "status": "planned", "note": "A manager logs a staff absence for a day or specific periods." },
+    { "name": "Cover requirement detection", "status": "planned", "note": "Working out exactly which lessons need covering, automatically." },
+    { "name": "Eligible-cover ranking", "status": "planned", "note": "Ranking who's genuinely free and fair to ask, factoring in subject match and recent cover load." },
+    { "name": "Cover assignment", "status": "planned", "note": "Assigning, reassigning, or falling back to an agency cover, with a clear record." },
+    { "name": "Teacher-facing continuity", "status": "planned", "note": "A covering teacher sees the set work and can leave a return note for the absent teacher." },
+    { "name": "Cover analytics", "status": "planned", "note": "Totals and patterns for cover managers: how much is covered internally vs. by agency." }
+  ],
+  "testing": {
+    "fixtureNote": "No dedicated fixture coverage yet — this feature hasn't been built, so there's nothing to test against yet.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "1502cc86f34feeda"
+}

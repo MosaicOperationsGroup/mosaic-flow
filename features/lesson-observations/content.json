@@ -1,0 +1,22 @@
+{
+  "slug": "lesson-observations",
+  "title": "Lesson observations",
+  "status": "in-progress",
+  "statusLabel": "Early exploration — design under review",
+  "journey": "Lesson observations are a sensitive, judgement-heavy process — a leader watching a lesson, recording structured notes against an official framework, and deciding what (if anything) an observed teacher gets to see. This feature is Mosaic's earliest-stage one: still going through independent design review, with real open questions — including whether AI should ever suggest the official rating (the current working answer is no, that stays human-only). It's also built on a separate development track from the rest of Mosaic, so its pace won't always match the other features on this page.",
+  "subfeatures": [
+    { "name": "Structured observation editor", "status": "planned", "note": "Free-form notes structured against the selected inspection framework." },
+    { "name": "Guest / session-only mode", "status": "planned", "note": "Usable without logging in first; saving permanently requires an account." },
+    { "name": "Saved, private observations", "status": "planned", "note": "An observer's own saved records, kept confidential by default." },
+    { "name": "Observation dashboard", "status": "planned", "note": "A signed-in view of an observer's saved observations." },
+    { "name": "PDF export", "status": "planned", "note": "A downloadable report, including right-to-left language support." },
+    { "name": "Selective sharing with the observed teacher", "status": "planned", "note": "The observed teacher sees something only when explicitly shared, and only the fields allowed." },
+    { "name": "AI-assisted rating suggestion", "status": "planned", "note": "Still an open decision — the current working position is that the official rating stays human-only." }
+  ],
+  "testing": {
+    "fixtureNote": "No dedicated fixture coverage yet — this feature is still in design review, ahead of any implementation.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "5b286b299937b9e5"
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "school-development-action-planning",
+  "title": "School development & action planning",
+  "status": "in-progress",
+  "statusLabel": "Early exploration — review not yet started",
+  "journey": "Self-evaluation finds the problems; this feature is meant to turn those findings — plus any other improvement priority a school has — into an owned, measurable plan with a real review cycle, rather than a document that gets written once and never revisited. It's designed to link to self-evaluation evidence without duplicating or rewriting it, and to work as its own standalone space even for a school not yet using the self-evaluation feature. This is the earliest-stage item on this page — the plan exists, but independent design review of it hasn't started yet.",
+  "subfeatures": [
+    { "name": "Standalone module home", "status": "planned", "note": "Works even for a school with no self-evaluation data yet." },
+    { "name": "Development plan lifecycle", "status": "planned", "note": "Create, review, approve, archive, and roll a plan forward year to year." },
+    { "name": "Improvement priorities", "status": "planned", "note": "Strategic priorities with an intended outcome and a named owner." },
+    { "name": "Success measures", "status": "planned", "note": "A real baseline, target, and evidence — not just 'task completed'." },
+    { "name": "Actions linked to real tasks", "status": "planned", "note": "Strategic actions connected to the same task records the rest of Mosaic uses." },
+    { "name": "Monitoring reviews", "status": "planned", "note": "Periodic check-ins on progress and impact, not a one-off write-up." },
+    { "name": "Leadership summary export", "status": "planned", "note": "A shareable summary, designed to avoid presenting a misleadingly simple improvement score." }
+  ],
+  "testing": {
+    "fixtureNote": "No dedicated fixture coverage yet — this feature hasn't reached design review.",
+    "expectedOutcomes": []
+  },
+  "reconciledAt": "2026-07-06",
+  "reconciledSourceHash": "38fb0d616a7625bd"
+}

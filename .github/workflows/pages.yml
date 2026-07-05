@@ -26,6 +26,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Encrypt feature detail pages (staticrypt)
+        # Gates only features/**/*.html — the main explainer (index.html) and
+        # the governance table stay open. Password is a repo secret, never
+        # committed in plaintext (this workflow file is public).
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          if [ -z "$STATICRYPT_PASSWORD" ]; then
+            echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
+          else
+            npx staticrypt "features/**/*.html" "$STATICRYPT_PASSWORD" --short
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
