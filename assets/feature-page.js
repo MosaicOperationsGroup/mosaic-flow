@@ -1,9 +1,14 @@
 // Shared renderer for per-feature detail pages (features/<slug>/index.html).
-// Reads this page's own content.json (curated, hand-authored — never
-// generated from the private repo's specs) plus the published status.json
-// (for the live content_hash), and renders the page. Staleness is detected
-// by comparing the hash the curator wrote against against the current one —
-// see docs/orchestration/principles.md "content_hash" note in the private repo.
+// Reads the feature's content from an inline <script type="application/json"
+// id="feature-data"> embedded in this page at build time (see
+// scripts/inline-feature-data.mjs in the repo root) — never a separate
+// fetched content.json. That's deliberate: this page is encrypted by
+// staticrypt as a whole, so the data must live inside the same HTML file
+// the gate protects, not in a standalone file anyone could fetch directly
+// and bypass the password entirely.
+// Also reads the published status.json (for the live content_hash) to
+// detect staleness. Content itself is curated/hand-authored — never
+// generated from the private repo's specs.
 
 async function main() {
   const root = document.getElementById('feature-root');
@@ -11,9 +16,9 @@ async function main() {
 
   let content;
   try {
-    const r = await fetch('content.json', { cache: 'no-store' });
-    if (!r.ok) throw new Error(String(r.status));
-    content = await r.json();
+    const dataEl = document.getElementById('feature-data');
+    if (!dataEl) throw new Error('no embedded feature-data script found');
+    content = JSON.parse(dataEl.textContent);
   } catch (e) {
     root.innerHTML = `
       <div class="wrap not-found">

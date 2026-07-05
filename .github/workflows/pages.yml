@@ -29,6 +29,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Inline feature content (removes standalone content.json)
+        # content.json is the curated source of truth kept in git, but
+        # shipping it as its own file means it's directly fetchable and
+        # bypasses the staticrypt gate below entirely. This embeds each
+        # feature's content into its own HTML page and deletes the
+        # standalone file from the build output before anything is
+        # encrypted or uploaded.
+        run: node scripts/inline-feature-data.mjs
       - name: Encrypt feature detail pages (staticrypt)
         # Gates only features/**/*.html — the main explainer (index.html) and
         # the governance table stay open. Password is a repo secret, never
