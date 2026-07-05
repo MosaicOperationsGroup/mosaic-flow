@@ -40,12 +40,16 @@ jobs:
           if [ -z "$STATICRYPT_PASSWORD" ]; then
             echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
           else
-            # -d . writes output back to the same relative paths (repo root),
-            # overwriting the plaintext originals in place — the default
-            # output directory ("encrypted/") would otherwise leave the
-            # originals untouched and never reach the deployed artifact.
-            npx --yes staticrypt features/**/*.html -p "$STATICRYPT_PASSWORD" --short -d .
-            echo "Post-encryption check (should now be a password prompt, not plain content):"
+            # One invocation per file, each -d targeting that file's own
+            # directory. staticrypt names output by basename in the given
+            # -d directory — passing the whole glob in one call makes every
+            # "index.html" collide and overwrite each other at a single
+            # shared path instead of each file's own location.
+            for f in features/**/*.html; do
+              dir=$(dirname "$f")
+              npx --yes staticrypt "$f" -p "$STATICRYPT_PASSWORD" --short -d "$dir"
+            done
+            echo "Post-encryption check (should show a password prompt, not plain content):"
             head -c 200 features/task-management/index.html
           fi
       - uses: actions/configure-pages@v5
