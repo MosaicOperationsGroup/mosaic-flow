@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Mosaic gets built</title>
+<meta name="description" content="How the Mosaic school-operations platform gets made — humans and AI agents building together under one set of rules. Explained, and live.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F2E9; --surface:#ECE7D8; --ink:#211E15; --ink-2:#5C574A; --ink-3:#8A8474;
+  --teal:#0E6B54; --teal-deep:#084034; --ochre:#B0761A; --ochre-deep:#6B4708;
+  --hairline:rgba(33,30,21,.12); --card:#FBF9F2;
+  --shadow-sm:0 1px 2px rgba(33,30,21,.05),0 4px 16px rgba(33,30,21,.06);
+  --shadow-md:0 2px 4px rgba(33,30,21,.06),0 16px 40px rgba(33,30,21,.10);
+  --serif:"Source Serif 4",Georgia,serif; --sans:"Albert Sans",-apple-system,"Segoe UI",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--teal);color:#fff}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:120px 0}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre);margin-bottom:20px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:-.015em;margin-bottom:16px;max-width:16em}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:38em}
+.reveal{opacity:0;transform:translateY(26px)}
+.no-js .reveal,.reduced .reveal{opacity:1;transform:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(245,242,233,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transform:translateY(-100%);transition:transform .5s cubic-bezier(.22,1,.36,1),border-color .3s}
+nav.on{transform:translateY(0);border-color:var(--hairline)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-family:var(--serif);font-weight:600;font-size:17px;text-decoration:none;color:var(--ink)}
+.brand em{font-style:normal;color:var(--teal)}
+nav ul{display:flex;gap:26px;list-style:none}
+nav a{text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--teal)}
+
+header{min-height:92vh;display:flex;align-items:center;padding:140px 0 80px}
+.hero-kicker{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:28px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,7.6vw,84px);line-height:1.04;letter-spacing:-.02em;max-width:11em}
+h1 .line{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .word{display:inline-block;white-space:pre}
+h1 .accent{color:var(--teal)}
+.hero-sub{margin-top:32px;font-size:clamp(17px,2.1vw,21px);color:var(--ink-2);max-width:33em}
+.scroll-cue{margin-top:64px;display:inline-flex;align-items:center;gap:10px;color:var(--ink-3);font-size:13px;font-weight:500;letter-spacing:.06em}
+.scroll-cue::after{content:"";width:1px;height:36px;background:var(--ink-3);display:block;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+.reduced .scroll-cue::after{animation:none}
+
+.grid{display:grid;gap:16px;margin-top:56px}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.tile{background:var(--card);border:1px solid var(--hairline);border-radius:18px;padding:30px 28px;box-shadow:var(--shadow-sm);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.tile .t-kicker{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.tile h3{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.tile p{font-size:15px;color:var(--ink-2)}
+
+.flow{position:relative;margin-top:64px}
+.rail{position:absolute;left:23px;top:12px;bottom:12px;width:2px;background:var(--hairline);transform-origin:top}
+.rail-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--teal);transform:scaleY(0);transform-origin:top}
+.step{position:relative;padding:0 0 14px 76px;cursor:pointer}
+.step:last-child{padding-bottom:0}
+.dot{position:absolute;left:8px;top:6px;width:32px;height:32px;border-radius:50%;background:var(--card);border:1.5px solid var(--hairline);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink-2);transition:border-color .3s,color .3s,background .3s;z-index:1}
+.step:hover .dot,.step.open .dot{border-color:var(--teal);color:var(--teal)}
+.step.safety .dot{border-style:dashed}
+.step-card{background:var(--card);border:1px solid var(--hairline);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow-sm);transition:box-shadow .3s}
+.step:hover .step-card{box-shadow:var(--shadow-md)}
+.step-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.step h3{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.01em}
+.step .who{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ochre);white-space:nowrap}
+.step .one-liner{font-size:15px;color:var(--ink-2);margin-top:6px}
+.step .more{overflow:hidden;max-height:0;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
+.step.open .more{max-height:220px}
+.step .more p{font-size:14.5px;color:var(--ink-2);padding-top:14px;border-top:1px dashed var(--hairline);margin-top:14px;max-width:42em}
+.hint{font-size:13px;color:var(--ink-3);margin-top:28px}
+
+.tier{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.tier::before{content:"";width:7px;height:7px;border-radius:50%}
+.tier-j{background:rgba(14,107,84,.1);color:var(--teal-deep)}.tier-j::before{background:var(--teal)}
+.tier-s{background:rgba(176,118,26,.12);color:var(--ochre-deep)}.tier-s::before{background:var(--ochre)}
+.tier-m{background:rgba(33,30,21,.07);color:var(--ink-2)}.tier-m::before{background:var(--ink-3)}
+.role{cursor:pointer}
+.role .r-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.role .more{overflow:hidden;max-height:0;transition:max-height .5s cubic-bezier(.22,1,.36,1)}
+.role.open .more{max-height:200px}
+.role .more p{font-size:14px;color:var(--ink-2);padding-top:12px;border-top:1px dashed var(--hairline);margin-top:12px}
+.tier-note{margin-top:36px;background:var(--surface);border-radius:16px;padding:24px 28px;font-size:14.5px;color:var(--ink-2);max-width:52em}
+.tier-note strong{color:var(--ink);font-weight:600}
+
+.rule-num{font-family:var(--serif);font-size:15px;color:var(--ochre);font-weight:600;margin-bottom:12px}
+
+#live{background:var(--ink);color:var(--paper);border-radius:32px;margin:0 12px}
+#live .kicker{color:var(--ochre)}
+#live h2,#live h3{color:var(--paper)}
+#live .lede{color:rgba(245,242,233,.72)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:56px}
+.stat{background:rgba(245,242,233,.05);border:1px solid rgba(245,242,233,.12);border-radius:18px;padding:28px}
+.stat .n{font-family:var(--serif);font-size:clamp(38px,5vw,56px);font-weight:600;line-height:1;letter-spacing:-.02em}
+.stat .l{font-size:13px;color:rgba(245,242,233,.65);margin-top:10px;letter-spacing:.04em}
+.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.chip{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(245,242,233,.18);border-radius:99px;padding:9px 18px;font-size:14px;color:rgba(245,242,233,.85)}
+.chip b{font-weight:600;color:var(--paper);font-family:var(--serif);font-size:16px}
+.ledger{margin-top:48px;background:rgba(245,242,233,.05);border:1px solid rgba(245,242,233,.12);border-radius:18px;padding:28px}
+.ledger h3{font-family:var(--serif);font-size:20px;margin-bottom:6px}
+.ledger p{font-size:14.5px;color:rgba(245,242,233,.65);max-width:44em}
+.live-meta{margin-top:40px;font-size:12.5px;color:rgba(245,242,233,.45);max-width:44em;line-height:1.7}
+
+footer{padding:72px 0 56px;text-align:center}
+footer p{font-size:13.5px;color:var(--ink-3);max-width:40em;margin:0 auto 8px}
+footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:640px){
+  section{padding:84px 0}
+  .step{padding-left:60px}
+  .step-head{flex-direction:column;gap:2px}
+  #live{border-radius:24px;margin:0 6px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="no-js">
+
+<nav id="nav" aria-label="Page">
+  <div class="wrap">
+    <a class="brand" href="#top">Mosaic <em>· how it's built</em></a>
+    <ul>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#flow">Flow</a></li>
+      <li><a href="#people">People &amp; agents</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#live">Live</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <p class="hero-kicker">Mosaic operations</p>
+    <h1 id="hero-title">
+      <span class="line">Every change:</span>
+      <span class="line"><span class="accent">planned,</span> built,</span>
+      <span class="line">proven.</span>
+    </h1>
+    <p class="hero-sub reveal">This is how the Mosaic school-operations platform gets made — humans and AI agents building together, under one set of rules that no change can skip.</p>
+    <span class="scroll-cue reveal">Scroll</span>
+  </div>
+</header>
+
+<section id="stack">
+  <div class="wrap">
+    <p class="kicker reveal">The stack</p>
+    <h2 class="reveal">Six pieces, one system.</h2>
+    <p class="lede reveal">What Mosaic is made of — and who, or what, does the making.</p>
+    <div class="grid grid-3">
+      <div class="tile reveal"><p class="t-kicker">Interface</p><h3>React + Vite</h3><p>What schools see and touch. One calm design language, extruded from a single warm surface.</p></div>
+      <div class="tile reveal"><p class="t-kicker">Data</p><h3>Supabase · Postgres</h3><p>Every school's data walled off by row-level security policies — enforced by the database, not by promises.</p></div>
+      <div class="tile reveal"><p class="t-kicker">Proof</p><h3>Playwright + a golden fixture</h3><p>A canonical fake school, edge cases and all. Every change is tested against it before it's believed.</p></div>
+      <div class="tile reveal"><p class="t-kicker">Delivery</p><h3>Vercel</h3><p>Every merge ships to a preview before it ships to people.</p></div>
+      <div class="tile reveal"><p class="t-kicker">The builders</p><h3>Three AI runtimes</h3><p>Claude Code, Codex, and Antigravity (Gemini) — interchangeable workers, all reading the same rulebook in the repo.</p></div>
+      <div class="tile reveal"><p class="t-kicker">The rulebook</p><h3>The orchestration layer</h3><p>Roles, quality gates and durable records that make every piece of work traceable and provable — whoever did it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <p class="kicker reveal">The flow</p>
+    <h2 class="reveal">From backlog to proven, in nine moves.</h2>
+    <p class="lede reveal">Work isn't just done — it's planned, bounded, independently checked, and recorded. Rigor scales with risk: a colour tweak takes the short path, a data migration takes every step.</p>
+    <div class="flow">
+      <div class="rail"><div class="rail-fill" id="rail-fill"></div></div>
+      <div class="step reveal"><div class="dot">0</div><div class="step-card"><div class="step-head"><h3>Session</h3><span class="who">Human + orchestrator</span></div><p class="one-liner">The tracker is triaged into a few clear goal options. A human picks one and approves the plan.</p><div class="more"><p>The orchestrator agent groups open issues into session-sized goals and drafts a resourcing plan — which role works each step, on which model, at what effort, in what order. Nothing starts until the plan is approved. The plan is a pre-commitment: what actually ran is recorded separately, so drift is visible.</p></div></div></div>
+      <div class="step reveal"><div class="dot">1</div><div class="step-card"><div class="step-head"><h3>Dispatch</h3><span class="who">Orchestrator</span></div><p class="one-liner">Every issue gets a risk tier, T0 to T4, and a route to match.</p><div class="more"><p>Anything touching migrations, permissions, or personal data is forced up the tiers automatically. Higher tier means more scrutiny — and a record is opened in the ledger from the very start, even for trivial fixes.</p></div></div></div>
+      <div class="step reveal"><div class="dot">2</div><div class="step-card"><div class="step-head"><h3>Intake</h3><span class="who">Context scout</span></div><p class="one-liner">Before anything is built, an agent reads the governing docs — and must cite them.</p><div class="more"><p>Product specs, architecture decisions, prior rulings. Work that can't cite its sources is incomplete by definition. This exists because building on assumptions is the most common way AI work goes wrong.</p></div></div></div>
+      <div class="step reveal"><div class="dot">3</div><div class="step-card"><div class="step-head"><h3>Brief</h3><span class="who">Brief compiler</span></div><p class="one-liner">A self-contained work order: exact scope, success criteria, checks to run, and when to stop and ask.</p><div class="more"><p>The brief is written so that a fresh session — on any of the three runtimes — can execute it with zero prior context. Assumptions are numbered and surfaced, never silently made. Success criteria are written before the code.</p></div></div></div>
+      <div class="step reveal"><div class="dot">4</div><div class="step-card"><div class="step-head"><h3>Implement</h3><span class="who">Implementer</span></div><p class="one-liner">Build exactly what the brief asks. Nothing more.</p><div class="more"><p>The implementer may only touch the files the brief allows. Every changed line must trace to the request — no drive-by refactors, no gold-plating. It runs the checks, reviews its own diff, and hands over an honest receipt of what it did and what passed.</p></div></div></div>
+      <div class="step reveal"><div class="dot">5</div><div class="step-card"><div class="step-head"><h3>Verify</h3><span class="who">Verifier — fresh eyes</span></div><p class="one-liner">A different agent, deliberately shown nothing of the author's reasoning, tries to break it.</p><div class="more"><p>It re-runs every check itself and tests each success criterion adversarially. For the riskiest work, the verifier must be a different vendor's model entirely — different blind spots — plus a deep security review, triggered only by a human.</p></div></div></div>
+      <div class="step reveal"><div class="dot">6</div><div class="step-card"><div class="step-head"><h3>Gate</h3><span class="who">Machine-checked</span></div><p class="one-liner">The verdict is written down — and a script checks the record is complete and honest.</p><div class="more"><p>The gate file records the evidence per criterion, who built and who checked (they must differ), and what was skipped or waived — with an owner and an expiry. Continuous checks even warn if a bigger AI model was used than the risk justified.</p></div></div></div>
+      <div class="step reveal"><div class="dot">7</div><div class="step-card"><div class="step-head"><h3>Close</h3><span class="who">Integrator + scribe</span></div><p class="one-liner">Merged, recorded, and tidied — by the smallest agent that can do the job.</p><div class="more"><p>Closing is refused without a passing gate. Then the bookkeeping: progress records updated, follow-ups filed, learnings drafted — mechanical work with a right answer, done by a fast, inexpensive model.</p></div></div></div>
+      <div class="step safety reveal"><div class="dot">8</div><div class="step-card"><div class="step-head"><h3>Sweep</h3><span class="who">Sweep reviewer — the safety net</span></div><p class="one-liner">Trivial fixes may close themselves — provisionally. A periodic reviewer re-checks all of them.</p><div class="more"><p>The sweep hunts for anything that escaped review: self-closed fixes awaiting confirmation, and finished work nobody formally verified. It has real authority — confirm and close, or reopen with findings. Nothing stays closed unchecked, and nobody has to check everything by hand.</p></div></div></div>
+    </div>
+    <p class="hint reveal">Click any step for the why.</p>
+  </div>
+</section>
+
+<section id="people">
+  <div class="wrap">
+    <p class="kicker reveal">People &amp; agents</p>
+    <h2 class="reveal">Humans decide. Agents do. Records prove.</h2>
+    <p class="lede reveal">People are heaviest at the edges — choosing what matters and signing off what's risky. Agents own the middle, each sized to its job.</p>
+    <div class="grid grid-3">
+      <div class="tile role reveal"><div class="r-head"><h3>Product owner</h3><span class="tier tier-j">Human</span></div><p>Picks the goals, approves the plans, triggers deep reviews, and gives the final go / no-go on the riskiest changes.</p><div class="more"><p>The owner never has to check everything — the flow is built so their attention lands only where judgment is irreplaceable: direction, risk, and release.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Testers</h3><span class="tier tier-j">Human</span></div><p>Real people use the product and log what they find — through an agent, straight into the tracker.</p><div class="more"><p>Human findings become labelled issues with priorities, which is exactly where the next session's goals come from. The loop starts with people.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Orchestrator</h3><span class="tier tier-j">Judgment</span></div><p>Turns the backlog into goal options and a staffing plan a human can approve in one look.</p><div class="more"><p>Read-only until the plan is approved. It assigns models by risk tier — and never spends a bigger mind than the work deserves.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Context scout</h3><span class="tier tier-s">Standard</span></div><p>Reads the specs, decisions and code first, so nothing is built on assumptions.</p><div class="more"><p>Produces a cited brief of binding constraints and contradictions. Cheap insurance against the expensive failure of building the wrong thing well.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Brief compiler</h3><span class="tier tier-s">Standard</span></div><p>Writes the self-contained work order any agent, on any runtime, can execute cold.</p><div class="more"><p>Scope, success criteria, checks, stop conditions, numbered assumptions. If two readings of a request differ, it asks — it never guesses.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Implementer</h3><span class="tier tier-s">Standard</span></div><p>Builds exactly what the order asks, inside the allowed files, and returns an honest receipt.</p><div class="more"><p>Simplicity first, surgical changes only. It reviews its own diff before handoff — then someone else grades it.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Verifier</h3><span class="tier tier-j">Judgment</span></div><p>Fresh eyes that try to falsify "it's done" — and write the verdict into the ledger.</p><div class="more"><p>Never the author. Re-runs every check itself; evidence it didn't reproduce doesn't count. Its verdict is what unlocks the close.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Security reviewer</h3><span class="tier tier-j">Judgment</span></div><p>For high-risk work: probes tenant isolation, permissions and migrations against the test school.</p><div class="more"><p>Checks that school B sees zero of school A's rows, that denied paths actually deny, and that no personal data leaks into logs. Probes or it didn't happen.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Sweep reviewer</h3><span class="tier tier-j">Judgment</span></div><p>Re-checks self-closed and unverified-but-finished work. Can confirm — or reopen.</p><div class="more"><p>The safety net that makes fast paths safe. A sweep that only ever agrees would be worthless, so it's built to reopen.</p></div></div>
+      <div class="tile role reveal"><div class="r-head"><h3>Scribe</h3><span class="tier tier-m">Mechanical</span></div><p>Bookkeeping with a right answer: progress records, follow-up issues, release notes, ledger tidying.</p><div class="more"><p>Examples: updating a feature's progress page after a close, filing the follow-up when a waiver expires, drafting the changelog line. No judgment required — so no expensive model used.</p></div></div>
+    </div>
+    <p class="tier-note reveal"><strong>Right-sized minds.</strong> Judgment roles run on frontier models (Claude Opus, top-effort Codex, Gemini Pro at high thinking). Standard roles run mid-tier (Claude Sonnet, Gemini Pro). Mechanical roles run small and fast (Claude Haiku, Gemini Flash). The ledger records what was actually used — and flags mismatches.</p>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <p class="kicker reveal">The rules</p>
+    <h2 class="reveal">Four rules no change can skip.</h2>
+    <div class="grid grid-3">
+      <div class="tile reveal"><p class="rule-num">Rule 1</p><h3>Read before you build</h3><p>Every piece of work must cite the specs and decisions that govern it. Uncited work is incomplete — because building on assumptions is how systems quietly rot.</p></div>
+      <div class="tile reveal"><p class="rule-num">Rule 2</p><h3>Authors never grade their own work</h3><p>Anything substantive is verified by fresh eyes that saw none of the author's reasoning. Trivial fixes may close themselves — but only provisionally, until the sweep confirms.</p></div>
+      <div class="tile reveal"><p class="rule-num">Rule 3</p><h3>Rigor scales with risk</h3><p>A colour tweak and a data migration are not the same thing. Five risk tiers decide how much scrutiny a change gets — up to cross-vendor review and a human signature.</p></div>
+      <div class="tile reveal"><p class="rule-num">Rule 4</p><h3>Everything leaves a record</h3><p>Plans, receipts, verdicts, waivers — written down in the repo, checked by machines. The question "who verified this, and how?" always has an answer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="live">
+  <div class="wrap">
+    <p class="kicker reveal">Live</p>
+    <h2 class="reveal">Where it's up to.</h2>
+    <p class="lede reveal">A curated snapshot, published automatically from the private build repo. Counts and stages only — no names, no code, no details.</p>
+    <div class="stats" id="stats">
+      <div class="stat reveal"><div class="n" data-n id="n-open">–</div><div class="l">open issues in the tracker</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-p1">–</div><div class="l">high-priority (P0 + P1)</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-gates">–</div><div class="l">gates recorded in the ledger</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-pass">–</div><div class="l">independently verified closes</div></div>
+    </div>
+    <div class="areas reveal" id="areas"></div>
+    <div class="ledger reveal" id="ledger">
+      <h3 id="ledger-title">The gate ledger is live.</h3>
+      <p id="ledger-body">Loading the latest snapshot…</p>
+    </div>
+    <p class="live-meta reveal" id="live-meta">Snapshot pending — this section fills automatically once the publishing pipeline pushes its first update.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>This page is generated from a curated, allow-listed snapshot published by the private Mosaic build repository. No source code, personal names, or sensitive details ever leave it.</p>
+    <p><a href="https://github.com/MosaicOperationsGroup/mosaic-flow">mosaic-flow on GitHub</a> · © Mosaic Operations</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.body.classList.remove('no-js');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduced) document.body.classList.add('reduced');
+
+document.querySelectorAll('.step,.role').forEach(el => {
+  el.addEventListener('click', () => el.classList.toggle('open'));
+});
+
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('on', scrollY > innerHeight * .6), {passive: true});
+
+async function loadStatus() {
+  const meta = document.getElementById('live-meta');
+  const lt = document.getElementById('ledger-title'), lb = document.getElementById('ledger-body');
+  try {
+    const r = await fetch('data/status.json', {cache: 'no-store'});
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const set = (id, v) => { const el = document.getElementById(id); el.dataset.target = v ?? 0; el.textContent = reduced || !window.gsap ? (v ?? 0) : '0'; };
+    set('n-open', d.issues ? d.issues.open : 0);
+    set('n-p1', d.issues ? (d.issues.p0 || 0) + (d.issues.p1 || 0) : 0);
+    set('n-gates', d.gates.total);
+    set('n-pass', d.gates.pass);
+    const areas = document.getElementById('areas');
+    if (d.issues && d.issues.areas) {
+      areas.innerHTML = d.issues.areas.filter(a => a.open > 0)
+        .map(a => `<span class="chip"><b>${a.open}</b>${a.label}</span>`).join('');
+    }
+    if (d.gates.total === 0) {
+      lt.textContent = 'The gate ledger is live — awaiting its first verified close.';
+      lb.textContent = 'Every future change at tier T2 or above must land a verdict here before it can close. Self-closed trivial fixes will appear too, marked provisional until the sweep confirms them.';
+    } else {
+      lt.textContent = 'The gate ledger.';
+      const parts = [];
+      if (d.gates.pass) parts.push(`${d.gates.pass} verified`);
+      if (d.gates.self_closed_pending) parts.push(`${d.gates.self_closed_pending} self-closed awaiting sweep`);
+      if (d.gates.concerns) parts.push(`${d.gates.concerns} with concerns`);
+      if (d.gates.open) parts.push(`${d.gates.open} in progress`);
+      if (d.gates.fail) parts.push(`${d.gates.fail} reopened`);
+      if (d.gates.waived) parts.push(`${d.gates.waived} waived`);
+      lb.textContent = parts.join(' · ') + '.';
+    }
+    meta.textContent = `Snapshot generated ${new Date(d.generated_at).toLocaleString(undefined, {dateStyle: 'long', timeStyle: 'short'})}. ${d.source}`;
+    if (window.gsap && !reduced) armCounters();
+  } catch (e) {
+    lt.textContent = 'Snapshot not available yet.';
+    lb.textContent = 'The publishing pipeline hasn\'t pushed its first update. This section fills automatically when it does.';
+  }
+}
+
+function armCounters() {
+  document.querySelectorAll('[data-n]').forEach(el => {
+    const target = parseInt(el.dataset.target || '0', 10);
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%', once: true,
+      onEnter: () => gsap.fromTo(el, {textContent: 0}, {textContent: target, duration: 1.6, ease: 'power2.out', snap: {textContent: 1}})
+    });
+  });
+}
+
+if (window.gsap && !reduced) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll('#hero-title .line').forEach(line => {
+    const html = line.innerHTML;
+    line.innerHTML = line.textContent.split(/\s+/).filter(Boolean)
+      .map(w => `<span class="word">${w} </span>`).join('');
+    if (html.includes('accent')) {
+      const m = html.match(/<span class="accent">(.*?)<\/span>/);
+      if (m) line.querySelectorAll('.word').forEach(w => {
+        if (m[1].includes(w.textContent.trim())) w.classList.add('accent');
+      });
+    }
+  });
+  gsap.from('#hero-title .word', {yPercent: 118, duration: 1.15, ease: 'power4.out', stagger: 0.07, delay: 0.15});
+  gsap.from('header .reveal', {opacity: 0, y: 26, duration: 1, ease: 'power3.out', delay: 0.9, stagger: 0.15, clearProps: 'all'});
+
+  gsap.utils.toArray('section .reveal').forEach(el => {
+    gsap.fromTo(el, {opacity: 0, y: 26}, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: {trigger: el, start: 'top 88%', once: true}
+    });
+  });
+
+  gsap.to('#rail-fill', {
+    scaleY: 1, ease: 'none',
+    scrollTrigger: {trigger: '.flow', start: 'top 70%', end: 'bottom 60%', scrub: 0.6}
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+  document.getElementById('rail-fill').style.transform = 'scaleY(1)';
+}
+
+loadStatus();
+</script>
+</body>
+</html>
