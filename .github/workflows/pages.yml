@@ -36,10 +36,18 @@ jobs:
         env:
           STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
-          echo "--- staticrypt --help ---"
-          npx --yes staticrypt --help || true
-          echo "--- staticrypt --version ---"
-          npx --yes staticrypt --version || true
+          shopt -s globstar
+          if [ -z "$STATICRYPT_PASSWORD" ]; then
+            echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
+          else
+            # -d . writes output back to the same relative paths (repo root),
+            # overwriting the plaintext originals in place — the default
+            # output directory ("encrypted/") would otherwise leave the
+            # originals untouched and never reach the deployed artifact.
+            npx --yes staticrypt features/**/*.html -p "$STATICRYPT_PASSWORD" --short -d .
+            echo "Post-encryption check (should now be a password prompt, not plain content):"
+            head -c 200 features/task-management/index.html
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
