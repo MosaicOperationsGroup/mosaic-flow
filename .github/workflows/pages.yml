@@ -36,16 +36,10 @@ jobs:
         env:
           STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
-          shopt -s globstar
-          echo "Matched files:"
-          printf '%s\n' features/**/*.html
-          if [ -z "$STATICRYPT_PASSWORD" ]; then
-            echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
-          else
-            npx staticrypt features/**/*.html -p "$STATICRYPT_PASSWORD" --short --verbose
-          fi
-          echo "After encryption, sample file head:"
-          head -c 300 features/task-management/index.html
+          echo "--- staticrypt --help ---"
+          npx --yes staticrypt --help || true
+          echo "--- staticrypt --version ---"
+          npx --yes staticrypt --version || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
