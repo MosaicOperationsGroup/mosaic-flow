@@ -29,36 +29,39 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Inline feature content (removes standalone content.json)
+      - name: Inline page content (removes standalone content.json files)
         # content.json is the curated source of truth kept in git, but
         # shipping it as its own file means it's directly fetchable and
         # bypasses the staticrypt gate below entirely. This embeds each
-        # feature's content into its own HTML page and deletes the
-        # standalone file from the build output before anything is
-        # encrypted or uploaded.
-        run: node scripts/inline-feature-data.mjs
-      - name: Encrypt feature detail pages (staticrypt)
-        # Gates only features/**/*.html — the main explainer (index.html) and
-        # the governance table stay open. Password is a repo secret, never
-        # committed in plaintext (this workflow file is public).
+        # page's content into its own HTML (features/<slug>/, briefing/,
+        # blog/, blog/<date>/) and deletes the standalone file from the
+        # build output before anything is encrypted or uploaded.
+        run: node scripts/inline-content.mjs
+      - name: Encrypt gated pages (staticrypt)
+        # Gates features/**, briefing/**, and blog/** — the main explainer
+        # (index.html) and the governance table stay open. Password is a
+        # repo secret, never committed in plaintext (this workflow file is
+        # public).
         env:
           STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
           shopt -s globstar
           if [ -z "$STATICRYPT_PASSWORD" ]; then
-            echo "::warning::STATICRYPT_PASSWORD secret is not set — feature pages will deploy UNENCRYPTED."
+            echo "::warning::STATICRYPT_PASSWORD secret is not set — gated pages will deploy UNENCRYPTED."
           else
             # One invocation per file, each -d targeting that file's own
             # directory. staticrypt names output by basename in the given
-            # -d directory — passing the whole glob in one call makes every
-            # "index.html" collide and overwrite each other at a single
-            # shared path instead of each file's own location.
-            for f in features/**/*.html; do
+            # -d directory — passing a whole glob in one call makes every
+            # same-named "index.html" collide and overwrite each other at a
+            # single shared path instead of each file's own location.
+            for f in features/**/*.html briefing/*.html blog/*.html blog/**/*.html; do
+              [ -f "$f" ] || continue
               dir=$(dirname "$f")
               npx --yes staticrypt "$f" -p "$STATICRYPT_PASSWORD" --short -d "$dir"
             done
             echo "Post-encryption check (should show a password prompt, not plain content):"
             head -c 200 features/task-management/index.html
+            head -c 200 briefing/index.html
           fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

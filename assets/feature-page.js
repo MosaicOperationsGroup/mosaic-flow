@@ -1,11 +1,11 @@
 // Shared renderer for per-feature detail pages (features/<slug>/index.html).
 // Reads the feature's content from an inline <script type="application/json"
-// id="feature-data"> embedded in this page at build time (see
-// scripts/inline-feature-data.mjs in the repo root) — never a separate
-// fetched content.json. That's deliberate: this page is encrypted by
-// staticrypt as a whole, so the data must live inside the same HTML file
-// the gate protects, not in a standalone file anyone could fetch directly
-// and bypass the password entirely.
+// id="page-data"> embedded in this page at build time (see
+// scripts/inline-content.mjs in the repo root) — never a separate fetched
+// content.json. That's deliberate: this page is encrypted by staticrypt as
+// a whole, so the data must live inside the same HTML file the gate
+// protects, not in a standalone file anyone could fetch directly and
+// bypass the password entirely.
 // Also reads the published status.json (for the live content_hash) to
 // detect staleness. Content itself is curated/hand-authored — never
 // generated from the private repo's specs.
@@ -16,8 +16,8 @@ async function main() {
 
   let content;
   try {
-    const dataEl = document.getElementById('feature-data');
-    if (!dataEl) throw new Error('no embedded feature-data script found');
+    const dataEl = document.getElementById('page-data');
+    if (!dataEl) throw new Error('no embedded page-data script found');
     content = JSON.parse(dataEl.textContent);
   } catch (e) {
     root.innerHTML = `
