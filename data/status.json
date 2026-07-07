@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-05T20:31:21.854Z",
+  "generated_at": "2026-07-07T15:47:43.121Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 0,
+    "total": 1,
     "open": 0,
-    "pass": 0,
+    "pass": 1,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -13,22 +13,22 @@
     "by_tier": {
       "T0": 0,
       "T1": 0,
-      "T2": 0,
+      "T2": 1,
       "T3": 0,
       "T4": 0
     },
-    "acs_met": 0,
-    "acs_total": 0
+    "acs_met": 3,
+    "acs_total": 4
   },
   "issues": {
-    "open": 71,
+    "open": 58,
     "p0": 6,
-    "p1": 27,
-    "p2": 25,
+    "p1": 23,
+    "p2": 24,
     "areas": [
       {
         "label": "Task management",
-        "open": 12
+        "open": 10
       },
       {
         "label": "Reporting & gradebook",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Design system",
-        "open": 3
+        "open": 2
       },
       {
         "label": "Operations",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 40
+        "open": 29
       }
     ]
   },
@@ -56,52 +56,52 @@
     {
       "slug": "task-management",
       "feature": "Task management",
-      "readme": false,
+      "readme": true,
       "product_spec": true,
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "cd10616c50b95059"
+      "content_hash": "3458b2912f8a3690"
     },
     {
       "slug": "calendar",
       "feature": "Calendar",
-      "readme": false,
+      "readme": true,
       "product_spec": true,
       "decisions": true,
       "adversarial_review": false,
-      "test_oracle": false,
-      "content_hash": "b0cea66bd345a035"
+      "test_oracle": true,
+      "content_hash": "3951f1311aed22d5"
     },
     {
       "slug": "self-evaluation",
       "feature": "Self evaluation",
-      "readme": false,
+      "readme": true,
       "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
-      "test_oracle": false,
-      "content_hash": "b5e063fe1e0f087f"
+      "test_oracle": true,
+      "content_hash": "b14d56aae6437efc"
     },
     {
       "slug": "analytics",
       "feature": "Analytics",
-      "readme": false,
+      "readme": true,
       "product_spec": true,
       "decisions": true,
       "adversarial_review": false,
-      "test_oracle": false,
-      "content_hash": "ddc7c2901751e4dc"
+      "test_oracle": true,
+      "content_hash": "9be922721203bf69"
     },
     {
       "slug": "roles-and-permissions",
       "feature": "Roles & permissions",
-      "readme": false,
+      "readme": true,
       "product_spec": true,
       "decisions": true,
       "adversarial_review": false,
-      "test_oracle": false,
-      "content_hash": "077d5acfcbd431fb"
+      "test_oracle": true,
+      "content_hash": "fcd54f7f7c8957cf"
     },
     {
       "slug": "cover-module",
@@ -110,8 +110,8 @@
       "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
-      "test_oracle": false,
-      "content_hash": "1502cc86f34feeda"
+      "test_oracle": true,
+      "content_hash": "73b4f8682afeef0c"
     },
     {
       "slug": "reporting-gradebook",
@@ -120,8 +120,8 @@
       "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
-      "test_oracle": false,
-      "content_hash": "65782056ae356a77"
+      "test_oracle": true,
+      "content_hash": "87f4624bd2d5df82"
     },
     {
       "slug": "lesson-observations",
@@ -130,8 +130,8 @@
       "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
-      "test_oracle": false,
-      "content_hash": "5b286b299937b9e5"
+      "test_oracle": true,
+      "content_hash": "055b663a2c7a4f8b"
     },
     {
       "slug": "school-development-action-planning",
@@ -140,8 +140,8 @@
       "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
-      "test_oracle": false,
-      "content_hash": "38fb0d616a7625bd"
+      "test_oracle": true,
+      "content_hash": "24d06cea9dcd409d"
     }
   ]
 }
