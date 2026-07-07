@@ -18,14 +18,14 @@
   <div class="wrap">
     <a class="brand" href="#top"><img class="brand-mark" src="assets/logo-mark.svg" alt=""> Mosaic <em>· how it's built</em></a>
     <ul>
+      <li><a href="#live">Live</a></li>
+      <li><a href="briefing/">Briefing</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#flow">Flow</a></li>
       <li><a href="#design">Design</a></li>
       <li><a href="#testing">Testing</a></li>
       <li><a href="#people">People &amp; agents</a></li>
       <li><a href="#rules">Rules</a></li>
-      <li><a href="#live">Live</a></li>
-      <li><a href="briefing/">Briefing</a></li>
     </ul>
   </div>
 </nav>
@@ -50,6 +50,37 @@
     </div>
   </div>
 </header>
+
+<section id="live">
+  <div class="wrap">
+    <p class="kicker reveal">Live</p>
+    <h2 class="reveal">Where it's up to.</h2>
+    <p class="lede reveal">A curated snapshot, published automatically from the private build repo. Counts and stages only — no names, no code, no details.</p>
+    <div class="stats" id="stats">
+      <div class="stat reveal"><div class="n" data-n id="n-open">–</div><div class="l">open issues in the tracker</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-p1">–</div><div class="l">high-priority (P0 + P1)</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-gates">–</div><div class="l">gates recorded in the ledger</div></div>
+      <div class="stat reveal"><div class="n" data-n id="n-pass">–</div><div class="l">independently verified closes</div></div>
+    </div>
+    <div class="areas reveal" id="areas"></div>
+    <div class="ledger reveal" id="ledger">
+      <h3 id="ledger-title">The gate ledger is live.</h3>
+      <p id="ledger-body">Loading the latest snapshot…</p>
+    </div>
+    <div class="ledger reveal">
+      <h3>Documentation completeness, per feature.</h3>
+      <p>Five things every substantial feature should have on file before it's trusted. A cross here is exactly how bad decisions get made twice, or an implementation quietly drifts from what was agreed.</p>
+      <div class="gov-table">
+        <table>
+          <thead><tr><th>Feature</th><th>Context</th><th>Product spec</th><th>Decisions</th><th>Adversarial review</th><th>Test oracle</th></tr></thead>
+          <tbody id="gov-body"><tr><td colspan="6">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="gov-legend">Presence only — whether the file exists, not what it says. Read live from the same repository as the pipeline described below.</p>
+    </div>
+    <p class="live-meta reveal" id="live-meta">Snapshot pending — this section fills automatically once the publishing pipeline pushes its first update.</p>
+  </div>
+</section>
 
 <section id="stack">
   <div class="wrap">
@@ -182,37 +213,6 @@
       <div class="tile reveal"><p class="rule-num">Rule 3</p><h3>Rigor scales with risk</h3><p>A colour tweak and a data migration are not the same thing. Five risk tiers decide how much scrutiny a change gets — up to cross-vendor review and a human signature.</p></div>
       <div class="tile reveal"><p class="rule-num">Rule 4</p><h3>Everything leaves a record</h3><p>Plans, receipts, verdicts, waivers — written down in the repo, checked by machines. The question "who verified this, and how?" always has an answer.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="live">
-  <div class="wrap">
-    <p class="kicker reveal">Live</p>
-    <h2 class="reveal">Where it's up to.</h2>
-    <p class="lede reveal">A curated snapshot, published automatically from the private build repo. Counts and stages only — no names, no code, no details.</p>
-    <div class="stats" id="stats">
-      <div class="stat reveal"><div class="n" data-n id="n-open">–</div><div class="l">open issues in the tracker</div></div>
-      <div class="stat reveal"><div class="n" data-n id="n-p1">–</div><div class="l">high-priority (P0 + P1)</div></div>
-      <div class="stat reveal"><div class="n" data-n id="n-gates">–</div><div class="l">gates recorded in the ledger</div></div>
-      <div class="stat reveal"><div class="n" data-n id="n-pass">–</div><div class="l">independently verified closes</div></div>
-    </div>
-    <div class="areas reveal" id="areas"></div>
-    <div class="ledger reveal" id="ledger">
-      <h3 id="ledger-title">The gate ledger is live.</h3>
-      <p id="ledger-body">Loading the latest snapshot…</p>
-    </div>
-    <div class="ledger reveal">
-      <h3>Documentation completeness, per feature.</h3>
-      <p>Five things every substantial feature should have on file before it's trusted. A cross here is exactly how bad decisions get made twice, or an implementation quietly drifts from what was agreed.</p>
-      <div class="gov-table">
-        <table>
-          <thead><tr><th>Feature</th><th>Context</th><th>Product spec</th><th>Decisions</th><th>Adversarial review</th><th>Test oracle</th></tr></thead>
-          <tbody id="gov-body"><tr><td colspan="6">Loading…</td></tr></tbody>
-        </table>
-      </div>
-      <p class="gov-legend">Presence only — whether the file exists, not what it says. Read live from the same repository as the pipeline above.</p>
-    </div>
-    <p class="live-meta reveal" id="live-meta">Snapshot pending — this section fills automatically once the publishing pipeline pushes its first update.</p>
   </div>
 </section>
 
