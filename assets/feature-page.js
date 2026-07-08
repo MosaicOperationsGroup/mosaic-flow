@@ -59,6 +59,30 @@ async function main() {
     ${content.screenshot.caption ? `<p class="screenshot-caption">${escapeHtml(content.screenshot.caption)}</p>` : ''}
   ` : '';
 
+  const roleGroupHtml = (group) => `
+    <div class="role-group reveal">
+      <h3 class="role-group-title">${escapeHtml(group.title)}</h3>
+      <div class="role-list">
+        ${(group.roles || []).map(r => `
+          <div class="role-row">
+            <div class="role-name">${escapeHtml(r.name)}</div>
+            ${r.note ? `<div class="role-note">${escapeHtml(r.note)}</div>` : ''}
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+  const roleCatalogue = content.roleCatalogue || null;
+  const roleCatalogueSectionHtml = roleCatalogue ? `
+    <section>
+      <div class="wrap">
+        <p class="kicker reveal">Who does what</p>
+        <h2 class="reveal">The role catalogue.</h2>
+        ${roleCatalogue.note ? `<p class="fixture-note reveal">${escapeHtml(roleCatalogue.note)}</p>` : ''}
+        ${roleCatalogue.common ? roleGroupHtml({ title: 'Common to almost any school', roles: roleCatalogue.common }) : ''}
+        ${(roleCatalogue.programmes || []).map(p => roleGroupHtml({ title: p.programme, roles: p.roles })).join('')}
+      </div>
+    </section>` : '';
+
   const testing = content.testing || {};
   const outcomes = testing.expectedOutcomes || [];
   const outcomesHtml = outcomes.length ? `
@@ -106,6 +130,7 @@ async function main() {
         </div>
       </div>
     </section>
+    ${roleCatalogueSectionHtml}
     ${testingSectionHtml}`;
 
   document.title = `${content.title} · Mosaic`;

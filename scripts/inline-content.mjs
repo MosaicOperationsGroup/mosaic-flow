@@ -26,6 +26,8 @@ const AREAS = [
   { dir: 'briefing', shape: 'single' },
   { dir: 'blog', shape: 'single' }, // the blog index page itself (list of dates)
   { dir: 'blog', shape: 'nested' }, // each blog/<date>/ archive entry
+  { dir: 'docs-insight', shape: 'single' },
+  { dir: 'top-priorities', shape: 'single' },
 ];
 
 function inlineOne(dir) {

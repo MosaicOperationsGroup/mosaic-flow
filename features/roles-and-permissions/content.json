@@ -14,10 +14,32 @@
     { "name": "Conflict review (UI)", "status": "planned", "note": "A screen flagging scheduling conflicts before an assignment is confirmed." },
     { "name": "Permissions admin screen", "status": "planned", "note": "Where an administrator manages who holds which permission." }
   ],
+  "roleCatalogue": {
+    "note": "Roles in Mosaic are free-text labels a school can name however it likes — deliberately not a generic role-builder. But a brand-new school shouldn't stare at a blank field, so this is a draft starting catalogue: a short list of roles that exist in almost any school, plus an extended catalogue for specific academic programmes. This is a first draft for review, not a finished or exhaustive list.",
+    "common": [
+      { "name": "Teacher", "note": "Classroom-facing teaching staff — the largest role by headcount in any school." },
+      { "name": "Head of Department", "note": "Leads a subject department; typically a responsibility post rather than a fixed person." },
+      { "name": "Head of School / Principal", "note": "Overall accountability for the school." },
+      { "name": "Deputy / Assistant Head", "note": "Senior leadership below the Head of School; scope varies by school." },
+      { "name": "Form Tutor / Homeroom Teacher", "note": "Pastoral responsibility for a specific student group." },
+      { "name": "Administrator / Office Staff", "note": "Non-teaching operational staff, usually with narrower access than teaching staff." }
+    ],
+    "programmes": [
+      {
+        "programme": "IB Diploma Programme (DP)",
+        "roles": [
+          { "name": "DP Coordinator", "note": "Owns the Diploma Programme's overall delivery and IB compliance." },
+          { "name": "EE Coordinator", "note": "Coordinates Extended Essay supervision across DP subjects." },
+          { "name": "CAS Coordinator", "note": "Coordinates the Creativity, Activity, Service programme." },
+          { "name": "TOK Coordinator", "note": "Coordinates the Theory of Knowledge course." }
+        ]
+      }
+    ]
+  },
   "testing": {
     "fixtureNote": "The shared fixture exercises the main ways a permission can reach someone: automatically as an owner or admin, granted directly to a person, granted through a group, and granted through the responsibility post someone holds — plus a deliberate baseline case of a member with no grants at all, to prove access is denied by default rather than by accident.",
     "expectedOutcomes": []
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "077d5acfcbd431fb"
+  "reconciledAt": "2026-07-08",
+  "reconciledSourceHash": "430447462ad8d58d"
 }

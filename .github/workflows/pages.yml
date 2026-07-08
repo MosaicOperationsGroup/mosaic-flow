@@ -34,14 +34,15 @@ jobs:
         # shipping it as its own file means it's directly fetchable and
         # bypasses the staticrypt gate below entirely. This embeds each
         # page's content into its own HTML (features/<slug>/, briefing/,
-        # blog/, blog/<date>/) and deletes the standalone file from the
-        # build output before anything is encrypted or uploaded.
+        # blog/, blog/<date>/, docs-insight/, top-priorities/) and deletes
+        # the standalone file from the build output before anything is
+        # encrypted or uploaded.
         run: node scripts/inline-content.mjs
       - name: Encrypt gated pages (staticrypt)
-        # Gates features/**, briefing/**, and blog/** — the main explainer
-        # (index.html) and the governance table stay open. Password is a
-        # repo secret, never committed in plaintext (this workflow file is
-        # public).
+        # Gates features/**, briefing/**, blog/**, docs-insight/**, and
+        # top-priorities/** — the main explainer (index.html) and the
+        # governance table stay open. Password is a repo secret, never
+        # committed in plaintext (this workflow file is public).
         env:
           STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
@@ -54,7 +55,7 @@ jobs:
             # -d directory — passing a whole glob in one call makes every
             # same-named "index.html" collide and overwrite each other at a
             # single shared path instead of each file's own location.
-            for f in features/**/*.html briefing/*.html blog/*.html blog/**/*.html; do
+            for f in features/**/*.html briefing/*.html blog/*.html blog/**/*.html docs-insight/*.html top-priorities/*.html; do
               [ -f "$f" ] || continue
               dir=$(dirname "$f")
               npx --yes staticrypt "$f" -p "$STATICRYPT_PASSWORD" --short -d "$dir"
