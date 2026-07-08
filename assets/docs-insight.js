@@ -67,27 +67,44 @@ async function main() {
         <div class="dq-details-body">${rows}</div>
       </details>` : '';
 
+    // Review-signal badges. Adversarial review is the one that caps the
+    // verdict, so it's always shown, positively or negatively.
+    const badges = [
+      f.adversarialReview
+        ? '<span class="dq-badge dq-badge-good">Adversarially reviewed</span>'
+        : '<span class="dq-badge dq-badge-bad">Not adversarially reviewed</span>',
+      f.openDecisions > 0 ? `<span class="dq-badge">${f.openDecisions} open decision${f.openDecisions === 1 ? '' : 's'}</span>` : '',
+      f.blockers > 0 ? `<span class="dq-badge">${f.blockers} blocker${f.blockers === 1 ? '' : 's'} / risk${f.blockers === 1 ? '' : 's'}</span>` : '',
+      f.tbdCount > 0 ? `<span class="dq-badge">${f.tbdCount} TBDs</span>` : '',
+      f.statusMismatch ? '<span class="dq-badge dq-badge-warn">Spec/progress status mismatch</span>' : '',
+    ].filter(Boolean).join('');
+
     return `
       <div class="dq-feature reveal">
         <div class="dq-feature-head">
           <h3 class="dq-feature-name">${escapeHtml(f.feature)}</h3>
-          <div class="dq-bar"><div class="dq-bar-fill" style="width:${f.score}%"></div></div>
-          <span class="dq-score">${f.score}%</span>
+          <span class="dq-readiness">Readiness <strong>${f.readiness}</strong></span>
+        </div>
+        <p class="dq-verdict">${escapeHtml(f.verdict)}</p>
+        <div class="dq-badges">${badges}</div>
+        <div class="dq-coverage-row">
+          <span class="dq-coverage-label">Template coverage</span>
+          <div class="dq-bar"><div class="dq-bar-fill" style="width:${f.coverage}%"></div></div>
+          <span class="dq-score">${f.coverage}%</span>
         </div>
         <div class="dq-chips">${chips}</div>
         ${details}
       </div>`;
   };
 
-  const byScoreDesc = (a, b) => b.score - a.score;
-  const featuresHtml = [...(content.features || [])].sort(byScoreDesc).map(featureHtml).join('');
+  const featuresHtml = (content.features || []).map(featureHtml).join('');
   const preConvergenceHtml = (content.preConvergence || []).map(featureHtml).join('');
 
   root.innerHTML = `
     <div class="wrap page-header dq-header">
       <a class="back-link reveal" href="../">Back to overview</a>
       <p class="kicker reveal">Detailed documentation insight</p>
-      <h2 class="reveal">Coverage, highest first.</h2>
+      <h2 class="reveal">Readiness, highest first.</h2>
       <p class="journey reveal">${escapeHtml(content.intro || '')}</p>
       <div class="dq-tally reveal">${tallyHtml}</div>
       <div class="dq-legend reveal">${legendHtml}</div>
