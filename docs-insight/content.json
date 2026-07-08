@@ -117,7 +117,12 @@
           "missing": [],
           "note": null
         }
-      ]
+      ],
+      "judgment": {
+        "score": 49,
+        "verdict": "drafting",
+        "reviewed": "2026-07-08"
+      }
     },
     {
       "feature": "Onboarding and school config",
@@ -827,7 +832,12 @@
           ],
           "note": null
         }
-      ]
+      ],
+      "judgment": {
+        "score": 36,
+        "verdict": "not build-ready",
+        "reviewed": "2026-07-08"
+      }
     },
     {
       "feature": "School development & action planning",
@@ -1169,5 +1179,6 @@
         }
       ]
     }
-  ]
+  ],
+  "judgmentNote": "Judgment is the deeper axis: a capable reviewer reads each document section-by-section, verifies its claims against the codebase and issue tracker, and scores whether an implementer could actually build from it — not just whether the headings exist. Only features a reviewer has actually judged show a score; the rest are awaiting review."
 }

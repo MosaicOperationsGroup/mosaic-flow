@@ -79,13 +79,28 @@ async function main() {
       f.statusMismatch ? '<span class="dq-badge dq-badge-warn">Spec/progress status mismatch</span>' : '',
     ].filter(Boolean).join('');
 
+    // Judgment (content review) is the directional signal where it exists —
+    // a reviewer actually read the docs and scored whether you can build from
+    // them. It leads; structural readiness/coverage drop to secondary. Where
+    // no reviewer has judged the feature yet, we say so plainly rather than
+    // imply the structural number is a quality verdict.
+    const j = f.judgment;
+    const scoresHtml = j
+      ? `<span class="dq-judgment">Judgment <strong>${j.score}</strong></span>
+         <span class="dq-readiness secondary">Readiness ${f.readiness}</span>`
+      : `<span class="dq-readiness">Readiness <strong>${f.readiness}</strong></span>`;
+    const verdictHtml = j
+      ? `<p class="dq-verdict"><span class="dq-verdict-strong">${escapeHtml(j.verdict)}</span> — content-reviewed ${escapeHtml(j.reviewed)}. Structural readiness ${f.readiness}, coverage ${f.coverage}%.</p>`
+      : `<p class="dq-verdict">${escapeHtml(f.verdict)}</p>
+         <p class="dq-unjudged">Not yet content-judged — the score above is structural readiness only, not a review of what the docs actually say.</p>`;
+
     return `
       <div class="dq-feature reveal">
         <div class="dq-feature-head">
           <h3 class="dq-feature-name">${escapeHtml(f.feature)}</h3>
-          <span class="dq-readiness">Readiness <strong>${f.readiness}</strong></span>
+          <span class="dq-scores">${scoresHtml}</span>
         </div>
-        <p class="dq-verdict">${escapeHtml(f.verdict)}</p>
+        ${verdictHtml}
         <div class="dq-badges">${badges}</div>
         <div class="dq-coverage-row">
           <span class="dq-coverage-label">Template coverage</span>
@@ -104,8 +119,9 @@ async function main() {
     <div class="wrap page-header dq-header">
       <a class="back-link reveal" href="../">Back to overview</a>
       <p class="kicker reveal">Detailed documentation insight</p>
-      <h2 class="reveal">Readiness, highest first.</h2>
+      <h2 class="reveal">Where each feature's docs stand.</h2>
       <p class="journey reveal">${escapeHtml(content.intro || '')}</p>
+      ${content.judgmentNote ? `<p class="journey reveal">${escapeHtml(content.judgmentNote)}</p>` : ''}
       <div class="dq-tally reveal">${tallyHtml}</div>
       <div class="dq-legend reveal">${legendHtml}</div>
       <p class="dq-reviewed reveal">Reviewed as of ${escapeHtml(content.reconciledAt || 'unknown date')}.</p>
