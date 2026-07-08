@@ -1043,7 +1043,12 @@
           "missing": [],
           "note": null
         }
-      ]
+      ],
+      "judgment": {
+        "score": 85,
+        "verdict": "usable with named gaps",
+        "reviewed": "2026-07-08"
+      }
     }
   ],
   "preConvergenceNote": "Adversarial review has closed for these but the standard doc scaffold has not been written yet — a documented next step, not neglect. Not ranked against the features above.",
