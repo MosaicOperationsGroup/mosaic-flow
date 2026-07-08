@@ -222,9 +222,22 @@ footer a{color:var(--teal);text-decoration:none}
 .dq-chip.dq-off-template{background:rgba(33,30,21,.06);color:var(--ink-2);border-color:var(--hairline)}
 .dq-chip.dq-thin{background:rgba(176,71,43,.12);color:#7A2E1D;border-color:rgba(176,71,43,.2)}
 .dq-chip.dq-missing{background:transparent;color:var(--ink-3);border-color:var(--hairline);border-style:dashed}
-.dq-details{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.dq-details{margin-top:14px}
+.dq-details-toggle{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);user-select:none}
+.dq-details-toggle::-webkit-details-marker{display:none}
+.dq-details-toggle::marker{content:''}
+.dq-details-toggle:hover{color:var(--teal)}
+.dq-chevron{display:inline-block;transition:transform .2s ease;font-size:15px}
+.dq-details[open] .dq-chevron{transform:rotate(90deg)}
+.dq-details-body{margin-top:10px;display:flex;flex-direction:column;gap:6px}
 .dq-detail-row{font-size:13px;color:var(--ink-2);display:flex;gap:8px;flex-wrap:wrap}
 .dq-detail-label{font-weight:600;color:var(--ink);flex-shrink:0}
+
+.dq-header{padding-bottom:48px}
+.dq-header .dq-tally{margin-top:40px}
+.dq-header .dq-legend{margin-top:24px}
+.dq-reviewed{margin-top:20px;font-size:12.5px;color:var(--ink-3)}
+.dq-list-section{padding-top:0}
 
 @media(max-width:860px){
   nav ul{display:none}

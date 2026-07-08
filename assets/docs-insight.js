@@ -55,11 +55,17 @@ async function main() {
         <span class="dq-chip-count">${d.present}/${d.expected}</span>
       </div>`).join('');
 
-    const details = f.docs.filter(d => (d.missing && d.missing.length) || d.note).map(d => `
+    const rows = f.docs.filter(d => (d.missing && d.missing.length) || d.note).map(d => `
       <div class="dq-detail-row">
         <span class="dq-detail-label">${escapeHtml(d.label)}</span>
         <span class="dq-detail-text">${d.note ? escapeHtml(d.note) : `missing: ${d.missing.map(escapeHtml).join(', ')}`}</span>
       </div>`).join('');
+
+    const details = rows ? `
+      <details class="dq-details">
+        <summary class="dq-details-toggle"><span class="dq-chevron" aria-hidden="true">›</span> What's missing</summary>
+        <div class="dq-details-body">${rows}</div>
+      </details>` : '';
 
     return `
       <div class="dq-feature reveal">
@@ -69,31 +75,26 @@ async function main() {
           <span class="dq-score">${f.score}%</span>
         </div>
         <div class="dq-chips">${chips}</div>
-        ${details ? `<div class="dq-details">${details}</div>` : ''}
+        ${details}
       </div>`;
   };
 
-  const featuresHtml = (content.features || []).map(featureHtml).join('');
+  const byScoreDesc = (a, b) => b.score - a.score;
+  const featuresHtml = [...(content.features || [])].sort(byScoreDesc).map(featureHtml).join('');
   const preConvergenceHtml = (content.preConvergence || []).map(featureHtml).join('');
 
   root.innerHTML = `
-    <div class="wrap page-header">
+    <div class="wrap page-header dq-header">
       <a class="back-link reveal" href="../">Back to overview</a>
       <p class="kicker reveal">Detailed documentation insight</p>
-      <h2 class="reveal">How complete is each feature's documentation?</h2>
+      <h2 class="reveal">Coverage, highest first.</h2>
       <p class="journey reveal">${escapeHtml(content.intro || '')}</p>
-      <p class="draft-notice reveal">Reviewed as of ${escapeHtml(content.reconciledAt || 'unknown date')}. Deterministic section-coverage against the house template — computed, not judged.</p>
+      <div class="dq-tally reveal">${tallyHtml}</div>
+      <div class="dq-legend reveal">${legendHtml}</div>
+      <p class="dq-reviewed reveal">Reviewed as of ${escapeHtml(content.reconciledAt || 'unknown date')}.</p>
     </div>
-    <section>
+    <section class="dq-list-section">
       <div class="wrap">
-        <div class="dq-tally">${tallyHtml}</div>
-        <div class="dq-legend reveal">${legendHtml}</div>
-      </div>
-    </section>
-    <section>
-      <div class="wrap">
-        <p class="kicker reveal">Ranked</p>
-        <h2 class="reveal">By coverage, lowest first.</h2>
         ${featuresHtml}
       </div>
     </section>
