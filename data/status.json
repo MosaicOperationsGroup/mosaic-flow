@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-09T16:44:16.413Z",
+  "generated_at": "2026-07-09T17:14:24.742Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 20,
-    "open": 1,
-    "pass": 10,
+    "open": 0,
+    "pass": 11,
     "self_closed_pending": 8,
     "concerns": 0,
     "fail": 0,
@@ -17,13 +17,13 @@
       "T3": 1,
       "T4": 1
     },
-    "acs_met": 45,
-    "acs_total": 48
+    "acs_met": 49,
+    "acs_total": 52
   },
   "issues": {
-    "open": 95,
+    "open": 89,
     "p0": 6,
-    "p1": 26,
+    "p1": 24,
     "p2": 26,
     "areas": [
       {
@@ -40,7 +40,7 @@
       },
       {
         "label": "Design system",
-        "open": 9
+        "open": 2
       },
       {
         "label": "Operations",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 35
+        "open": 37
       }
     ]
   },
