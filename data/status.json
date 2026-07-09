@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-09T08:18:54.170Z",
+  "generated_at": "2026-07-09T08:42:41.829Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 9,
@@ -21,7 +21,7 @@
     "acs_total": 36
   },
   "issues": {
-    "open": 79,
+    "open": 83,
     "p0": 6,
     "p1": 22,
     "p2": 23,
@@ -32,7 +32,7 @@
       },
       {
         "label": "Reporting & gradebook",
-        "open": 1
+        "open": 5
       },
       {
         "label": "Trust & safety",
@@ -101,7 +101,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "8b26ec0607cc4ccb"
+      "content_hash": "68697f5b44037975"
     },
     {
       "slug": "cover-module",
@@ -121,7 +121,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "6c33abee5d253b60"
+      "content_hash": "3d950be373b37269"
     },
     {
       "slug": "lesson-observations",
