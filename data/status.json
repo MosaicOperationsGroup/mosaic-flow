@@ -1,27 +1,27 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-09T02:31:24.859Z",
+  "generated_at": "2026-07-09T07:18:34.563Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 8,
+    "total": 9,
     "open": 0,
     "pass": 8,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
-    "waived": 0,
+    "waived": 1,
     "by_tier": {
       "T0": 0,
       "T1": 0,
       "T2": 8,
-      "T3": 0,
+      "T3": 1,
       "T4": 0
     },
     "acs_met": 33,
     "acs_total": 36
   },
   "issues": {
-    "open": 74,
+    "open": 79,
     "p0": 6,
     "p1": 22,
     "p2": 23,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 7
+        "open": 8
       },
       {
         "label": "Design system",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Operations",
-        "open": 10
+        "open": 12
       },
       {
         "label": "Product",
