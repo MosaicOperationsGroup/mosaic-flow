@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-09T10:18:04.502Z",
+  "generated_at": "2026-07-09T13:08:58.951Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 9,
@@ -21,9 +21,9 @@
     "acs_total": 36
   },
   "issues": {
-    "open": 92,
+    "open": 93,
     "p0": 6,
-    "p1": 25,
+    "p1": 26,
     "p2": 25,
     "areas": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "label": "Reporting & gradebook",
-        "open": 5
+        "open": 6
       },
       {
         "label": "Trust & safety",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Design system",
-        "open": 9
+        "open": 10
       },
       {
         "label": "Operations",
@@ -141,7 +141,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "095db35d1a913a97"
+      "content_hash": "df5ec8caa6d0ff06"
     },
     {
       "slug": "emar-calendar",
