@@ -1,13 +1,13 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-10T09:44:05.967Z",
+  "generated_at": "2026-07-10T09:53:28.360Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 36,
-    "open": 3,
+    "open": 2,
     "pass": 20,
     "self_closed_pending": 12,
-    "concerns": 0,
+    "concerns": 1,
     "fail": 0,
     "waived": 1,
     "by_tier": {
@@ -17,8 +17,8 @@
       "T3": 1,
       "T4": 4
     },
-    "acs_met": 114,
-    "acs_total": 120
+    "acs_met": 123,
+    "acs_total": 129
   },
   "issues": {
     "open": 106,
