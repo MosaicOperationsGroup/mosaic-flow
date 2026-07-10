@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-10T08:17:06.816Z",
+  "generated_at": "2026-07-10T09:44:05.967Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 36,
@@ -21,14 +21,14 @@
     "acs_total": 120
   },
   "issues": {
-    "open": 102,
+    "open": 106,
     "p0": 6,
     "p1": 24,
     "p2": 27,
     "areas": [
       {
         "label": "Task management",
-        "open": 11
+        "open": 12
       },
       {
         "label": "Reporting & gradebook",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 37
+        "open": 40
       }
     ]
   },
