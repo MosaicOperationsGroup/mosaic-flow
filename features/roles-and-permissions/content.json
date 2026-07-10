@@ -15,7 +15,7 @@
     { "name": "Permissions admin screen", "status": "planned", "note": "Where an administrator manages who holds which permission." }
   ],
   "roleCatalogue": {
-    "note": "Roles in Mosaic are free-text labels a school can name however it likes — deliberately not a generic role-builder. But a brand-new school shouldn't stare at a blank field, so this is a draft starting catalogue: a short list of roles that exist in almost any school, plus an extended catalogue for specific academic programmes. This is a first draft for review, not a finished or exhaustive list.",
+    "note": "Roles in Mosaic are free-text labels a school can name however it likes — deliberately not a generic role-builder. But a brand-new school shouldn't stare at a blank field, so this is a starting catalogue: a short list of roles that exist in almost any school, plus an extended catalogue for specific academic programmes. Reviewed and accepted by Saeed on 2026-07-09 — the common set is confirmed, and IB coverage now spans all four programmes. Two questions stay deliberately open: whether programme-specific roles should carry their own default permissions, and where this catalogue should live long-term.",
     "common": [
       { "name": "Teacher", "note": "Classroom-facing teaching staff — the largest role by headcount in any school." },
       { "name": "Head of Department", "note": "Leads a subject department; typically a responsibility post rather than a fixed person." },
@@ -26,12 +26,37 @@
     ],
     "programmes": [
       {
+        "programme": "IB Primary Years Programme (PYP)",
+        "roles": [
+          { "name": "PYP Coordinator", "note": "Owns PYP delivery and IB compliance; leads collaborative planning and the programme of inquiry." },
+          { "name": "PYP Exhibition Coordinator", "note": "Coordinates the culminating Exhibition in the final PYP year." }
+        ]
+      },
+      {
+        "programme": "IB Middle Years Programme (MYP)",
+        "roles": [
+          { "name": "MYP Coordinator", "note": "Owns MYP delivery and IB compliance; coordinates subject-group planning and assessment moderation." },
+          { "name": "Personal Project Coordinator", "note": "Coordinates the MYP year-5 Personal Project." },
+          { "name": "Community Project Coordinator", "note": "Coordinates the Community Project where the school's MYP ends at year 3/4." },
+          { "name": "Service as Action Coordinator", "note": "Coordinates the MYP Service as Action expectations across year levels." }
+        ]
+      },
+      {
         "programme": "IB Diploma Programme (DP)",
         "roles": [
           { "name": "DP Coordinator", "note": "Owns the Diploma Programme's overall delivery and IB compliance." },
           { "name": "EE Coordinator", "note": "Coordinates Extended Essay supervision across DP subjects." },
           { "name": "CAS Coordinator", "note": "Coordinates the Creativity, Activity, Service programme." },
           { "name": "TOK Coordinator", "note": "Coordinates the Theory of Knowledge course." }
+        ]
+      },
+      {
+        "programme": "IB Career-related Programme (CP)",
+        "roles": [
+          { "name": "CP Coordinator", "note": "Owns CP delivery and IB compliance, including the link to the career-related study provider." },
+          { "name": "Reflective Project Coordinator", "note": "Coordinates the Reflective Project, the CP capstone." },
+          { "name": "Service Learning Coordinator", "note": "Coordinates the CP service learning core component." },
+          { "name": "Personal & Professional Skills Teacher", "note": "Teaches the PPS core course; often distinct from subject-teaching roles." }
         ]
       }
     ]
@@ -40,6 +65,6 @@
     "fixtureNote": "The shared fixture exercises the main ways a permission can reach someone: automatically as an owner or admin, granted directly to a person, granted through a group, and granted through the responsibility post someone holds — plus a deliberate baseline case of a member with no grants at all, to prove access is denied by default rather than by accident.",
     "expectedOutcomes": []
   },
-  "reconciledAt": "2026-07-08",
-  "reconciledSourceHash": "430447462ad8d58d"
+  "reconciledAt": "2026-07-10",
+  "reconciledSourceHash": "959ef5ce2f1be2e1"
 }
