@@ -1,19 +1,19 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-12T19:11:47.417Z",
+  "generated_at": "2026-07-12T19:33:45.948Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 60,
+    "total": 62,
     "open": 6,
     "pass": 52,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
-    "waived": 2,
+    "waived": 4,
     "by_tier": {
       "T0": 2,
       "T1": 17,
-      "T2": 26,
+      "T2": 28,
       "T3": 8,
       "T4": 7
     },
@@ -21,9 +21,9 @@
     "acs_total": 327
   },
   "issues": {
-    "open": 149,
+    "open": 148,
     "p0": 6,
-    "p1": 22,
+    "p1": 21,
     "p2": 26,
     "areas": [
       {
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 59
+        "open": 58
       }
     ]
   },
@@ -61,7 +61,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "327c69f293859a56"
+      "content_hash": "0b213922ddceac89"
     },
     {
       "slug": "calendar",
@@ -81,7 +81,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "4d93d92648390174"
+      "content_hash": "ce53d3842b2d072f"
     },
     {
       "slug": "analytics",
@@ -121,7 +121,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "54e5c835dedfe695"
+      "content_hash": "a04383943d694fdc"
     },
     {
       "slug": "lesson-observations",
