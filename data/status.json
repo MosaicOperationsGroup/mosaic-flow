@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-13T08:59:40.504Z",
+  "generated_at": "2026-07-13T09:02:43.831Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 71,
+    "total": 72,
     "open": 7,
-    "pass": 58,
+    "pass": 59,
     "self_closed_pending": 0,
     "concerns": 2,
     "fail": 0,
@@ -15,10 +15,10 @@
       "T1": 17,
       "T2": 33,
       "T3": 8,
-      "T4": 11
+      "T4": 12
     },
-    "acs_met": 423,
-    "acs_total": 430
+    "acs_met": 435,
+    "acs_total": 442
   },
   "issues": {
     "open": 153,
@@ -40,7 +40,7 @@
       },
       {
         "label": "Design system",
-        "open": 2
+        "open": 3
       },
       {
         "label": "Operations",
@@ -151,7 +151,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "08a460bcf209f753"
+      "content_hash": "c753a15d5baca46a"
     }
   ]
 }
