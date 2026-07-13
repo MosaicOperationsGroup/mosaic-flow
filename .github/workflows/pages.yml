@@ -29,6 +29,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Regenerate data/pages.json
+        # The homepage governance table only links a feature row when its
+        # slug appears in this file, so a snapshot entry without a published
+        # page (e.g. a feature tracked in the private repo before its public
+        # page exists) renders unlinked instead of 404ing. Regenerated here
+        # from the real directories so the committed copy can never drift.
+        run: node -e "const fs=require('fs');const slugs=fs.readdirSync('features').filter(s=>fs.existsSync('features/'+s+'/index.html')).sort();fs.writeFileSync('data/pages.json',JSON.stringify(slugs,null,2)+'\n')"
       - name: Inline page content (removes standalone content.json files)
         # content.json is the curated source of truth kept in git, but
         # shipping it as its own file means it's directly fetchable and

@@ -246,6 +246,11 @@ async function loadStatus() {
     const r = await fetch('data/status.json', {cache: 'no-store'});
     if (!r.ok) throw new Error(r.status);
     const d = await r.json();
+    // Slugs that actually have a published page under features/ — regenerated
+    // from the real directories at deploy time, so a governance row can never
+    // link to a page that doesn't exist. Missing file → no rows are linked.
+    const pages = new Set(await fetch('data/pages.json', {cache: 'no-store'})
+      .then(p => p.ok ? p.json() : []).catch(() => []));
     const set = (id, v) => { const el = document.getElementById(id); el.dataset.target = v ?? 0; el.textContent = reduced || !window.gsap ? (v ?? 0) : '0'; };
     set('n-open', d.issues ? d.issues.open : 0);
     set('n-p1', d.issues ? (d.issues.p0 || 0) + (d.issues.p1 || 0) : 0);
@@ -260,7 +265,7 @@ async function loadStatus() {
     if (d.governance && d.governance.length) {
       const mark = (ok) => ok ? '<span class="ok">✓</span>' : '<span class="no">✗</span>';
       govBody.innerHTML = d.governance.map(f => {
-        const slug = f.slug || '';
+        const slug = pages.has(f.slug) ? f.slug : '';
         return `<tr class="${slug ? 'linked' : ''}" ${slug ? `data-href="features/${slug}/"` : ''}>
         <td class="feat">${f.feature}</td>
         <td>${mark(f.readme)}</td>
@@ -291,6 +296,16 @@ async function loadStatus() {
       lb.textContent = parts.join(' · ') + '.';
     }
     meta.textContent = `Snapshot generated ${new Date(d.generated_at).toLocaleString(undefined, {dateStyle: 'long', timeStyle: 'short'})}. ${d.source}`;
+    // Updates normally arrive several times a day — anything older than a day
+    // means the publishing pipeline has gone quiet, and readers should know
+    // the "live" numbers aren't.
+    const ageHours = (Date.now() - new Date(d.generated_at)) / 36e5;
+    if (ageHours > 24) {
+      const warn = document.createElement('p');
+      warn.className = 'stale-badge reveal';
+      warn.textContent = `This snapshot is ${Math.round(ageHours / 24)} day${ageHours >= 36 ? 's' : ''} old — updates normally arrive several times a day, so the numbers above may be behind.`;
+      meta.parentNode.insertBefore(warn, meta);
+    }
     if (window.gsap && !reduced) armCounters();
   } catch (e) {
     lt.textContent = 'Snapshot not available yet.';
