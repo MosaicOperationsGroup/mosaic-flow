@@ -1,13 +1,13 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-13T15:25:46.368Z",
+  "generated_at": "2026-07-13T16:22:40.517Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 72,
     "open": 6,
-    "pass": 60,
+    "pass": 61,
     "self_closed_pending": 0,
-    "concerns": 2,
+    "concerns": 1,
     "fail": 0,
     "waived": 4,
     "by_tier": {
@@ -21,7 +21,7 @@
     "acs_total": 457
   },
   "issues": {
-    "open": 155,
+    "open": 156,
     "p0": 6,
     "p1": 23,
     "p2": 28,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 16
+        "open": 18
       },
       {
         "label": "Design system",
@@ -101,7 +101,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "69cebd36c0f7f199"
+      "content_hash": "3e7713d66abf0da7"
     },
     {
       "slug": "cover-module",
