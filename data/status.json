@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-13T09:02:43.831Z",
+  "generated_at": "2026-07-13T09:12:34.817Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 72,
@@ -17,8 +17,8 @@
       "T3": 8,
       "T4": 12
     },
-    "acs_met": 435,
-    "acs_total": 442
+    "acs_met": 443,
+    "acs_total": 449
   },
   "issues": {
     "open": 153,
@@ -131,7 +131,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "3e9156bb724c961d"
+      "content_hash": "8d6789e56041c7c3"
     },
     {
       "slug": "school-development-action-planning",
@@ -151,7 +151,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "c753a15d5baca46a"
+      "content_hash": "d9504a420e32a410"
     }
   ]
 }
