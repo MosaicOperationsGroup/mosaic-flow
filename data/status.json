@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-13T09:36:42.382Z",
+  "generated_at": "2026-07-13T14:45:18.745Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 72,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 17
+        "open": 16
       },
       {
         "label": "Design system",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 61
+        "open": 60
       }
     ]
   },
