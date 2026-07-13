@@ -17,3 +17,5 @@ This repo has **no access** to the private repo — data flows one way, and only
 ## Editing
 
 The whole site is `index.html` (self-contained; GSAP and fonts from CDNs). `data/status.json` is machine-written — don't edit it by hand, it gets overwritten on the next publish.
+
+The hand-curated pages (`features/*/content.json`, `docs-insight/`, …) have their own maintenance procedure — hash stamping, redaction rules, local preview — documented in [RECONCILING.md](RECONCILING.md).
