@@ -2,21 +2,90 @@
   "slug": "lesson-observations",
   "title": "Lesson observations",
   "status": "in-progress",
-  "statusLabel": "Early exploration — design under review",
-  "journey": "Lesson observations are a sensitive, judgement-heavy process — a leader watching a lesson, recording structured notes against an official framework, and deciding what (if anything) an observed teacher gets to see. This feature is Mosaic's earliest-stage one: still going through independent design review, with real open questions — including whether AI should ever suggest the official rating (the current working answer is no, that stays human-only). It's also built on a separate development track from the rest of Mosaic, so its pace won't always match the other features on this page.",
+  "statusLabel": "Design agreed — foundations laid, main build next",
+  "journey": "Lesson observations are a sensitive, judgement-heavy process — a leader watching a lesson, recording structured notes against an official framework, and deciding what (if anything) an observed teacher gets to see. The design has now been through its full independent review and the plan is agreed: writing up and exporting an observation stays free, saved records stay private to the observer, and an observed teacher sees something only when it is deliberately shared. The big open question — whether AI should ever suggest the official rating — has been settled: AI may offer an element-by-element suggestion, but only when the observer asks for one; every suggestion stays clearly marked until a person accepts or changes it, and the overall rating is always decided by a human. Building has begun: the shared foundations that let observations use the same official criteria and rating scales as the rest of Mosaic are now part of the live product, and a full design mock-up of the workspace has been built and reviewed. A follow-on set of ideas — observation types and learning walks, teacher-requested observations, and a careful whole-school view for leaders — has also been through review and agreed for after the first build. This feature still runs on its own development track, so its pace won't always match the other features on this page.",
   "subfeatures": [
-    { "name": "Structured observation editor", "status": "planned", "note": "Free-form notes structured against the selected inspection framework." },
-    { "name": "Guest / session-only mode", "status": "planned", "note": "Usable without logging in first; saving permanently requires an account." },
-    { "name": "Saved, private observations", "status": "planned", "note": "An observer's own saved records, kept confidential by default." },
-    { "name": "Observation dashboard", "status": "planned", "note": "A signed-in view of an observer's saved observations." },
-    { "name": "PDF export", "status": "planned", "note": "A downloadable report, including right-to-left language support." },
-    { "name": "Selective sharing with the observed teacher", "status": "planned", "note": "The observed teacher sees something only when explicitly shared, and only the fields allowed." },
-    { "name": "AI-assisted rating suggestion", "status": "planned", "note": "Still an open decision — the current working position is that the official rating stays human-only." }
+    {
+      "name": "Shared framework foundations",
+      "status": "shipped",
+      "note": "The behind-the-scenes groundwork that lets observations use the same official inspection criteria and rating scales as the rest of Mosaic. This is now part of the live product."
+    },
+    {
+      "name": "Structured observation editor",
+      "status": "planned",
+      "note": "Free-form notes structured against the selected inspection framework, with a written summary and an optional rating per element. A full design mock-up has been built and reviewed; the real version is the next big build."
+    },
+    {
+      "name": "Guest / session-only mode",
+      "status": "planned",
+      "note": "Usable without logging in first; saving permanently requires an account."
+    },
+    {
+      "name": "Saved, private observations",
+      "status": "planned",
+      "note": "An observer's own saved records, kept confidential by default."
+    },
+    {
+      "name": "Observation dashboard",
+      "status": "planned",
+      "note": "A signed-in view of an observer's saved observations."
+    },
+    {
+      "name": "PDF export",
+      "status": "planned",
+      "note": "A downloadable report, including right-to-left language support."
+    },
+    {
+      "name": "Selective sharing with the observed teacher",
+      "status": "planned",
+      "note": "The observed teacher sees something only when explicitly shared, and only the fields allowed."
+    },
+    {
+      "name": "AI-assisted rating suggestion",
+      "status": "planned",
+      "note": "Now decided: AI may suggest an element-by-element rating, but only when the observer asks for one, and nothing counts until a person accepts or changes it. The overall rating stays human-only, and this whole strand switches on only after privacy and compliance approvals."
+    },
+    {
+      "name": "Observation types and learning walks",
+      "status": "planned",
+      "note": "Schools define their own observation types. Learning walks focus on school-chosen lesson features rather than official framework ratings."
+    },
+    {
+      "name": "Teacher-requested observations",
+      "status": "planned",
+      "note": "A teacher can invite a specific, named colleague or leader to observe a lesson; accepting sets up the observation ready to go."
+    },
+    {
+      "name": "Whole-school view for leaders",
+      "status": "planned",
+      "note": "Leaders with the right permission see finished observations across the school, with simple counts and coverage only — deliberately no teacher rankings, averages, or league tables."
+    },
+    {
+      "name": "Tags and mentions in notes",
+      "status": "planned",
+      "note": "Observers can tag notes with school-approved themes and mention colleagues. Personal tags and mentions stay private to the observer, and tagging students stays switched off until strict safeguarding and data-protection approvals are in place."
+    }
   ],
   "testing": {
-    "fixtureNote": "No dedicated fixture coverage yet — this feature is still in design review, ahead of any implementation.",
-    "expectedOutcomes": []
+    "fixtureNote": "Observations aren't in the shared demo dataset yet. In the meantime, a short register of boundary checks pins down what must NOT happen: no observation screens or data appear in the live product before the agreed build ships, and the privacy rules for the planned tagging tools are written down in advance so tests can hold them to account later.",
+    "expectedOutcomes": [
+      {
+        "criterion": "Nothing appears before it's ready",
+        "expected": "No observation screens, menus, or stored data exist anywhere in the live product until the agreed build lands.",
+        "enforcedBy": "Recorded boundary check for now — automated tests arrive with the build"
+      },
+      {
+        "criterion": "Leaders never see an observer's private tags or mentions",
+        "expected": "When the tagging tools arrive, school-wide views will show only school-approved themes — never an observer's personal tags or staff mentions.",
+        "enforcedBy": "Planned privacy-leakage tests, written alongside the build"
+      },
+      {
+        "criterion": "Student mentions stay switched off",
+        "expected": "Any attempt to tag a student in observation notes is rejected everywhere until safeguarding, retention, and data-protection approvals exist.",
+        "enforcedBy": "Planned tests, written alongside the build"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "5b286b299937b9e5"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "675b0bd677e22009"
 }

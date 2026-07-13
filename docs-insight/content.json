@@ -1,11 +1,11 @@
 {
-  "reconciledAt": "2026-07-08",
+  "reconciledAt": "2026-07-13",
   "intro": "Each feature reviewed on two axes. Coverage is structural: how many of the house template's sections its docs contain. Readiness is the honest headline: coverage minus documented penalties for a missing adversarial review, open decisions, blockers, TBDs and internal inconsistencies — so a feature that was never independently reviewed cannot read as finished, whatever its structure looks like.",
   "tally": {
-    "conformant": 40,
-    "partial": 17,
-    "off-template": 11,
-    "thin": 12,
+    "conformant": 54,
+    "partial": 15,
+    "off-template": 7,
+    "thin": 4,
     "missing": 0
   },
   "legend": [
@@ -37,23 +37,22 @@
   ],
   "features": [
     {
-      "feature": "Reporting & gradebook",
-      "coverage": 92,
-      "readiness": 52,
+      "feature": "Cover module",
+      "coverage": 74,
+      "readiness": 63,
       "verdict": "reviewed — gaps remain",
       "adversarialReview": true,
-      "openDecisions": 8,
-      "blockers": 18,
-      "tbdCount": 29,
+      "openDecisions": 3,
+      "blockers": 0,
+      "tbdCount": 10,
       "statusMismatch": false,
       "docs": [
         {
           "label": "README",
-          "status": "partial",
-          "present": 5,
+          "status": "conformant",
+          "present": 6,
           "expected": 7,
           "missing": [
-            "Purpose",
             "Current Review Or Accepted Spec"
           ],
           "note": null
@@ -61,12 +60,100 @@
         {
           "label": "Product spec",
           "status": "conformant",
-          "present": 12,
+          "present": 14,
           "expected": 14,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Subfeatures",
+          "status": "conformant",
+          "present": 3,
+          "expected": 3,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Progress",
+          "status": "conformant",
+          "present": 5,
+          "expected": 5,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Expected outcomes",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Version map",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Data-model ADR",
+          "status": "partial",
+          "present": 2,
+          "expected": 9,
           "missing": [
-            "Verifier Matrix",
-            "Architecture Alignment Gate"
+            "Tables / Records",
+            "Tenancy And Permissions",
+            "Audit Events",
+            "Data Protection",
+            "Migration From Current State",
+            "Rejected Alternatives",
+            "Acceptance Criteria"
           ],
+          "note": null
+        },
+        {
+          "label": "UX ADR",
+          "status": "thin",
+          "present": 3,
+          "expected": 8,
+          "missing": [
+            "Ux Rules",
+            "Screens And Surfaces",
+            "Accessibility And Responsive Requirements",
+            "Rejected Alternatives",
+            "Acceptance Criteria"
+          ],
+          "note": null
+        }
+      ]
+    },
+    {
+      "feature": "Reporting & gradebook",
+      "coverage": 100,
+      "readiness": 63,
+      "verdict": "reviewed — gaps remain",
+      "adversarialReview": true,
+      "openDecisions": 8,
+      "blockers": 18,
+      "tbdCount": 20,
+      "statusMismatch": false,
+      "docs": [
+        {
+          "label": "README",
+          "status": "conformant",
+          "present": 7,
+          "expected": 7,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Product spec",
+          "status": "conformant",
+          "present": 14,
+          "expected": 14,
+          "missing": [],
           "note": null
         },
         {
@@ -127,12 +214,12 @@
     {
       "feature": "Onboarding and school config",
       "coverage": 100,
-      "readiness": 43,
+      "readiness": 49,
       "verdict": "structurally complete — NOT adversarially reviewed",
       "adversarialReview": false,
-      "openDecisions": 4,
+      "openDecisions": 2,
       "blockers": 7,
-      "tbdCount": 12,
+      "tbdCount": 8,
       "statusMismatch": true,
       "docs": [
         {
@@ -203,13 +290,90 @@
     },
     {
       "feature": "Calendar",
-      "coverage": 92,
-      "readiness": 40,
+      "coverage": 100,
+      "readiness": 48,
       "verdict": "structurally complete — NOT adversarially reviewed",
       "adversarialReview": false,
       "openDecisions": 4,
       "blockers": 7,
       "tbdCount": 13,
+      "statusMismatch": false,
+      "docs": [
+        {
+          "label": "README",
+          "status": "conformant",
+          "present": 7,
+          "expected": 7,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Product spec",
+          "status": "conformant",
+          "present": 14,
+          "expected": 14,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Subfeatures",
+          "status": "conformant",
+          "present": 3,
+          "expected": 3,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Progress",
+          "status": "conformant",
+          "present": 5,
+          "expected": 5,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Expected outcomes",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Version map",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Data-model ADR",
+          "status": "conformant",
+          "present": 9,
+          "expected": 9,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "UX ADR",
+          "status": "conformant",
+          "present": 8,
+          "expected": 8,
+          "missing": [],
+          "note": null
+        }
+      ]
+    },
+    {
+      "feature": "Task management",
+      "coverage": 90,
+      "readiness": 43,
+      "verdict": "structurally complete — NOT adversarially reviewed",
+      "adversarialReview": false,
+      "openDecisions": 2,
+      "blockers": 12,
+      "tbdCount": 11,
       "statusMismatch": false,
       "docs": [
         {
@@ -259,20 +423,21 @@
         },
         {
           "label": "Version map",
-          "status": "thin",
-          "present": 1,
+          "status": "conformant",
+          "present": 2,
           "expected": 2,
-          "missing": [
-            "Version Table"
-          ],
+          "missing": [],
           "note": null
         },
         {
           "label": "Data-model ADR",
-          "status": "conformant",
-          "present": 9,
+          "status": "partial",
+          "present": 7,
           "expected": 9,
-          "missing": [],
+          "missing": [
+            "Tenancy And Permissions",
+            "Data Protection"
+          ],
           "note": null
         },
         {
@@ -293,7 +458,7 @@
       "adversarialReview": true,
       "openDecisions": 0,
       "blockers": 0,
-      "tbdCount": 4,
+      "tbdCount": 3,
       "statusMismatch": false,
       "docs": [
         {
@@ -364,7 +529,7 @@
             "Version Table",
             "Explicit Deferrals"
           ],
-          "note": "doc has 2 sections of its own, none/few match the template"
+          "note": "doc has 3 sections of its own, none/few match the template"
         },
         {
           "label": "Data-model ADR",
@@ -400,225 +565,14 @@
       ]
     },
     {
-      "feature": "Task management",
-      "coverage": 84,
-      "readiness": 35,
-      "verdict": "drafting — substantial structure, not reviewed",
-      "adversarialReview": false,
-      "openDecisions": 3,
-      "blockers": 8,
-      "tbdCount": 11,
-      "statusMismatch": false,
-      "docs": [
-        {
-          "label": "README",
-          "status": "conformant",
-          "present": 7,
-          "expected": 7,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Product spec",
-          "status": "conformant",
-          "present": 12,
-          "expected": 14,
-          "missing": [
-            "Verifier Matrix",
-            "Architecture Alignment Gate"
-          ],
-          "note": null
-        },
-        {
-          "label": "Subfeatures",
-          "status": "conformant",
-          "present": 3,
-          "expected": 3,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Progress",
-          "status": "partial",
-          "present": 4,
-          "expected": 5,
-          "missing": [
-            "Current Status"
-          ],
-          "note": null
-        },
-        {
-          "label": "Expected outcomes",
-          "status": "conformant",
-          "present": 2,
-          "expected": 2,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Version map",
-          "status": "thin",
-          "present": 1,
-          "expected": 2,
-          "missing": [
-            "Version Table"
-          ],
-          "note": null
-        },
-        {
-          "label": "Data-model ADR",
-          "status": "partial",
-          "present": 5,
-          "expected": 9,
-          "missing": [
-            "Tables / Records",
-            "Tenancy And Permissions",
-            "Audit Events",
-            "Data Protection"
-          ],
-          "note": null
-        },
-        {
-          "label": "UX ADR",
-          "status": "conformant",
-          "present": 8,
-          "expected": 8,
-          "missing": [],
-          "note": null
-        }
-      ]
-    },
-    {
-      "feature": "Cover module",
-      "coverage": 24,
-      "readiness": 24,
+      "feature": "School development & action planning",
+      "coverage": 66,
+      "readiness": 34,
       "verdict": "reviewed — gaps remain",
       "adversarialReview": true,
-      "openDecisions": 0,
-      "blockers": 0,
-      "tbdCount": 0,
-      "statusMismatch": false,
-      "docs": [
-        {
-          "label": "README",
-          "status": "off-template",
-          "present": 0,
-          "expected": 7,
-          "missing": [
-            "Purpose",
-            "Canonical Documents",
-            "Current Review Or Accepted Spec",
-            "Current Blockers",
-            "Related Context",
-            "Github Issues",
-            "Agent Handoff Notes"
-          ],
-          "note": "doc has 5 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Product spec",
-          "status": "partial",
-          "present": 5,
-          "expected": 14,
-          "missing": [
-            "User Stories",
-            "Core Capabilities",
-            "Cross-Feature Connections",
-            "Data And Source Of Truth",
-            "Ux Surfaces",
-            "Verifier Matrix",
-            "Architecture Alignment Gate",
-            "Open Decisions",
-            "References"
-          ],
-          "note": null
-        },
-        {
-          "label": "Subfeatures",
-          "status": "off-template",
-          "present": 0,
-          "expected": 3,
-          "missing": [
-            "Breakdown",
-            "Dependency Map",
-            "Suggested Implementation Slices"
-          ],
-          "note": "doc has 2 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Progress",
-          "status": "off-template",
-          "present": 0,
-          "expected": 5,
-          "missing": [
-            "Current Status",
-            "Implementation State",
-            "Linked Work",
-            "Risks And Blockers",
-            "Changelog"
-          ],
-          "note": "doc has 5 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Expected outcomes",
-          "status": "conformant",
-          "present": 2,
-          "expected": 2,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Version map",
-          "status": "off-template",
-          "present": 0,
-          "expected": 2,
-          "missing": [
-            "Version Table",
-            "Explicit Deferrals"
-          ],
-          "note": "doc has 5 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Data-model ADR",
-          "status": "partial",
-          "present": 2,
-          "expected": 9,
-          "missing": [
-            "Tables / Records",
-            "Tenancy And Permissions",
-            "Audit Events",
-            "Data Protection",
-            "Migration From Current State",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        },
-        {
-          "label": "UX ADR",
-          "status": "thin",
-          "present": 3,
-          "expected": 8,
-          "missing": [
-            "Ux Rules",
-            "Screens And Surfaces",
-            "Accessibility And Responsive Requirements",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        }
-      ]
-    },
-    {
-      "feature": "Analytics",
-      "coverage": 46,
-      "readiness": 11,
-      "verdict": "drafting — early",
-      "adversarialReview": false,
-      "openDecisions": 0,
-      "blockers": 3,
-      "tbdCount": 5,
+      "openDecisions": 6,
+      "blockers": 6,
+      "tbdCount": 16,
       "statusMismatch": false,
       "docs": [
         {
@@ -633,248 +587,11 @@
         },
         {
           "label": "Product spec",
-          "status": "partial",
-          "present": 9,
+          "status": "conformant",
+          "present": 13,
           "expected": 14,
           "missing": [
-            "Data And Source Of Truth",
-            "Ux Surfaces",
-            "Verifier Matrix",
-            "Architecture Alignment Gate",
-            "Open Decisions"
-          ],
-          "note": null
-        },
-        {
-          "label": "Subfeatures",
-          "status": "thin",
-          "present": 0,
-          "expected": 3,
-          "missing": [
-            "Breakdown",
-            "Dependency Map",
-            "Suggested Implementation Slices"
-          ],
-          "note": null
-        },
-        {
-          "label": "Progress",
-          "status": "partial",
-          "present": 2,
-          "expected": 5,
-          "missing": [
-            "Current Status",
-            "Implementation State",
-            "Risks And Blockers"
-          ],
-          "note": null
-        },
-        {
-          "label": "Expected outcomes",
-          "status": "conformant",
-          "present": 2,
-          "expected": 2,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Version map",
-          "status": "thin",
-          "present": 1,
-          "expected": 2,
-          "missing": [
-            "Version Table"
-          ],
-          "note": null
-        },
-        {
-          "label": "Data-model ADR",
-          "status": "thin",
-          "present": 2,
-          "expected": 9,
-          "missing": [
-            "Tables / Records",
-            "Tenancy And Permissions",
-            "Audit Events",
-            "Data Protection",
-            "Migration From Current State",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        },
-        {
-          "label": "UX ADR",
-          "status": "thin",
-          "present": 1,
-          "expected": 8,
-          "missing": [
-            "Decision",
-            "Ux Rules",
-            "Screens And Surfaces",
-            "Interaction Rules",
-            "Accessibility And Responsive Requirements",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        }
-      ]
-    },
-    {
-      "feature": "Lesson observations",
-      "coverage": 40,
-      "readiness": 11,
-      "verdict": "reviewed — gaps remain",
-      "adversarialReview": true,
-      "openDecisions": 6,
-      "blockers": 10,
-      "tbdCount": 8,
-      "statusMismatch": false,
-      "docs": [
-        {
-          "label": "README",
-          "status": "partial",
-          "present": 3,
-          "expected": 7,
-          "missing": [
-            "Purpose",
-            "Current Review Or Accepted Spec",
-            "Github Issues",
-            "Agent Handoff Notes"
-          ],
-          "note": null
-        },
-        {
-          "label": "Product spec",
-          "status": "partial",
-          "present": 8,
-          "expected": 14,
-          "missing": [
-            "User Stories",
-            "Core Capabilities",
-            "Cross-Feature Connections",
-            "Data And Source Of Truth",
-            "Ux Surfaces",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        },
-        {
-          "label": "Subfeatures",
-          "status": "off-template",
-          "present": 0,
-          "expected": 3,
-          "missing": [
-            "Breakdown",
-            "Dependency Map",
-            "Suggested Implementation Slices"
-          ],
-          "note": "doc has 2 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Progress",
-          "status": "conformant",
-          "present": 5,
-          "expected": 5,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Expected outcomes",
-          "status": "conformant",
-          "present": 2,
-          "expected": 2,
-          "missing": [],
-          "note": null
-        },
-        {
-          "label": "Version map",
-          "status": "off-template",
-          "present": 0,
-          "expected": 2,
-          "missing": [
-            "Version Table",
-            "Explicit Deferrals"
-          ],
-          "note": "doc has 3 sections of its own, none/few match the template"
-        },
-        {
-          "label": "Data-model ADR",
-          "status": "thin",
-          "present": 1,
-          "expected": 9,
-          "missing": [
-            "Decision",
-            "Tables / Records",
-            "Tenancy And Permissions",
-            "Audit Events",
-            "Data Protection",
-            "Migration From Current State",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        },
-        {
-          "label": "UX ADR",
-          "status": "thin",
-          "present": 1,
-          "expected": 8,
-          "missing": [
-            "Decision",
-            "Ux Rules",
-            "Screens And Surfaces",
-            "Interaction Rules",
-            "Accessibility And Responsive Requirements",
-            "Rejected Alternatives",
-            "Acceptance Criteria"
-          ],
-          "note": null
-        }
-      ],
-      "judgment": {
-        "score": 36,
-        "verdict": "not build-ready",
-        "reviewed": "2026-07-08"
-      }
-    },
-    {
-      "feature": "School development & action planning",
-      "coverage": 40,
-      "readiness": 11,
-      "verdict": "reviewed — gaps remain",
-      "adversarialReview": true,
-      "openDecisions": 6,
-      "blockers": 5,
-      "tbdCount": 8,
-      "statusMismatch": false,
-      "docs": [
-        {
-          "label": "README",
-          "status": "partial",
-          "present": 2,
-          "expected": 7,
-          "missing": [
-            "Purpose",
-            "Current Review Or Accepted Spec",
-            "Current Blockers",
-            "Github Issues",
-            "Agent Handoff Notes"
-          ],
-          "note": null
-        },
-        {
-          "label": "Product spec",
-          "status": "partial",
-          "present": 9,
-          "expected": 14,
-          "missing": [
-            "User Stories",
-            "Core Capabilities",
-            "Cross-Feature Connections",
-            "Data And Source Of Truth",
-            "Ux Surfaces"
+            "Data And Source Of Truth"
           ],
           "note": null
         },
@@ -919,8 +636,124 @@
         },
         {
           "label": "Data-model ADR",
-          "status": "thin",
-          "present": 1,
+          "status": "partial",
+          "present": 4,
+          "expected": 9,
+          "missing": [
+            "Decision",
+            "Audit Events",
+            "Data Protection",
+            "Migration From Current State",
+            "Rejected Alternatives"
+          ],
+          "note": null
+        },
+        {
+          "label": "UX ADR",
+          "status": "partial",
+          "present": 3,
+          "expected": 8,
+          "missing": [
+            "Decision",
+            "Ux Rules",
+            "Accessibility And Responsive Requirements",
+            "Rejected Alternatives",
+            "Acceptance Criteria"
+          ],
+          "note": null
+        }
+      ]
+    },
+    {
+      "feature": "Lesson observations",
+      "coverage": 28,
+      "readiness": 27,
+      "verdict": "reviewed — gaps remain",
+      "adversarialReview": true,
+      "openDecisions": 0,
+      "blockers": 0,
+      "tbdCount": 4,
+      "statusMismatch": false,
+      "docs": [
+        {
+          "label": "README",
+          "status": "partial",
+          "present": 3,
+          "expected": 7,
+          "missing": [
+            "Purpose",
+            "Current Review Or Accepted Spec",
+            "Current Blockers",
+            "Agent Handoff Notes"
+          ],
+          "note": null
+        },
+        {
+          "label": "Product spec",
+          "status": "partial",
+          "present": 2,
+          "expected": 14,
+          "missing": [
+            "Problem",
+            "Users",
+            "Product Thesis",
+            "User Stories",
+            "Core Capabilities",
+            "Cross-feature Connections",
+            "Data And Source Of Truth",
+            "Ux Surfaces",
+            "Acceptance Criteria",
+            "Architecture Alignment Gate",
+            "Non-goals",
+            "Open Decisions"
+          ],
+          "note": null
+        },
+        {
+          "label": "Subfeatures",
+          "status": "off-template",
+          "present": 0,
+          "expected": 3,
+          "missing": [
+            "Breakdown",
+            "Dependency Map",
+            "Suggested Implementation Slices"
+          ],
+          "note": "doc has 4 sections of its own, none/few match the template"
+        },
+        {
+          "label": "Progress",
+          "status": "partial",
+          "present": 4,
+          "expected": 5,
+          "missing": [
+            "Risks And Blockers"
+          ],
+          "note": null
+        },
+        {
+          "label": "Expected outcomes",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Version map",
+          "status": "off-template",
+          "present": 0,
+          "expected": 2,
+          "missing": [
+            "Version Table",
+            "Explicit Deferrals"
+          ],
+          "note": "doc has 3 sections of its own, none/few match the template"
+        },
+        {
+          "label": "Data-model ADR",
+          "status": "partial",
+          "present": 2,
           "expected": 9,
           "missing": [
             "Decision",
@@ -929,14 +762,13 @@
             "Audit Events",
             "Data Protection",
             "Migration From Current State",
-            "Rejected Alternatives",
             "Acceptance Criteria"
           ],
           "note": null
         },
         {
           "label": "UX ADR",
-          "status": "thin",
+          "status": "partial",
           "present": 1,
           "expected": 8,
           "missing": [
@@ -950,16 +782,21 @@
           ],
           "note": null
         }
-      ]
+      ],
+      "judgment": {
+        "score": 36,
+        "verdict": "not build-ready",
+        "reviewed": "2026-07-08"
+      }
     },
     {
       "feature": "Roles & permissions",
-      "coverage": 72,
-      "readiness": 7,
+      "coverage": 82,
+      "readiness": 25,
       "verdict": "drafting — substantial structure, not reviewed",
       "adversarialReview": false,
-      "openDecisions": 7,
-      "blockers": 7,
+      "openDecisions": 3,
+      "blockers": 8,
       "tbdCount": 20,
       "statusMismatch": true,
       "docs": [
@@ -973,16 +810,10 @@
         },
         {
           "label": "Product spec",
-          "status": "partial",
-          "present": 9,
+          "status": "conformant",
+          "present": 14,
           "expected": 14,
-          "missing": [
-            "User Stories",
-            "Cross-Feature Connections",
-            "Ux Surfaces",
-            "Verifier Matrix",
-            "Architecture Alignment Gate"
-          ],
+          "missing": [],
           "note": null
         },
         {
@@ -1033,7 +864,7 @@
             "Rejected Alternatives",
             "Acceptance Criteria"
           ],
-          "note": "doc has 6 sections of its own, none/few match the template"
+          "note": "doc has 8 sections of its own, none/few match the template"
         },
         {
           "label": "UX ADR",
@@ -1049,6 +880,107 @@
         "verdict": "usable with named gaps",
         "reviewed": "2026-07-08"
       }
+    },
+    {
+      "feature": "Analytics",
+      "coverage": 60,
+      "readiness": 18,
+      "verdict": "drafting — substantial structure, not reviewed",
+      "adversarialReview": false,
+      "openDecisions": 0,
+      "blockers": 6,
+      "tbdCount": 8,
+      "statusMismatch": false,
+      "docs": [
+        {
+          "label": "README",
+          "status": "conformant",
+          "present": 6,
+          "expected": 7,
+          "missing": [
+            "Current Review Or Accepted Spec"
+          ],
+          "note": null
+        },
+        {
+          "label": "Product spec",
+          "status": "partial",
+          "present": 9,
+          "expected": 14,
+          "missing": [
+            "Data And Source Of Truth",
+            "Ux Surfaces",
+            "Verifier Matrix",
+            "Architecture Alignment Gate",
+            "Open Decisions"
+          ],
+          "note": null
+        },
+        {
+          "label": "Subfeatures",
+          "status": "conformant",
+          "present": 3,
+          "expected": 3,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Progress",
+          "status": "conformant",
+          "present": 5,
+          "expected": 5,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Expected outcomes",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Version map",
+          "status": "conformant",
+          "present": 2,
+          "expected": 2,
+          "missing": [],
+          "note": null
+        },
+        {
+          "label": "Data-model ADR",
+          "status": "thin",
+          "present": 2,
+          "expected": 9,
+          "missing": [
+            "Tables / Records",
+            "Tenancy And Permissions",
+            "Audit Events",
+            "Data Protection",
+            "Migration From Current State",
+            "Rejected Alternatives",
+            "Acceptance Criteria"
+          ],
+          "note": null
+        },
+        {
+          "label": "UX ADR",
+          "status": "thin",
+          "present": 1,
+          "expected": 8,
+          "missing": [
+            "Decision",
+            "Ux Rules",
+            "Screens And Surfaces",
+            "Interaction Rules",
+            "Accessibility And Responsive Requirements",
+            "Rejected Alternatives",
+            "Acceptance Criteria"
+          ],
+          "note": null
+        }
+      ]
     }
   ],
   "preConvergenceNote": "Adversarial review has closed for these but the standard doc scaffold has not been written yet — a documented next step, not neglect. Not ranked against the features above.",
@@ -1091,13 +1023,13 @@
             "Product Thesis",
             "User Stories",
             "Core Capabilities",
-            "Cross-Feature Connections",
+            "Cross-feature Connections",
             "Data And Source Of Truth",
             "Ux Surfaces",
             "Acceptance Criteria",
             "Verifier Matrix",
             "Architecture Alignment Gate",
-            "Non-Goals",
+            "Non-goals",
             "Open Decisions",
             "References"
           ],
@@ -1117,7 +1049,7 @@
         },
         {
           "label": "Progress",
-          "status": "missing",
+          "status": "off-template",
           "present": 0,
           "expected": 5,
           "missing": [
@@ -1127,7 +1059,7 @@
             "Risks And Blockers",
             "Changelog"
           ],
-          "note": null
+          "note": "doc has 7 sections of its own, none/few match the template"
         },
         {
           "label": "Expected outcomes",

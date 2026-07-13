@@ -5,19 +5,92 @@
   "statusLabel": "In progress — V2 foundation, pre-pilot blockers open",
   "journey": "Grades and reports are some of the most sensitive information a school produces, and this feature is where Mosaic handles them — from importing rosters and scores, through a teacher-facing gradebook grid, to a locked, published report. An early design review of this feature actually found a real problem before any code shipped: the first draft would have let any staff member see any student's grades, indefinitely, with no record of where an imported number came from. That was fixed before it was built — access is scoped to a teacher's own classes, every import leaves a traceable record, and published reports are frozen, immutable snapshots.",
   "subfeatures": [
-    { "name": "Reporting period setup", "status": "planned", "note": "Modelling the academic year, courses, sections, and enrolments a report is built on." },
-    { "name": "Grade policy configuration", "status": "planned", "note": "Versioned grading policies and boundaries, configured rather than hard-coded." },
-    { "name": "CSV import & provenance", "status": "in-progress", "note": "Importing rosters and scores with validation, a preview step, and a traceable record of where every number came from." },
-    { "name": "Scoped access (RLS)", "status": "in-progress", "note": "Access narrowed to a teacher's own sections, not organisation-wide — the fix that came out of the early design review." },
-    { "name": "Teacher gradebook grid", "status": "planned", "note": "The main screen for entering scores, flags, and comments." },
-    { "name": "Grade calculation engine", "status": "planned", "note": "Applying policy rules, boundaries, and exemptions to produce a final grade." },
-    { "name": "Approval workflow", "status": "planned", "note": "Submit, review, approve, and lock a report before it's published." },
-    { "name": "Immutable published snapshots", "status": "planned", "note": "Once a report is published, the exact data behind it is frozen — it can never quietly change afterwards." }
+    {
+      "name": "Reporting period setup",
+      "status": "in-progress",
+      "note": "Modelling the courses, sections, and enrolments a report is built on. The academic calendar itself is now owned by school setup, and reporting reads from it rather than keeping its own copy."
+    },
+    {
+      "name": "Grade policy configuration",
+      "status": "in-progress",
+      "note": "Versioned grading policies and boundaries, configured rather than hard-coded. The underlying records are in place; the school's concrete scales and boundaries are still being pinned down."
+    },
+    {
+      "name": "CSV import & provenance",
+      "status": "in-progress",
+      "note": "Importing rosters and scores with validation, a preview step, a whole-batch undo, and a traceable record of where every number came from."
+    },
+    {
+      "name": "Scoped access (RLS)",
+      "status": "in-progress",
+      "note": "Access narrowed to a teacher's own sections, not organisation-wide — the fix that came out of the early design review, now in place and still being tightened as each new piece lands."
+    },
+    {
+      "name": "Teacher gradebook grid",
+      "status": "in-progress",
+      "note": "The main screen for entering scores, flags, and comments. An early working version exists for review — not yet ready for real school data."
+    },
+    {
+      "name": "Grade calculation engine",
+      "status": "in-progress",
+      "note": "Applying policy rules, boundaries, and exemptions to produce a final grade — with a step-by-step trace stored alongside, so every number can be explained later."
+    },
+    {
+      "name": "Approval workflow",
+      "status": "in-progress",
+      "note": "Submit, review, approve, and lock a report before it's published. The underlying steps and their safeguards are built; the everyday screens around them are still maturing."
+    },
+    {
+      "name": "Immutable published snapshots",
+      "status": "in-progress",
+      "note": "Once a report is approved, the exact data behind it is frozen — it can never quietly change afterwards. The foundation is built, including spreadsheet exports taken only from those frozen records."
+    },
+    {
+      "name": "Readiness dashboard",
+      "status": "in-progress",
+      "note": "One screen for coordinators showing how close a reporting period is to publishable and what's still blocking it — recently redesigned around a clear at-a-glance readiness gauge."
+    },
+    {
+      "name": "Safe report templates & comments",
+      "status": "planned",
+      "note": "Formatted comments and report templates, designed carefully so nothing unsafe can sneak into a published report. The safety approach has been agreed; building it comes next."
+    }
   ],
   "testing": {
-    "fixtureNote": "The shared fixture includes two class sections with two different teachers, ten students covering every possible grade status, one intentionally missing score and one flagged one, a grading exemption, and both a locked reporting period with a published snapshot and an open one still being worked on — so both the everyday case and the edge cases are represented.",
-    "expectedOutcomes": []
+    "fixtureNote": "The shared practice dataset is entirely made up — no real students or staff appear anywhere, and importing real school data is deliberately not permitted at this stage. It includes two class sections with two different teachers, ten students (one of whom sits in both classes) covering every possible grade status, one intentionally missing score and one flagged one, a grading exemption, a grading policy with both a current and a superseded version, both a locked reporting period with a published snapshot and an open one still being worked on, a linked follow-up task, and a sample data import — plus a second, entirely separate school used to prove one school can never see another's data.",
+    "expectedOutcomes": [
+      {
+        "criterion": "Access rules exist on every grade table",
+        "expected": "Every database table holding grades or comments has the expected access rules in place, checked automatically on every code change. (This confirms the rules exist and are shaped correctly — exercising their behaviour end to end is still to come.)",
+        "enforcedBy": "automated access-rule check, run on every change"
+      },
+      {
+        "criterion": "A teacher sees only their own classes",
+        "expected": "Signed in as one teacher, you see your own class's grades — and never a colleague's.",
+        "enforcedBy": "planned — a first target for the signed-in test harness"
+      },
+      {
+        "criterion": "Published reports never change",
+        "expected": "Trying to edit a score in a locked, published period is rejected, and the published report stays exactly as it was.",
+        "enforcedBy": "planned — a top priority for the pre-pilot review"
+      },
+      {
+        "criterion": "Spreadsheet exports open safely",
+        "expected": "If a comment starts with a character a spreadsheet could mistake for a formula, the export neutralises it so it opens as plain text.",
+        "enforcedBy": "self-checking database change; a live end-to-end export test is still planned"
+      },
+      {
+        "criterion": "Reporting screens fit every device",
+        "expected": "Wide grade tables scroll inside their own panel at phone, tablet, and laptop sizes, in both light and dark themes, without breaking the page.",
+        "enforcedBy": "tests/responsive-matrix.spec.ts"
+      },
+      {
+        "criterion": "Only made-up data in the trial",
+        "expected": "The trial runs entirely on fabricated students, staff, and rosters; there is no path for importing real or lightly-disguised school data yet.",
+        "enforcedBy": "planned — a product-owned control whose evidence is still being defined"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "65782056ae356a77"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "fd4b8d40171d82f2"
 }

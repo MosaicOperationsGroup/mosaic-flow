@@ -2,69 +2,202 @@
   "slug": "roles-and-permissions",
   "title": "Roles & permissions",
   "status": "in-progress",
-  "statusLabel": "In progress — backend live, UI pending",
+  "statusLabel": "In progress — backend live and verified, admin screens next",
   "journey": "Mosaic needs to model people, responsibility posts, groups, and permissions in a way that actually matches how a school works — where a 'seat' (like Head of Year, or SEF Coordinator) is what really carries responsibility, not just an individual person who might move on. This feature is the backbone under almost everything else: it decides who's allowed to see or do what, and it's built so responsibilities follow the post through staff turnover, not just the person. It's the most structurally complete feature in this list — the underlying data and enforcement are live, with the admin-facing screens still to come.",
   "subfeatures": [
-    { "name": "Responsibility post registry", "status": "shipped", "note": "The underlying table for named posts, and who currently holds each one." },
-    { "name": "Assignable entity registry", "status": "shipped", "note": "A single source of truth for everything a task can be assigned to — people, posts, or groups — kept in sync automatically." },
-    { "name": "Task participant resolution", "status": "shipped", "note": "Server-side logic that works out exactly who a task assignment actually reaches, with conflict detection." },
-    { "name": "Capability & permission model", "status": "shipped", "note": "The registry of what actions exist and who's been granted them." },
-    { "name": "Write-enforcement", "status": "shipped", "note": "Database-level rules that block a write unless the right permission is held — enforced by Postgres, not just the app." },
-    { "name": "Assignment picker (UI)", "status": "planned", "note": "The actual screen for assigning work to a person, post, or group." },
-    { "name": "Conflict review (UI)", "status": "planned", "note": "A screen flagging scheduling conflicts before an assignment is confirmed." },
-    { "name": "Permissions admin screen", "status": "planned", "note": "Where an administrator manages who holds which permission." }
+    {
+      "name": "Responsibility post registry",
+      "status": "shipped",
+      "note": "The underlying table for named posts, and who currently holds each one."
+    },
+    {
+      "name": "Assignable entity registry",
+      "status": "shipped",
+      "note": "A single source of truth for everything a task can be assigned to — people, posts, or groups — kept in sync automatically."
+    },
+    {
+      "name": "Task participant resolution",
+      "status": "shipped",
+      "note": "Server-side logic that works out exactly who a task assignment actually reaches, with conflict detection."
+    },
+    {
+      "name": "Capability & permission model",
+      "status": "shipped",
+      "note": "The registry of what actions exist and who's been granted them."
+    },
+    {
+      "name": "Write-enforcement",
+      "status": "shipped",
+      "note": "Database-level rules that block a write unless the right permission is held — enforced by Postgres, not just the app."
+    },
+    {
+      "name": "Scoped permission checks",
+      "status": "shipped",
+      "note": "Permissions can now be checked against a specific area of responsibility — holding a post for one area doesn't grant the same powers in a sibling area, and lapsed or expired post-holdings don't count."
+    },
+    {
+      "name": "New-starter read isolation",
+      "status": "shipped",
+      "note": "An incoming staff member who hasn't started yet can sign in and see only their own onboarding — everything else in the school is hidden by default, verified automatically across every table in the system."
+    },
+    {
+      "name": "One permissions rulebook",
+      "status": "planned",
+      "note": "A settled decision to make the capability system the single source of truth for what both the screens and the server allow, with permission changes leaving an audit trail. The groundwork is decided and sequenced; the screen-by-screen work comes next."
+    },
+    {
+      "name": "Assignment picker (UI)",
+      "status": "planned",
+      "note": "The actual screen for assigning work to a person, post, or group."
+    },
+    {
+      "name": "Conflict review (UI)",
+      "status": "planned",
+      "note": "A screen flagging scheduling conflicts before an assignment is confirmed."
+    },
+    {
+      "name": "Permissions admin screen",
+      "status": "planned",
+      "note": "Where an administrator manages who holds which permission — now confirmed for build rather than deferred."
+    }
   ],
   "roleCatalogue": {
-    "note": "Roles in Mosaic are free-text labels a school can name however it likes — deliberately not a generic role-builder. But a brand-new school shouldn't stare at a blank field, so this is a starting catalogue: a short list of roles that exist in almost any school, plus an extended catalogue for specific academic programmes. Reviewed and accepted by Saeed on 2026-07-09 — the common set is confirmed, and IB coverage now spans all four programmes. Two questions stay deliberately open: whether programme-specific roles should carry their own default permissions, and where this catalogue should live long-term.",
+    "note": "Roles in Mosaic are free-text labels a school can name however it likes — deliberately not a generic role-builder. But a brand-new school shouldn't stare at a blank field, so this is a starting catalogue: a short list of roles that exist in almost any school, plus an extended catalogue for specific academic programmes. Reviewed and accepted on 2026-07-09 — the common set is confirmed, and IB coverage now spans all four programmes. Two questions stay deliberately open: whether programme-specific roles should carry their own default permissions, and where this catalogue should live long-term.",
     "common": [
-      { "name": "Teacher", "note": "Classroom-facing teaching staff — the largest role by headcount in any school." },
-      { "name": "Head of Department", "note": "Leads a subject department; typically a responsibility post rather than a fixed person." },
-      { "name": "Head of School / Principal", "note": "Overall accountability for the school." },
-      { "name": "Deputy / Assistant Head", "note": "Senior leadership below the Head of School; scope varies by school." },
-      { "name": "Form Tutor / Homeroom Teacher", "note": "Pastoral responsibility for a specific student group." },
-      { "name": "Administrator / Office Staff", "note": "Non-teaching operational staff, usually with narrower access than teaching staff." }
+      {
+        "name": "Teacher",
+        "note": "Classroom-facing teaching staff — the largest role by headcount in any school."
+      },
+      {
+        "name": "Head of Department",
+        "note": "Leads a subject department; typically a responsibility post rather than a fixed person."
+      },
+      {
+        "name": "Head of School / Principal",
+        "note": "Overall accountability for the school."
+      },
+      {
+        "name": "Deputy / Assistant Head",
+        "note": "Senior leadership below the Head of School; scope varies by school."
+      },
+      {
+        "name": "Form Tutor / Homeroom Teacher",
+        "note": "Pastoral responsibility for a specific student group."
+      },
+      {
+        "name": "Administrator / Office Staff",
+        "note": "Non-teaching operational staff, usually with narrower access than teaching staff."
+      }
     ],
     "programmes": [
       {
         "programme": "IB Primary Years Programme (PYP)",
         "roles": [
-          { "name": "PYP Coordinator", "note": "Owns PYP delivery and IB compliance; leads collaborative planning and the programme of inquiry." },
-          { "name": "PYP Exhibition Coordinator", "note": "Coordinates the culminating Exhibition in the final PYP year." }
+          {
+            "name": "PYP Coordinator",
+            "note": "Owns PYP delivery and IB compliance; leads collaborative planning and the programme of inquiry."
+          },
+          {
+            "name": "PYP Exhibition Coordinator",
+            "note": "Coordinates the culminating Exhibition in the final PYP year."
+          }
         ]
       },
       {
         "programme": "IB Middle Years Programme (MYP)",
         "roles": [
-          { "name": "MYP Coordinator", "note": "Owns MYP delivery and IB compliance; coordinates subject-group planning and assessment moderation." },
-          { "name": "Personal Project Coordinator", "note": "Coordinates the MYP year-5 Personal Project." },
-          { "name": "Community Project Coordinator", "note": "Coordinates the Community Project where the school's MYP ends at year 3/4." },
-          { "name": "Service as Action Coordinator", "note": "Coordinates the MYP Service as Action expectations across year levels." }
+          {
+            "name": "MYP Coordinator",
+            "note": "Owns MYP delivery and IB compliance; coordinates subject-group planning and assessment moderation."
+          },
+          {
+            "name": "Personal Project Coordinator",
+            "note": "Coordinates the MYP year-5 Personal Project."
+          },
+          {
+            "name": "Community Project Coordinator",
+            "note": "Coordinates the Community Project where the school's MYP ends at year 3/4."
+          },
+          {
+            "name": "Service as Action Coordinator",
+            "note": "Coordinates the MYP Service as Action expectations across year levels."
+          }
         ]
       },
       {
         "programme": "IB Diploma Programme (DP)",
         "roles": [
-          { "name": "DP Coordinator", "note": "Owns the Diploma Programme's overall delivery and IB compliance." },
-          { "name": "EE Coordinator", "note": "Coordinates Extended Essay supervision across DP subjects." },
-          { "name": "CAS Coordinator", "note": "Coordinates the Creativity, Activity, Service programme." },
-          { "name": "TOK Coordinator", "note": "Coordinates the Theory of Knowledge course." }
+          {
+            "name": "DP Coordinator",
+            "note": "Owns the Diploma Programme's overall delivery and IB compliance."
+          },
+          {
+            "name": "EE Coordinator",
+            "note": "Coordinates Extended Essay supervision across DP subjects."
+          },
+          {
+            "name": "CAS Coordinator",
+            "note": "Coordinates the Creativity, Activity, Service programme."
+          },
+          {
+            "name": "TOK Coordinator",
+            "note": "Coordinates the Theory of Knowledge course."
+          }
         ]
       },
       {
         "programme": "IB Career-related Programme (CP)",
         "roles": [
-          { "name": "CP Coordinator", "note": "Owns CP delivery and IB compliance, including the link to the career-related study provider." },
-          { "name": "Reflective Project Coordinator", "note": "Coordinates the Reflective Project, the CP capstone." },
-          { "name": "Service Learning Coordinator", "note": "Coordinates the CP service learning core component." },
-          { "name": "Personal & Professional Skills Teacher", "note": "Teaches the PPS core course; often distinct from subject-teaching roles." }
+          {
+            "name": "CP Coordinator",
+            "note": "Owns CP delivery and IB compliance, including the link to the career-related study provider."
+          },
+          {
+            "name": "Reflective Project Coordinator",
+            "note": "Coordinates the Reflective Project, the CP capstone."
+          },
+          {
+            "name": "Service Learning Coordinator",
+            "note": "Coordinates the CP service learning core component."
+          },
+          {
+            "name": "Personal & Professional Skills Teacher",
+            "note": "Teaches the PPS core course; often distinct from subject-teaching roles."
+          }
         ]
       }
     ]
   },
   "testing": {
-    "fixtureNote": "The shared fixture exercises the main ways a permission can reach someone: automatically as an owner or admin, granted directly to a person, granted through a group, and granted through the responsibility post someone holds — plus a deliberate baseline case of a member with no grants at all, to prove access is denied by default rather than by accident.",
-    "expectedOutcomes": []
+    "fixtureNote": "The shared fixture exercises the main ways a permission can reach someone: automatically as an owner or admin, granted directly to a person, granted through a group, and granted through the responsibility post someone holds — plus a deliberate baseline case of a member with no grants at all, to prove access is denied by default rather than by accident. It has since grown to cover scope-limited posts (a holder in one area versus a sibling area, plus lapsed and expired holdings), a not-yet-started recruit inside their own onboarding workflow, and a second school to prove nothing leaks between schools.",
+    "expectedOutcomes": [
+      {
+        "criterion": "Permanently deleting a person is gated",
+        "expected": "The confirm button stays disabled until the exact gate word is typed",
+        "enforcedBy": "tests/people-lifecycle.spec.ts"
+      },
+      {
+        "criterion": "A scoped permission works only in its own area",
+        "expected": "The check passes for the area a post covers, and fails for a sibling area, a lapsed holding, or an expired term — while owners and admins keep their bypass",
+        "enforcedBy": "the automated database-permissions suite (scoped capabilities)"
+      },
+      {
+        "criterion": "A not-yet-started recruit sees only their own onboarding",
+        "expected": "The recruit can read their own onboarding workflow and its shared tasks; every other table in the system returns nothing, checked automatically across all of them",
+        "enforcedBy": "the automated database-permissions suite (recruit read isolation)"
+      },
+      {
+        "criterion": "Private tasks stay private during onboarding",
+        "expected": "A recruit assigned to a private task in their own workflow still can't see it until they're fully on board",
+        "enforcedBy": "the automated database-permissions suite (recruit read isolation)"
+      },
+      {
+        "criterion": "Nothing leaks between schools",
+        "expected": "A recruit in one school reads zero rows from another school, even when a stray record points their way",
+        "enforcedBy": "the automated database-permissions suite (recruit read isolation)"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-10",
-  "reconciledSourceHash": "959ef5ce2f1be2e1"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "69cebd36c0f7f199"
 }

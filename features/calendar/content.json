@@ -2,21 +2,75 @@
   "slug": "calendar",
   "title": "Calendar",
   "status": "in-progress",
-  "statusLabel": "Shaping — early design",
-  "journey": "Having a task assigned to you isn't the same as knowing when you'll actually do it. The calendar turns a pile of assigned work into a realistic day-by-day and week-by-week plan — scheduling tasks into real time, showing what's overlapping or over-committed, and letting staff drag work around as plans change. A basic calendar surface already exists; this feature is the next layer of polish that came directly out of a real testing pass with staff.",
+  "statusLabel": "In progress — first improvements live, polish continuing",
+  "journey": "Having a task assigned to you isn't the same as knowing when you'll actually do it. The calendar turns a pile of assigned work into a realistic day-by-day and week-by-week plan — scheduling tasks into real time, showing what's overlapping or over-committed, and letting staff drag work around as plans change. A basic calendar surface already exists; this feature is the next layer of polish that came directly out of a real testing pass with staff, and the first of those improvements have now landed.",
   "subfeatures": [
-    { "name": "Drag-to-schedule feedback", "status": "planned", "note": "A clear ghost preview and no snap-back lag when dragging a task onto the calendar." },
-    { "name": "Smart time snapping", "status": "planned", "note": "Dragging snaps to sensible intervals that scale with how fast you're dragging." },
-    { "name": "Side-by-side overlaps", "status": "planned", "note": "Overlapping items sit next to each other instead of stacking illegibly." },
-    { "name": "Condensed daily view", "status": "planned", "note": "Fit a full working day on screen without excessive scrolling." },
-    { "name": "Weekly drag-to-reschedule", "status": "planned", "note": "Change a task's time of day directly from the weekly view." },
-    { "name": "Single-click quick-edit", "status": "planned", "note": "Edit a task's name, time, or date inline, without opening the full task view — flagged by staff as a high-priority fix." },
-    { "name": "Due-time display", "status": "planned", "note": "Show the actual due time, not just the day, on the task view." }
+    {
+      "name": "Drag-to-schedule feedback",
+      "status": "in-progress",
+      "note": "A clear ghost preview and no snap-back lag when dragging a task onto the calendar — a first version has landed, with polish still underway."
+    },
+    {
+      "name": "Smart time snapping",
+      "status": "planned",
+      "note": "Dragging snaps to sensible intervals that scale with how fast you're dragging."
+    },
+    {
+      "name": "Side-by-side overlaps",
+      "status": "in-progress",
+      "note": "Overlapping items sit next to each other instead of stacking illegibly."
+    },
+    {
+      "name": "Condensed daily view",
+      "status": "in-progress",
+      "note": "Fit a full working day on screen without excessive scrolling."
+    },
+    {
+      "name": "Weekly drag-to-reschedule",
+      "status": "planned",
+      "note": "Change a task's time of day directly from the weekly view."
+    },
+    {
+      "name": "Single-click quick-edit",
+      "status": "planned",
+      "note": "Edit a task's name, time, or date inline, without opening the full task view — flagged by staff as a high-priority fix."
+    },
+    {
+      "name": "Due-time display",
+      "status": "in-progress",
+      "note": "Show the actual due time, not just the day, on the task view."
+    },
+    {
+      "name": "Drag ideas onto the calendar",
+      "status": "shipped",
+      "note": "Drop a captured idea straight onto a day or time slot to turn it into a scheduled task — the original idea is filed away automatically."
+    }
   ],
   "testing": {
-    "fixtureNote": "This feature doesn't have dedicated fixture coverage yet — it will draw on the same organisation and task fixture used by task management once its scheduling interactions are built.",
-    "expectedOutcomes": []
+    "fixtureNote": "The calendar is now checked against the shared sample-school fixture used across features. Automated tests confirm the daily, weekly, and monthly views render correctly from that fixture, and that dropping an idea onto the calendar creates a scheduled task. Some finer behaviours — such as keeping archived tasks off the calendar and saving a drag reliably — are recorded as known gaps awaiting their own tests.",
+    "expectedOutcomes": [
+      {
+        "criterion": "Daily view renders scheduled work",
+        "expected": "The daily calendar appears with each task placed by its scheduled time; tasks with only a date are spread across sensible working hours.",
+        "enforcedBy": "tests/playbook-core-screens.spec.ts"
+      },
+      {
+        "criterion": "Weekly view shows the full week",
+        "expected": "Switching to the week view shows all seven day columns, with each task grouped under the right day.",
+        "enforcedBy": "tests/playbook-core-screens.spec.ts"
+      },
+      {
+        "criterion": "Month view lays out the programme",
+        "expected": "The month view renders day-by-day sections with a pill for each scheduled item.",
+        "enforcedBy": "tests/playbook-core-screens.spec.ts"
+      },
+      {
+        "criterion": "Dropping an idea creates a task",
+        "expected": "Dragging an idea from the inbox onto any calendar view creates and places a task there — following the same drag preview rules as moving a task — and files the original idea away.",
+        "enforcedBy": "tests/idea-inbox.spec.ts"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "b0cea66bd345a035"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "6eed5c61c49f2d7c"
 }

@@ -2,26 +2,100 @@
   "slug": "task-management",
   "title": "Task management",
   "status": "in-progress",
-  "statusLabel": "Shaping — V1 foundation in progress",
+  "statusLabel": "In progress — Tasks page and idea inbox live, phased workflows designed",
   "journey": "Right now, a school's work-to-do lives scattered across email, group chats, spreadsheets, and half-remembered conversations after a meeting. Task management gives every piece of work — from a quick reminder to a whole-team responsibility — one canonical record: who owns it, what state it's in, when it's due, and a real audit trail of what changed and why. The goal is that 'what's outstanding, and whose is it' is always a real answer, not a guess.",
   "subfeatures": [
-    { "name": "Canonical task record", "status": "in-progress", "note": "The core fields every task has, and how they're stored — the foundation everything else builds on." },
-    { "name": "Status changes & overdue behaviour", "status": "in-progress", "note": "Marking work done, tracking what's overdue, and keeping that in sync with dashboards." },
-    { "name": "Owner & group assignment", "status": "in-progress", "note": "Assigning work to a person or a whole group, without losing individual accountability." },
-    { "name": "Dashboard visibility", "status": "planned", "note": "Surfacing upcoming, overdue, and high-priority work automatically." },
-    { "name": "Workflow-generated tasks", "status": "in-progress", "note": "A workflow template automatically creates the right tasks when it's launched." },
-    { "name": "Audit history", "status": "planned", "note": "A record of every important change to a task, for accountability." },
-    { "name": "Contribution tracking", "status": "planned", "note": "Tracking who did what within a task assigned to a group." },
-    { "name": "Private task visibility", "status": "in-progress", "note": "Making sure a task marked private actually stays private — enforced by the database, not just the interface." }
+    {
+      "name": "Canonical task record",
+      "status": "in-progress",
+      "note": "The core fields every task has, and how they're stored — the foundation everything else builds on."
+    },
+    {
+      "name": "Status changes & overdue behaviour",
+      "status": "in-progress",
+      "note": "Marking work done, tracking what's overdue, and keeping that in sync with dashboards."
+    },
+    {
+      "name": "Owner & group assignment",
+      "status": "in-progress",
+      "note": "Assigning work to a person or a whole group, without losing individual accountability."
+    },
+    {
+      "name": "Dashboard visibility",
+      "status": "in-progress",
+      "note": "The Tasks page now sorts everyone's work into overdue, upcoming, and completed automatically, viewable as 'assigned to me' or 'created by me'. Surfacing the same signals on the main dashboard is still to come."
+    },
+    {
+      "name": "Idea inbox",
+      "status": "shipped",
+      "note": "Jot down a passing idea without committing to a task yet. Ideas stick around between visits, and can be opened later, archived, turned into a real task, or dragged straight onto the calendar."
+    },
+    {
+      "name": "Workflow-generated tasks",
+      "status": "in-progress",
+      "note": "A workflow template automatically creates the right tasks when it's launched."
+    },
+    {
+      "name": "Phased workflows & onboarding",
+      "status": "planned",
+      "note": "The design is now agreed: bigger processes unfold in phases that a person opens deliberately, work can be submitted and reviewed rather than just ticked off, and welcoming a new staff member is the first place this will be used."
+    },
+    {
+      "name": "Audit history",
+      "status": "planned",
+      "note": "A record of every important change to a task, for accountability."
+    },
+    {
+      "name": "Contribution tracking",
+      "status": "planned",
+      "note": "Tracking who did what within a task assigned to a group."
+    },
+    {
+      "name": "Private task visibility",
+      "status": "in-progress",
+      "note": "Making sure a task marked private actually stays private — enforced by the database, not just the interface."
+    }
   ],
   "testing": {
-    "fixtureNote": "Tested against a shared fixture organisation of 10 members, of whom 2 (a principal-style owner account and a non-assignable IT admin) can never hold a task — so 'assign to everyone' must always offer exactly 8 people. The same fixture covers every way a task can be assigned (directly, by role, by registry, by group, by responsibility post) and every task state, including a private task that must stay invisible to everyone but its owner.",
+    "fixtureNote": "Tested against a shared fixture organisation of 10 members, of whom 2 (a principal-style owner account and a non-assignable IT admin) can never hold a task — so 'assign to everyone' must always offer exactly 8 people. The same fixture covers every way a task can be assigned (directly, by role, by registry, by group, by responsibility post) and every task state, including a private task that must stay invisible to everyone but its owner. The register of expected outcomes has since grown well beyond assignment: it now also pins down how the Tasks page groups work by urgency, that the answer format a task asks for is exactly what the assignee sees, and how the idea inbox behaves — plus a forward-looking set of outcomes the phased-workflow build must satisfy before it ships.",
     "expectedOutcomes": [
-      { "criterion": "The assignee picker includes the right people", "expected": "The pool includes the current user plus other people and groups, in both the quick-preview mode and the real signed-in mode — with the same filtering rules applied either way.", "enforcedBy": "tests/task-assignment.spec.ts (partial)" },
-      { "criterion": "\"Assign to all members\" offers exactly 8 people", "expected": "Never the two accounts the fixture marks as non-assignable.", "enforcedBy": "known from the fixture; not yet an automated test" },
-      { "criterion": "A task assigned to a whole group reaches every member", "expected": "One assignment entry is created per member. The signed-in system resolves this on the server; the quick-preview mode approximates it in the browser.", "enforcedBy": "tests/task-assignment.spec.ts" }
+      {
+        "criterion": "The assignee picker includes the right people",
+        "expected": "The pool includes the current user plus other people and groups, in both the quick-preview mode and the real signed-in mode — with the same filtering rules applied either way.",
+        "enforcedBy": "tests/task-assignment.spec.ts (partial)"
+      },
+      {
+        "criterion": "\"Assign to all members\" offers exactly 8 people",
+        "expected": "Never the two accounts the fixture marks as non-assignable.",
+        "enforcedBy": "known from the fixture; not yet an automated test"
+      },
+      {
+        "criterion": "A task assigned to a whole group reaches every member",
+        "expected": "One assignment entry is created per member. The signed-in system resolves this on the server; the quick-preview mode approximates it in the browser.",
+        "enforcedBy": "tests/task-assignment.spec.ts"
+      },
+      {
+        "criterion": "Completed work never shows as overdue",
+        "expected": "A finished task appears only under completed work, even if its due date has passed — in both ways of viewing the Tasks page.",
+        "enforcedBy": "tests/tasks-overview.spec.ts"
+      },
+      {
+        "criterion": "The Tasks page groups work by urgency",
+        "expected": "Open work sorts itself into overdue and upcoming automatically, with finished work tucked into a collapsed section — and a task due today still counts as upcoming, whatever timezone the viewer is in.",
+        "enforcedBy": "tests/tasks-overview.spec.ts"
+      },
+      {
+        "criterion": "The answer format a task asks for is the one the assignee sees",
+        "expected": "If a task is set up to expect a written response, a number, a date, a file, or a choice between options, the person doing the work gets exactly that control — never a generic stand-in.",
+        "enforcedBy": "tests/task-type-fidelity.spec.ts"
+      },
+      {
+        "criterion": "A captured idea survives and can become a task",
+        "expected": "An idea jotted into the inbox is still there after a reload, and can be converted into a task or dropped onto the calendar — which archives the idea once it becomes real work. Signed-in persistence is verified by review; the automated test covers the quick-preview mode.",
+        "enforcedBy": "tests/idea-inbox.spec.ts"
+      }
     ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "cd10616c50b95059"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "2ed3769905cfb724"
 }

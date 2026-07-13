@@ -5,16 +5,52 @@
   "statusLabel": "Shaping — targeted for V2",
   "journey": "Schools already generate plenty of data — uploads, exports, gradebooks, attendance — but it rarely turns into a decision-ready view without someone manually pulling a spreadsheet together. Analytics takes the same underlying tasks, reports, attendance signals, and imports Mosaic already handles, and turns them into headline views leaders can actually act on. This is explicitly a later-stage feature: the first release focuses on getting the operational foundations right first.",
   "subfeatures": [
-    { "name": "Upload parser", "status": "in-progress", "note": "Validating an uploaded data file and mapping its fields safely." },
-    { "name": "Headline summary cards", "status": "planned", "note": "Cohort, subject, and student-level summaries at a glance." },
-    { "name": "Task & workflow metrics", "status": "planned", "note": "Operational analytics derived from task and workflow completion." },
-    { "name": "Risk & intervention signals", "status": "planned", "note": "Combining attendance, grades, and task data to flag students who may need support." },
-    { "name": "Source & freshness metadata", "status": "planned", "note": "Showing where a number came from and how current it is, before it's trusted." }
+    {
+      "name": "Upload parser",
+      "status": "in-progress",
+      "note": "Early groundwork can read a results file and map its columns to standard fields; the full upload workflow is still being shaped, with decisions about how data is kept and sourced to settle first."
+    },
+    {
+      "name": "Headline summary cards",
+      "status": "planned",
+      "note": "Cohort, subject, and student-level summaries at a glance."
+    },
+    {
+      "name": "Task & workflow metrics",
+      "status": "planned",
+      "note": "Operational analytics derived from task and workflow completion."
+    },
+    {
+      "name": "Risk & intervention signals",
+      "status": "planned",
+      "note": "Combining attendance, grades, and task data to flag students who may need support."
+    },
+    {
+      "name": "Source & freshness metadata",
+      "status": "planned",
+      "note": "Showing where a number came from and how current it is, before it's trusted."
+    }
   ],
   "testing": {
-    "fixtureNote": "No dedicated fixture coverage yet — analytics is expected to draw on the same task, workflow, and reporting fixture data once its data views are built.",
-    "expectedOutcomes": []
+    "fixtureNote": "The shared test data set still has no analytics entries, but an outcomes register now exists for this feature — mainly to say plainly that analytics is pre-release, and to pin down the few pieces that do exist today. Test data will be added once the upload format is settled, drawing on the same reporting data other features use.",
+    "expectedOutcomes": [
+      {
+        "criterion": "Analytics is clearly marked as not yet available",
+        "expected": "The home screen shows Analytics as coming soon, and there is no analytics page to open yet — nothing suggests a live feature.",
+        "enforcedBy": "Documented gap — no automated check yet; planned alongside the first analytics build"
+      },
+      {
+        "criterion": "Uploaded results columns map to standard fields",
+        "expected": "A results file whose column headings use common naming variations still maps onto the standard fields, and files missing required columns are caught before anything is shown downstream.",
+        "enforcedBy": "Documented gap — no automated check yet; planned alongside the first analytics build"
+      },
+      {
+        "criterion": "Analytics reads approved summaries only",
+        "expected": "The rule that analytics reads approved summary data rather than raw student records is a stated design commitment; it becomes verifiable the moment the first analytics view ships.",
+        "enforcedBy": "Documented design rule — verifiable once the first analytics view exists"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "ddc7c2901751e4dc"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "972ce62ffdc303a8"
 }

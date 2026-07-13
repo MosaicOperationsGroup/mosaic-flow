@@ -1,22 +1,101 @@
 {
   "slug": "self-evaluation",
   "title": "Self-evaluation",
-  "status": "in-progress",
-  "statusLabel": "Design accepted for V1 — build starting",
-  "journey": "School self-evaluation and inspection readiness usually lives across shared documents, spreadsheets, evidence folders, and ad-hoc follow-up meetings — hard to keep current and harder to hand over. This feature gives a school one structured workspace to record judgements against a real inspection framework (starting with the UAE framework, with others planned), assign sections of the review to the right staff member, and turn findings directly into tracked follow-up work. The plan for this one went through five rounds of independent review before being accepted — it's the most thoroughly designed feature on this list, and building against that plan is just getting underway.",
+  "status": "shipped",
+  "statusLabel": "Live — evaluation workspace and management tools shipped",
+  "journey": "School self-evaluation and inspection readiness usually lives across shared documents, spreadsheets, evidence folders, and ad-hoc follow-up meetings — hard to keep current and harder to hand over. This feature gives a school one structured workspace to record judgements against a real inspection framework (starting with the UAE framework, with others planned), assign sections of the review to the right staff member, and turn findings directly into tracked follow-up work. The plan for this one went through five rounds of independent review before being accepted, and the build is now live: recording judgements, delegating sections, setting deadlines, and approving and locking finished sections all work end-to-end, with a few extras — like a second framework and a fuller evidence library — still to come.",
   "subfeatures": [
-    { "name": "Framework & standards model", "status": "planned", "note": "The underlying data model for inspection frameworks, domains, and rating scales." },
-    { "name": "Judgement recording", "status": "planned", "note": "Capturing a rating, confidence level, and rationale for each criterion, with full history." },
-    { "name": "Section assignment", "status": "planned", "note": "Delegating specific domains or criteria to the right staff member." },
-    { "name": "Permissions & access", "status": "planned", "note": "Who can view, judge, or manage which parts of the self-evaluation." },
-    { "name": "UAE framework content", "status": "planned", "note": "The official UAE School Inspection Framework, pre-loaded and ready to use." },
-    { "name": "IB PSP framework content", "status": "planned", "note": "The IB Primary Years self-study framework, as a second supported standard." },
-    { "name": "Review workspace", "status": "planned", "note": "The main screen: pick a framework and academic year, see where the review stands." }
+    {
+      "name": "Framework & standards model",
+      "status": "shipped",
+      "note": "The underlying data model for inspection frameworks, domains, and rating scales — live and holding real judgements."
+    },
+    {
+      "name": "Judgement recording",
+      "status": "shipped",
+      "note": "Capturing a rating and rationale for each criterion, at the right level of detail for each standard. A section owner's entries are saved as drafts until a review lead approves them."
+    },
+    {
+      "name": "Section assignment",
+      "status": "shipped",
+      "note": "Delegating whole standards — or narrower slices of them — to the right staff member, with a coverage view showing what's unowned or overdue."
+    },
+    {
+      "name": "Permissions & access",
+      "status": "in-progress",
+      "note": "Who can record, approve, or manage which parts of the self-evaluation is now enforced by the database itself. Finer control over who can view the review is still to come."
+    },
+    {
+      "name": "UAE framework content",
+      "status": "shipped",
+      "note": "The official UAE School Inspection Framework, pre-loaded and ready to use."
+    },
+    {
+      "name": "IB PSP framework content",
+      "status": "planned",
+      "note": "The IB Primary Years self-study framework, as a second supported standard — deferred until after the current release."
+    },
+    {
+      "name": "Review workspace",
+      "status": "shipped",
+      "note": "The main screen: work through each standard, see where the review stands at a glance, and switch into a dedicated management view."
+    },
+    {
+      "name": "Section sign-off & locking",
+      "status": "shipped",
+      "note": "A review lead can approve a section's work and lock it read-only; when every section is locked, the whole review counts as complete, and a locked section can only be reopened deliberately."
+    },
+    {
+      "name": "Deadlines",
+      "status": "shipped",
+      "note": "Set a termly deadline for each section of the review, with overdue sections flagged in the coverage view."
+    },
+    {
+      "name": "Follow-up tasks",
+      "status": "shipped",
+      "note": "Turn a finding into a tracked task that links straight back to the relevant part of the review."
+    },
+    {
+      "name": "Report export",
+      "status": "shipped",
+      "note": "Export the self-evaluation as a Word or PDF document."
+    },
+    {
+      "name": "Evidence attachments",
+      "status": "in-progress",
+      "note": "Links and file uploads can be attached to a criterion today; a fuller evidence library is planned for a later release."
+    }
   ],
   "testing": {
-    "fixtureNote": "The shared fixture includes one inspection framework, an active review cycle plus one from a prior year, both a whole-school judgement and a subject-specific one, and a case where review work is delegated to a non-management staff member — covering the main shapes this feature needs to handle.",
-    "expectedOutcomes": []
+    "fixtureNote": "The shared fixture now seeds a realistic working review: an active cycle plus an archived one from a prior year, owners assigned across all six sections (including one narrower subject-and-phase delegation), a draft judgement awaiting approval, one section already approved and locked, an open follow-up task, an attached piece of evidence, a termly deadline, and the school's year-group-to-phase mapping — covering the main shapes this feature needs to handle.",
+    "expectedOutcomes": [
+      {
+        "criterion": "The workspace opens correctly",
+        "expected": "The framework title, progress at a glance, and the tabs for evaluating, reviewing the overview, and managing the review all appear — in both the quick-preview mode and the real signed-in mode.",
+        "enforcedBy": "tests/self-evaluation.spec.ts"
+      },
+      {
+        "criterion": "A judgement lands in the right place",
+        "expected": "Saving a rating and rationale records it for exactly that subject and phase, and the progress display updates — no ratings are ever invented for scopes nobody judged.",
+        "enforcedBy": "tests/self-evaluation.spec.ts"
+      },
+      {
+        "criterion": "Only the right people can record judgements",
+        "expected": "A review lead records judgements directly; a section owner's entry is saved as a draft awaiting approval; anyone else is refused with a clear on-screen message rather than a silent failure.",
+        "enforcedBy": "the automated database-permissions suite"
+      },
+      {
+        "criterion": "Locked sections stay locked",
+        "expected": "Once a section is approved and locked, nobody — including the review lead — can change it until it is deliberately unlocked.",
+        "enforcedBy": "the automated database-permissions suite"
+      },
+      {
+        "criterion": "One school can never see another's review",
+        "expected": "Signed in at one school, reading or changing another school's review data returns nothing and is refused — including indirect routes that point at another school's records.",
+        "enforcedBy": "the automated database-permissions suite"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "b5e063fe1e0f087f"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "9e0fb2fae3a2e11f"
 }

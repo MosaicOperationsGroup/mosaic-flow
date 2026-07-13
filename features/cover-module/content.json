@@ -2,21 +2,80 @@
   "slug": "cover-module",
   "title": "Cover module",
   "status": "in-progress",
-  "statusLabel": "Design accepted — not yet built",
-  "journey": "When a teacher is unexpectedly away, someone still has to be in every one of their classrooms, fast, under real time pressure. Today that means a cover manager juggling a spreadsheet, checking who's free, who's already covering too much, and who actually teaches the subject — every single morning. This feature turns that into a ranked, rules-aware suggestion: who's genuinely free, who's fair to ask next, and a clear record of who covered what. The plan for this went through a full independent design review and was accepted — the next step is actually building it.",
+  "statusLabel": "Design accepted — groundwork laid, nothing visible yet",
+  "journey": "When a teacher is unexpectedly away, someone still has to be in every one of their classrooms, fast, under real time pressure. Today that means a cover manager juggling a spreadsheet, checking who's free, who's already covering too much, and who actually teaches the subject — every single morning. This feature turns that into a ranked, rules-aware suggestion: who's genuinely free, who's fair to ask next, and a clear record of who covered what. The plan for this went through a full independent design review and was accepted, and the behind-the-scenes database foundations are now in place — though nothing is visible in the product yet, and it stays that way until the feature is approved for release. To keep the first version focused, written handover notes (like leaving set work for the covering teacher) have been moved to a later phase: the first build is squarely about getting the right person into the right room, fairly. It may also be trialled as a standalone tool with schools before joining the wider product.",
   "subfeatures": [
-    { "name": "Timetable import", "status": "planned", "note": "Reading a school's timetable file safely, with no student data involved." },
-    { "name": "Absence recording", "status": "planned", "note": "A manager logs a staff absence for a day or specific periods." },
-    { "name": "Cover requirement detection", "status": "planned", "note": "Working out exactly which lessons need covering, automatically." },
-    { "name": "Eligible-cover ranking", "status": "planned", "note": "Ranking who's genuinely free and fair to ask, factoring in subject match and recent cover load." },
-    { "name": "Cover assignment", "status": "planned", "note": "Assigning, reassigning, or falling back to an agency cover, with a clear record." },
-    { "name": "Teacher-facing continuity", "status": "planned", "note": "A covering teacher sees the set work and can leave a return note for the absent teacher." },
-    { "name": "Cover analytics", "status": "planned", "note": "Totals and patterns for cover managers: how much is covered internally vs. by agency." }
+    {
+      "name": "Timetable import",
+      "status": "planned",
+      "note": "Reading a school's timetable file safely, with no student data involved."
+    },
+    {
+      "name": "Absence recording",
+      "status": "planned",
+      "note": "A manager logs a staff absence for a day or specific periods, with a reason picked from a short list — deliberately no free-text notes in the first version."
+    },
+    {
+      "name": "Cover requirement detection",
+      "status": "planned",
+      "note": "Working out exactly which lessons need covering, automatically."
+    },
+    {
+      "name": "Eligible-cover ranking",
+      "status": "planned",
+      "note": "Ranking who's genuinely free and fair to ask, factoring in subject match and recent cover load."
+    },
+    {
+      "name": "Cover assignment",
+      "status": "planned",
+      "note": "Assigning, reassigning, or falling back to an agency cover, with a clear record."
+    },
+    {
+      "name": "Teacher cover view",
+      "status": "planned",
+      "note": "A teacher sees their own cover — what they're covering and who's covering for them — without being able to browse anyone else's timetable."
+    },
+    {
+      "name": "Teacher-facing continuity",
+      "status": "planned",
+      "note": "Set work and return notes have been moved to a later phase to keep the first version simple — they'll be revisited if schools ask for them."
+    },
+    {
+      "name": "Cover analytics",
+      "status": "planned",
+      "note": "Totals and patterns for cover managers: how much is covered internally vs. by agency."
+    }
   ],
   "testing": {
-    "fixtureNote": "No dedicated fixture coverage yet — this feature hasn't been built, so there's nothing to test against yet.",
-    "expectedOutcomes": []
+    "fixtureNote": "The shared test fixture doesn't include any cover data yet — that will come when the feature itself arrives. What has changed: what 'working correctly' means is now written down as a register of expected outcomes, covering the promises below. None of them are enforced by automated tests yet; those are due to land together with the first build.",
+    "expectedOutcomes": [
+      {
+        "criterion": "No student data ever comes along for the ride",
+        "expected": "Importing a timetable brings in lessons, teachers, subjects, and rooms — never any student names, numbers, or records.",
+        "enforcedBy": "written into the accepted design; not yet an automated test"
+      },
+      {
+        "criterion": "Suggestions are consistent",
+        "expected": "Given the same timetable and the same absences, the ranked list of who to ask comes out the same every time — no randomness.",
+        "enforcedBy": "written into the accepted design; not yet an automated test"
+      },
+      {
+        "criterion": "A second teacher in the room is flagged, not ignored",
+        "expected": "If a lesson already has a co-teacher present, it's raised for the manager to decide — neither silently skipped nor blindly covered.",
+        "enforcedBy": "written into the accepted design; not yet an automated test"
+      },
+      {
+        "criterion": "Agency cover always carries a cost",
+        "expected": "Recording agency cover requires a cost figure, so spending can be reported honestly.",
+        "enforcedBy": "written into the accepted design; not yet an automated test"
+      },
+      {
+        "criterion": "Teachers only see their own cover",
+        "expected": "A teacher can see cover that involves them, but can't read the whole staff timetable or anyone else's records — enforced by the database, not just the interface.",
+        "enforcedBy": "written into the accepted design; not yet an automated test"
+      }
+    ]
   },
-  "reconciledAt": "2026-07-06",
-  "reconciledSourceHash": "1502cc86f34feeda"
+  "reconciledAt": "2026-07-13",
+  "reconciledSourceHash": "fe5de13f993f43d0"
 }
