@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-13T04:41:54.974Z",
+  "generated_at": "2026-07-13T04:51:02.654Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 64,
+    "total": 65,
     "open": 6,
-    "pass": 52,
+    "pass": 53,
     "self_closed_pending": 0,
     "concerns": 2,
     "fail": 0,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 2,
       "T1": 17,
-      "T2": 28,
+      "T2": 29,
       "T3": 8,
       "T4": 9
     },
-    "acs_met": 346,
-    "acs_total": 355
+    "acs_met": 352,
+    "acs_total": 361
   },
   "issues": {
     "open": 150,
@@ -28,7 +28,7 @@
     "areas": [
       {
         "label": "Task management",
-        "open": 14
+        "open": 13
       },
       {
         "label": "Reporting & gradebook",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 58
+        "open": 59
       }
     ]
   },
@@ -61,7 +61,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "0b213922ddceac89"
+      "content_hash": "b897c91195b4f778"
     },
     {
       "slug": "calendar",
