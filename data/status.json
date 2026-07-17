@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-17T11:22:54.938Z",
+  "generated_at": "2026-07-17T13:48:31.963Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 90,
@@ -21,10 +21,10 @@
     "acs_total": 551
   },
   "issues": {
-    "open": 151,
+    "open": 147,
     "p0": 7,
     "p1": 23,
-    "p2": 30,
+    "p2": 27,
     "areas": [
       {
         "label": "Task management",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Design system",
-        "open": 2
+        "open": 1
       },
       {
         "label": "Operations",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 63
+        "open": 60
       }
     ]
   },
@@ -77,7 +77,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "ef042bb19daf0d98"
+      "content_hash": "7933b03b9602f3d0"
     },
     {
       "slug": "analytics",
