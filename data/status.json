@@ -1,14 +1,14 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-17T21:56:36.205Z",
+  "generated_at": "2026-07-18T05:54:25.630Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 93,
-    "open": 7,
+    "open": 6,
     "pass": 82,
     "self_closed_pending": 0,
     "concerns": 0,
-    "fail": 0,
+    "fail": 1,
     "waived": 4,
     "by_tier": {
       "T0": 3,
@@ -21,9 +21,9 @@
     "acs_total": 571
   },
   "issues": {
-    "open": 157,
-    "p0": 7,
-    "p1": 25,
+    "open": 165,
+    "p0": 10,
+    "p1": 26,
     "p2": 31,
     "areas": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 20
+        "open": 23
       },
       {
         "label": "Design system",
@@ -40,11 +40,11 @@
       },
       {
         "label": "Operations",
-        "open": 16
+        "open": 18
       },
       {
         "label": "Product",
-        "open": 62
+        "open": 63
       }
     ]
   },
@@ -57,7 +57,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "ae6058097ab184b4"
+      "content_hash": "060c47bccf230df2"
     },
     {
       "slug": "calendar",
@@ -77,7 +77,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "448d4d211032b909"
+      "content_hash": "47ea42add976f64a"
     },
     {
       "slug": "analytics",
