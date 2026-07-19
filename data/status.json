@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-19T20:51:22.182Z",
+  "generated_at": "2026-07-19T22:05:19.463Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 101,
+    "total": 102,
     "open": 8,
-    "pass": 87,
+    "pass": 88,
     "self_closed_pending": 1,
     "concerns": 1,
     "fail": 0,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 23,
       "T2": 47,
-      "T3": 11,
+      "T3": 12,
       "T4": 16
     },
-    "acs_met": 617,
-    "acs_total": 632
+    "acs_met": 625,
+    "acs_total": 640
   },
   "issues": {
     "open": 186,
     "p0": 10,
-    "p1": 36,
-    "p2": 31,
+    "p1": 35,
+    "p2": 32,
     "areas": [
       {
         "label": "Task management",
