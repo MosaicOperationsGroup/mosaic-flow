@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-19T10:50:21.891Z",
+  "generated_at": "2026-07-19T19:12:30.221Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 100,
@@ -21,9 +21,9 @@
     "acs_total": 626
   },
   "issues": {
-    "open": 186,
+    "open": 187,
     "p0": 10,
-    "p1": 35,
+    "p1": 36,
     "p2": 32,
     "areas": [
       {
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 63
+        "open": 64
       }
     ]
   },
