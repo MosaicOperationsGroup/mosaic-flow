@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-21T21:40:36.411Z",
+  "generated_at": "2026-07-21T22:07:58.931Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 129,
+    "total": 130,
     "open": 10,
-    "pass": 114,
+    "pass": 115,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -13,18 +13,18 @@
     "by_tier": {
       "T0": 4,
       "T1": 30,
-      "T2": 56,
+      "T2": 57,
       "T3": 17,
       "T4": 22
     },
-    "acs_met": 833,
-    "acs_total": 846
+    "acs_met": 841,
+    "acs_total": 854
   },
   "issues": {
     "open": 200,
     "p0": 12,
-    "p1": 43,
-    "p2": 31,
+    "p1": 44,
+    "p2": 30,
     "areas": [
       {
         "label": "Task management",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 78
+        "open": 79
       }
     ]
   },
@@ -142,12 +142,12 @@
     {
       "slug": "emar-calendar",
       "feature": "EMAR calendar",
-      "readme": false,
-      "product_spec": false,
+      "readme": true,
+      "product_spec": true,
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "d481061bcb87d871"
+      "content_hash": "ba9bd21113dc5287"
     }
   ]
 }
