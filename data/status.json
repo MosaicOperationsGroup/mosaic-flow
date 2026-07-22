@@ -1,30 +1,30 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-22T05:51:46.525Z",
+  "generated_at": "2026-07-22T08:34:17.294Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 131,
+    "total": 132,
     "open": 9,
-    "pass": 117,
+    "pass": 118,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
     "waived": 5,
     "by_tier": {
       "T0": 4,
-      "T1": 30,
+      "T1": 31,
       "T2": 58,
       "T3": 17,
       "T4": 22
     },
-    "acs_met": 863,
-    "acs_total": 876
+    "acs_met": 869,
+    "acs_total": 882
   },
   "issues": {
     "open": 200,
     "p0": 12,
-    "p1": 44,
-    "p2": 29,
+    "p1": 43,
+    "p2": 30,
     "areas": [
       {
         "label": "Task management",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 80
+        "open": 79
       }
     ]
   },
@@ -77,7 +77,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "be70329b3e2bc7eb"
+      "content_hash": "6438892b55f6c710"
     },
     {
       "slug": "analytics",
