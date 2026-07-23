@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-23T12:53:16.530Z",
+  "generated_at": "2026-07-23T14:14:37.050Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 138,
@@ -85,9 +85,9 @@
       "readme": true,
       "product_spec": true,
       "decisions": true,
-      "adversarial_review": false,
+      "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "5d6210d3b4003663"
+      "content_hash": "b9d2747db6eb3535"
     },
     {
       "slug": "roles-and-permissions",
@@ -127,7 +127,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "93a5d5c23875fda8"
+      "content_hash": "c5b9bbe5a9f79086"
     },
     {
       "slug": "school-development-action-planning",
