@@ -6,17 +6,18 @@ public — the redaction rules below are not optional. Last full reconcile:
 
 ## The two content streams
 
-**Automated — never hand-edit.** `data/status.json` is pushed by a GitHub
+**Automated — never hand-edit.** `data/status.json` and
+`docs-insight/content.json` are pushed by a GitHub
 Action in the private MosaicPlaybook repo (on merges and on a 06/12/18 UTC
-cron). `data/pages.json` is regenerated at deploy from the real `features/`
+cron). The status and docs-insight snapshots are separate commits and rollback
+units. `data/pages.json` is regenerated at deploy from the real `features/`
 directories. Both get overwritten; hand edits are wasted. The homepage shows
 an amber warning automatically if the snapshot goes more than a day stale —
 if that fires, check the private repo's `publish-status` workflow runs, and
 remember a local clone that merely hasn't been pulled looks identical to a
 dead pipeline (`git fetch` first).
 
-**Hand-curated — this document's subject.** `features/<slug>/content.json`,
-`docs-insight/content.json`, and the other per-page content files. These are
+**Hand-curated.** `features/<slug>/content.json` and the other per-page content files. These are
 written by a person, for non-technical readers, and go stale as the private
 docs move. The site detects that drift itself (see hashes, below) — the job
 here is closing it.
@@ -82,28 +83,33 @@ here is closing it.
 
 ## Regenerating docs-insight
 
-`docs-insight/content.json` is a mechanical transform of the private repo's
-deterministic report — do not eyeball-edit the numbers. In the private clone:
-`node scripts/doc-quality-report.mjs --json <out>`. Then map into the public
-shape, preserving from the old public file: `intro`, `legend`,
-`preConvergenceNote`, `judgmentNote`, and every `judgment` object.
+`docs-insight/content.json` is machine-owned. Do not transcribe, preserve, or
+edit any field by hand. Schema 2 permits only canonical feature slugs, fixed
+enums, bounded counts, ISO dates, and non-reversible hashes. Public display
+names, enum labels, legends, and explanatory copy live in
+`assets/docs-insight.js`; private prose, paths, headings, identities, issue
+numbers, citations, and evidence never enter the payload.
 
-Transform rules (match the existing file exactly):
-- fields go snake_case → camelCase; `display` → `feature`;
-- doc entries keep `label, status, present, expected, missing, note`, with
-  `missing` section names Title-Cased;
-- off-template docs get `missing` as-is plus the note
-  `"doc has N sections of its own, none/few match the template"` (N =
-  `actual`); all other docs get `note: null`;
-- features sorted by readiness, descending; `tally` recounted from the ranked
-  features' doc statuses; `preConvergence` mapped the same way, no judgment;
-- `reconciledAt` set to today.
+Structural readiness is computed from the canonical documentation template.
+Substantive judgment remains a separate score and can enter only through a
+verifier-authored, commit-bound Phase 9 manifest. A verified older judgment is
+retained if docs change or a newer report is not verified; the renderer labels
+`current`, `docs_changed`, `newer_unverified_report`, or the combined state.
 
-**Judgment scores are carried forward, never generated here.** They come only
-from the private repo's human-verified doc-judgment publish step. If a
-feature's report was re-run privately, the score arrives through that step —
-copying numbers out of report files by hand skips the verification the
-process requires.
+The rollout is consumer-first. The validator and renderer temporarily accept
+the old unversioned payload as well as strict schema 2. The private publisher
+must validate a candidate with the validator from the current public checkout
+before either the stable private issue or this repository is changed.
+Unsupported versions display an unavailable state and fail Pages validation.
+
+Verified judgment publication is a compensated transaction: preflight both
+sides, capture the exact issue preimage, update the issue, push one isolated
+docs-insight commit, then post success. If the push fails, restore the exact
+issue body and labels. If restoration fails, stop publication and reconcile
+manually; never force-push. Structural-only refreshes do not touch the issue.
+If a pushed data commit later fails deployment, revert it with a normal public
+commit, restore the issue preimage where applicable, and re-run validation
+before another independently verified attempt.
 
 ## Build and verify locally
 

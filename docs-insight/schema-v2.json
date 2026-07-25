@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mosaicoperationsgroup.github.io/mosaic-flow/docs-insight/schema-v2.json",
+  "title": "Mosaic docs-insight public schema 2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "generatedAt", "sourceRevision", "registryHash", "tally", "features"],
+  "properties": {
+    "schema": { "const": 2 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sourceRevision": { "$ref": "#/$defs/gitHash" },
+    "registryHash": { "$ref": "#/$defs/sha256" },
+    "tally": { "$ref": "#/$defs/tally" },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": { "$ref": "#/$defs/feature" }
+    }
+  },
+  "$defs": {
+    "gitHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "slug": {
+      "enum": [
+        "task-management",
+        "calendar",
+        "self-evaluation",
+        "analytics",
+        "roles-and-permissions",
+        "cover-module",
+        "reporting-gradebook",
+        "lesson-observations",
+        "school-development-action-planning",
+        "onboarding-and-school-config",
+        "career-counseling",
+        "emar-calendar"
+      ]
+    },
+    "boundedCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000
+    },
+    "docCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "tally": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conformant", "partial", "off_template", "thin", "missing"],
+      "properties": {
+        "conformant": { "$ref": "#/$defs/boundedCount" },
+        "partial": { "$ref": "#/$defs/boundedCount" },
+        "off_template": { "$ref": "#/$defs/boundedCount" },
+        "thin": { "$ref": "#/$defs/boundedCount" },
+        "missing": { "$ref": "#/$defs/boundedCount" }
+      }
+    },
+    "doc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "status", "present", "expected", "actual", "missingCount"],
+      "properties": {
+        "key": {
+          "enum": ["readme", "product_spec", "subfeatures", "progress", "expected_outcomes", "version_map", "data_model_adr", "ux_adr"]
+        },
+        "status": {
+          "enum": ["conformant", "partial", "off_template", "thin", "missing"]
+        },
+        "present": { "$ref": "#/$defs/docCount" },
+        "expected": { "$ref": "#/$defs/docCount" },
+        "actual": { "$ref": "#/$defs/docCount" },
+        "missingCount": { "$ref": "#/$defs/docCount" }
+      }
+    },
+    "judgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "verdict", "reviewed", "reportHash", "sourceHashAtReview"],
+      "properties": {
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "verdict": {
+          "enum": ["substantively_complete", "usable_with_named_gaps", "drafting", "not_build_ready"]
+        },
+        "reviewed": { "type": "string", "format": "date" },
+        "reportHash": { "$ref": "#/$defs/sha256" },
+        "sourceHashAtReview": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "cohort",
+        "coverage",
+        "readiness",
+        "presentSections",
+        "expectedSections",
+        "readinessVerdict",
+        "adversarialReview",
+        "openDecisionCount",
+        "blockerCount",
+        "tbdCount",
+        "emptySectionCount",
+        "statusAlignment",
+        "sourceHash",
+        "docs",
+        "judgmentState"
+      ],
+      "properties": {
+        "slug": { "$ref": "#/$defs/slug" },
+        "cohort": { "enum": ["ranked", "pre_convergence"] },
+        "coverage": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "readiness": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "presentSections": { "$ref": "#/$defs/boundedCount" },
+        "expectedSections": { "$ref": "#/$defs/boundedCount" },
+        "readinessVerdict": {
+          "enum": ["build_ready", "reviewed_gaps_remain", "structurally_complete_unreviewed", "drafting_substantial_unreviewed", "drafting_early"]
+        },
+        "adversarialReview": { "enum": ["present", "absent"] },
+        "openDecisionCount": { "$ref": "#/$defs/boundedCount" },
+        "blockerCount": { "$ref": "#/$defs/boundedCount" },
+        "tbdCount": { "$ref": "#/$defs/boundedCount" },
+        "emptySectionCount": { "$ref": "#/$defs/boundedCount" },
+        "statusAlignment": { "enum": ["matched", "mismatched"] },
+        "sourceHash": { "$ref": "#/$defs/sha256" },
+        "docs": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/doc" }
+        },
+        "judgmentState": {
+          "enum": ["never_verified", "current", "docs_changed", "newer_unverified_report", "docs_changed_and_newer_unverified_report"]
+        },
+        "judgment": { "$ref": "#/$defs/judgment" }
+      }
+    }
+  }
+}
