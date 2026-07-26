@@ -1,0 +1,33 @@
+{
+  "schema": 2,
+  "generatedAt": "2026-07-25T12:00:00.000Z",
+  "sourceRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "registryHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "tally": {
+    "conformant": 8,
+    "partial": 0,
+    "off_template": 0,
+    "thin": 0,
+    "missing": 0
+  },
+  "features": [
+    {
+      "slug": "task-management",
+      "cohort": "ranked",
+      "coverage": "0%\"><script>PRIVATE_CANARY</script>",
+      "readiness": 95,
+      "presentSections": 40,
+      "expectedSections": 40,
+      "readinessVerdict": "build_ready",
+      "adversarialReview": "present",
+      "openDecisionCount": 0,
+      "blockerCount": 0,
+      "tbdCount": 0,
+      "emptySectionCount": 0,
+      "statusAlignment": "matched",
+      "sourceHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "docs": [],
+      "judgmentState": "never_verified"
+    }
+  ]
+}

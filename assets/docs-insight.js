@@ -57,6 +57,11 @@ const FRESHNESS_LABEL = {
 const V2_DOC_KEYS = Object.keys(DOC_LABEL);
 const V2_STATUSES = ['conformant', 'partial', 'off_template', 'thin', 'missing'];
 
+function boundedInteger(value, min, max, label) {
+  if (!Number.isInteger(value) || value < min || value > max) throw new Error(`invalid ${label}`);
+  return value;
+}
+
 function unavailable(root) {
   root.innerHTML = `
     <div class="wrap not-found">
@@ -69,24 +74,49 @@ function unavailable(root) {
 
 function schema2(content) {
   if (!content || content.schema !== 2 || !Array.isArray(content.features) || content.features.length > 12) throw new Error('unsupported schema');
+  if (!content.tally || typeof content.tally !== 'object' || Array.isArray(content.tally)) throw new Error('invalid tally');
+  const tallyKeys = Object.keys(content.tally);
+  if (tallyKeys.length !== V2_STATUSES.length || V2_STATUSES.some((status) => !Object.hasOwn(content.tally, status))) throw new Error('invalid tally');
+  const tally = Object.fromEntries(V2_STATUSES.map((status) => [
+    status.replace('_', '-'),
+    boundedInteger(content.tally[status], 0, 1000, `tally.${status}`),
+  ]));
   const seen = new Set();
   const features = content.features.map((f) => {
     if (!FEATURE_LABEL[f.slug] || seen.has(f.slug) || !['ranked', 'pre_convergence'].includes(f.cohort)) throw new Error('invalid feature');
     seen.add(f.slug);
     if (!READINESS_LABEL[f.readinessVerdict] || !FRESHNESS_LABEL[f.judgmentState]) throw new Error('invalid enum');
+    const coverage = boundedInteger(f.coverage, 0, 100, 'coverage');
+    const readiness = boundedInteger(f.readiness, 0, 100, 'readiness');
+    for (const key of ['presentSections', 'expectedSections', 'openDecisionCount', 'blockerCount', 'tbdCount', 'emptySectionCount']) {
+      boundedInteger(f[key], 0, 1000, key);
+    }
     if (!Array.isArray(f.docs) || f.docs.length !== 8) throw new Error('invalid docs');
     const docs = f.docs.map((d) => {
       if (!DOC_LABEL[d.key] || !V2_STATUSES.includes(d.status)) throw new Error('invalid doc');
-      return { ...d, label: DOC_LABEL[d.key], status: d.status.replace('_', '-') };
+      return {
+        key: d.key,
+        label: DOC_LABEL[d.key],
+        status: d.status.replace('_', '-'),
+        present: boundedInteger(d.present, 0, 100, `${d.key}.present`),
+        expected: boundedInteger(d.expected, 0, 100, `${d.key}.expected`),
+        actual: boundedInteger(d.actual, 0, 100, `${d.key}.actual`),
+        missingCount: boundedInteger(d.missingCount, 0, 100, `${d.key}.missingCount`),
+      };
     });
     if (new Set(docs.map((d) => d.key)).size !== 8 || V2_DOC_KEYS.some((key) => !docs.some((d) => d.key === key))) throw new Error('invalid doc set');
     if (f.judgmentState === 'never_verified' && f.judgment !== undefined) throw new Error('invalid judgment state');
     if (f.judgmentState !== 'never_verified' && (!f.judgment || !JUDGMENT_LABEL[f.judgment.verdict])) throw new Error('missing verified judgment');
+    const judgment = f.judgment && {
+      score: boundedInteger(f.judgment.score, 0, 100, 'judgment.score'),
+      verdict: JUDGMENT_LABEL[f.judgment.verdict],
+      reviewed: f.judgment.reviewed,
+    };
     return {
       feature: FEATURE_LABEL[f.slug],
       cohort: f.cohort,
-      coverage: f.coverage,
-      readiness: f.readiness,
+      coverage,
+      readiness,
       verdict: READINESS_LABEL[f.readinessVerdict],
       adversarialReview: f.adversarialReview === 'present',
       openDecisions: f.openDecisionCount,
@@ -95,14 +125,9 @@ function schema2(content) {
       statusMismatch: f.statusAlignment === 'mismatched',
       docs,
       judgmentState: f.judgmentState,
-      judgment: f.judgment && {
-        score: f.judgment.score,
-        verdict: JUDGMENT_LABEL[f.judgment.verdict],
-        reviewed: f.judgment.reviewed,
-      },
+      judgment,
     };
   });
-  const tally = Object.fromEntries(V2_STATUSES.map((status) => [status.replace('_', '-'), content.tally[status]]));
   return {
     generatedAt: content.generatedAt,
     tally,

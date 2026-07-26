@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { validateDocsInsight } from './validate-docs-insight.mjs';
+import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
+import { DOCS_INSIGHT_CONTRACT, validateDocsInsight } from './validate-docs-insight.mjs';
 
 const hash = 'a'.repeat(64);
 const docKeys = ['readme', 'product_spec', 'subfeatures', 'progress', 'expected_outcomes', 'version_map', 'data_model_adr', 'ux_adr'];
@@ -33,6 +36,27 @@ function candidate() {
       judgment: { score: 90, verdict: 'substantively_complete', reviewed: '2026-07-25', reportHash: hash, sourceHashAtReview: hash },
     }],
   };
+}
+
+function renderPayload(payload) {
+  const renderer = readFileSync(new URL('../assets/docs-insight.js', import.meta.url), 'utf8');
+  const root = { innerHTML: '' };
+  const pageData = { textContent: JSON.stringify(payload) };
+  const document = {
+    title: '',
+    getElementById(id) {
+      if (id === 'docs-insight-root') return root;
+      if (id === 'page-data') return pageData;
+      return null;
+    },
+    querySelectorAll() { return []; },
+  };
+  vm.runInNewContext(renderer, {
+    document,
+    matchMedia: () => ({ matches: true }),
+    window: {},
+  });
+  return root.innerHTML;
 }
 
 test('accepts a strict schema-2 candidate', () => assert.equal(validateDocsInsight(candidate()).schema, 2));
@@ -70,4 +94,77 @@ test('renderer keeps scores separate, labels freshness locally, and has an unsup
   assert.match(renderer, /docs_changed_and_newer_unverified_report/);
   assert.match(renderer, /No partial data has been shown/);
   assert.doesNotMatch(renderer, /\\(f\\.readiness\\s*\\+\\s*j\\.score\\)|average/i);
+});
+
+test('renderer rejects malformed numeric fields before interpolating HTML', () => {
+  const poison = '0%"><script>PRIVATE_CANARY</script>';
+  const mutations = [
+    (value) => { value.features[0].coverage = poison; },
+    (value) => { value.features[0].readiness = poison; },
+    (value) => { value.features[0].judgment.score = poison; },
+    (value) => { value.features[0].openDecisionCount = poison; },
+    (value) => { value.features[0].docs[0].present = poison; },
+    (value) => { value.tally.conformant = poison; },
+  ];
+  for (const mutate of mutations) {
+    const injected = candidate();
+    mutate(injected);
+    const html = renderPayload(injected);
+    assert.match(html, /temporarily unavailable/);
+    assert.doesNotMatch(html, /PRIVATE_CANARY|<script>/);
+  }
+});
+
+test('committed JSON Schema stays aligned with the executable validator contract', () => {
+  const schema = JSON.parse(readFileSync(new URL('../docs-insight/schema-v2.json', import.meta.url)));
+  assert.deepEqual(schema.required, DOCS_INSIGHT_CONTRACT.rootRequired);
+  assert.deepEqual(schema.$defs.slug.enum, DOCS_INSIGHT_CONTRACT.slugs);
+  assert.deepEqual(schema.$defs.doc.properties.key.enum, DOCS_INSIGHT_CONTRACT.docKeys);
+  assert.deepEqual(schema.$defs.doc.properties.status.enum, DOCS_INSIGHT_CONTRACT.statuses);
+  assert.deepEqual(schema.$defs.feature.properties.readinessVerdict.enum, DOCS_INSIGHT_CONTRACT.readiness);
+  assert.deepEqual(schema.$defs.feature.properties.judgmentState.enum, DOCS_INSIGHT_CONTRACT.judgmentStates);
+  assert.deepEqual(schema.$defs.judgment.properties.verdict.enum, DOCS_INSIGHT_CONTRACT.judgmentVerdicts);
+  assert.deepEqual(schema.$defs.feature.required, DOCS_INSIGHT_CONTRACT.featureRequired);
+  assert.deepEqual(schema.$defs.doc.required, DOCS_INSIGHT_CONTRACT.docRequired);
+  assert.deepEqual(schema.$defs.judgment.required, DOCS_INSIGHT_CONTRACT.judgmentRequired);
+  assert.deepEqual(
+    [schema.$defs.boundedCount.minimum, schema.$defs.boundedCount.maximum],
+    DOCS_INSIGHT_CONTRACT.bounds.boundedCount,
+  );
+  assert.deepEqual(
+    [schema.$defs.docCount.minimum, schema.$defs.docCount.maximum],
+    DOCS_INSIGHT_CONTRACT.bounds.docCount,
+  );
+  assert.deepEqual(
+    [schema.properties.features.minItems, schema.properties.features.maxItems],
+    DOCS_INSIGHT_CONTRACT.bounds.features,
+  );
+  for (const key of ['coverage', 'readiness']) {
+    assert.deepEqual(
+      [schema.$defs.feature.properties[key].minimum, schema.$defs.feature.properties[key].maximum],
+      DOCS_INSIGHT_CONTRACT.bounds.percentage,
+    );
+  }
+  assert.deepEqual(
+    [schema.$defs.judgment.properties.score.minimum, schema.$defs.judgment.properties.score.maximum],
+    DOCS_INSIGHT_CONTRACT.bounds.percentage,
+  );
+});
+
+test('Pages validation command rejects the deliberately invalid fixture before inlining', () => {
+  const fixture = new URL('./fixtures/docs-insight-invalid.json', import.meta.url);
+  const result = spawnSync(process.execPath, [
+    fileURLToPath(new URL('./validate-docs-insight.mjs', import.meta.url)),
+    fileURLToPath(fixture),
+    '--allow-legacy',
+  ], { encoding: 'utf8' });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /docs-insight validation failed/);
+
+  const workflow = readFileSync(new URL('../.github/workflows/pages.yml', import.meta.url), 'utf8');
+  assert.ok(
+    workflow.indexOf('node --test scripts/validate-docs-insight.test.mjs')
+      < workflow.indexOf('node scripts/inline-content.mjs'),
+    'invalid-fixture test must run before inlining',
+  );
 });
