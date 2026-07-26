@@ -2,17 +2,40 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const SLUGS = new Set([
-  'task-management', 'calendar', 'self-evaluation', 'analytics',
-  'roles-and-permissions', 'cover-module', 'reporting-gradebook',
-  'lesson-observations', 'school-development-action-planning',
-  'onboarding-and-school-config', 'career-counseling', 'emar-calendar',
-]);
-const DOC_KEYS = ['readme', 'product_spec', 'subfeatures', 'progress', 'expected_outcomes', 'version_map', 'data_model_adr', 'ux_adr'];
-const STATUSES = ['conformant', 'partial', 'off_template', 'thin', 'missing'];
-const READINESS = ['build_ready', 'reviewed_gaps_remain', 'structurally_complete_unreviewed', 'drafting_substantial_unreviewed', 'drafting_early'];
-const JUDGMENT_STATES = ['never_verified', 'current', 'docs_changed', 'newer_unverified_report', 'docs_changed_and_newer_unverified_report'];
-const JUDGMENT_VERDICTS = ['substantively_complete', 'usable_with_named_gaps', 'drafting', 'not_build_ready'];
+export const DOCS_INSIGHT_CONTRACT = Object.freeze({
+  slugs: [
+    'task-management', 'calendar', 'self-evaluation', 'analytics',
+    'roles-and-permissions', 'cover-module', 'reporting-gradebook',
+    'lesson-observations', 'school-development-action-planning',
+    'onboarding-and-school-config', 'career-counseling', 'emar-calendar',
+  ],
+  docKeys: ['readme', 'product_spec', 'subfeatures', 'progress', 'expected_outcomes', 'version_map', 'data_model_adr', 'ux_adr'],
+  statuses: ['conformant', 'partial', 'off_template', 'thin', 'missing'],
+  readiness: ['build_ready', 'reviewed_gaps_remain', 'structurally_complete_unreviewed', 'drafting_substantial_unreviewed', 'drafting_early'],
+  judgmentStates: ['never_verified', 'current', 'docs_changed', 'newer_unverified_report', 'docs_changed_and_newer_unverified_report'],
+  judgmentVerdicts: ['substantively_complete', 'usable_with_named_gaps', 'drafting', 'not_build_ready'],
+  rootRequired: ['schema', 'generatedAt', 'sourceRevision', 'registryHash', 'tally', 'features'],
+  featureRequired: [
+    'slug', 'cohort', 'coverage', 'readiness', 'presentSections', 'expectedSections',
+    'readinessVerdict', 'adversarialReview', 'openDecisionCount', 'blockerCount',
+    'tbdCount', 'emptySectionCount', 'statusAlignment', 'sourceHash', 'docs', 'judgmentState',
+  ],
+  docRequired: ['key', 'status', 'present', 'expected', 'actual', 'missingCount'],
+  judgmentRequired: ['score', 'verdict', 'reviewed', 'reportHash', 'sourceHashAtReview'],
+  bounds: {
+    percentage: [0, 100],
+    boundedCount: [0, 1000],
+    docCount: [0, 100],
+    features: [1, 12],
+  },
+});
+
+const SLUGS = new Set(DOCS_INSIGHT_CONTRACT.slugs);
+const DOC_KEYS = DOCS_INSIGHT_CONTRACT.docKeys;
+const STATUSES = DOCS_INSIGHT_CONTRACT.statuses;
+const READINESS = DOCS_INSIGHT_CONTRACT.readiness;
+const JUDGMENT_STATES = DOCS_INSIGHT_CONTRACT.judgmentStates;
+const JUDGMENT_VERDICTS = DOCS_INSIGHT_CONTRACT.judgmentVerdicts;
 const SHA256 = /^[0-9a-f]{64}$/;
 const GIT_HASH = /^[0-9a-f]{40}$/;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,7 +64,7 @@ function date(value, path) {
 }
 
 function validateJudgment(value, path) {
-  closed(value, path, ['score', 'verdict', 'reviewed', 'reportHash', 'sourceHashAtReview']);
+  closed(value, path, DOCS_INSIGHT_CONTRACT.judgmentRequired);
   integer(value.score, 0, 100, `${path}.score`);
   enumValue(value.verdict, JUDGMENT_VERDICTS, `${path}.verdict`);
   date(value.reviewed, `${path}.reviewed`);
@@ -50,19 +73,14 @@ function validateJudgment(value, path) {
 }
 
 function validateDoc(value, path) {
-  closed(value, path, ['key', 'status', 'present', 'expected', 'actual', 'missingCount']);
+  closed(value, path, DOCS_INSIGHT_CONTRACT.docRequired);
   enumValue(value.key, DOC_KEYS, `${path}.key`);
   enumValue(value.status, STATUSES, `${path}.status`);
   for (const key of ['present', 'expected', 'actual', 'missingCount']) integer(value[key], 0, 100, `${path}.${key}`);
 }
 
 function validateFeature(value, path) {
-  const required = [
-    'slug', 'cohort', 'coverage', 'readiness', 'presentSections', 'expectedSections',
-    'readinessVerdict', 'adversarialReview', 'openDecisionCount', 'blockerCount',
-    'tbdCount', 'emptySectionCount', 'statusAlignment', 'sourceHash', 'docs', 'judgmentState',
-  ];
-  closed(value, path, required, ['judgment']);
+  closed(value, path, DOCS_INSIGHT_CONTRACT.featureRequired, ['judgment']);
   if (!SLUGS.has(value.slug)) fail(`${path}.slug`, 'unknown feature slug');
   enumValue(value.cohort, ['ranked', 'pre_convergence'], `${path}.cohort`);
   integer(value.coverage, 0, 100, `${path}.coverage`);
@@ -89,7 +107,7 @@ function validateFeature(value, path) {
 }
 
 export function validateSchema2(value) {
-  closed(value, '$', ['schema', 'generatedAt', 'sourceRevision', 'registryHash', 'tally', 'features']);
+  closed(value, '$', DOCS_INSIGHT_CONTRACT.rootRequired);
   if (value.schema !== 2) fail('$.schema', 'must equal 2');
   if (typeof value.generatedAt !== 'string' || !value.generatedAt.endsWith('Z') || Number.isNaN(Date.parse(value.generatedAt))) {
     fail('$.generatedAt', 'must be an ISO-8601 UTC timestamp');
