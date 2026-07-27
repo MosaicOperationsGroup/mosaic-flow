@@ -1,16 +1,17 @@
 # Reconciling this site against the private repo
 
 Maintainer guide for keeping mosaic-flow accurate. Everything in this repo is
-public — the redaction rules below are not optional. Last full reconcile:
-2026-07-13.
+public — the redaction rules below are not optional. Machine-owned payloads
+carry their own generation timestamp and source revision.
 
 ## The two content streams
 
 **Automated — never hand-edit.** `data/status.json` and
 `docs-insight/content.json` are pushed by a GitHub
 Action in the private MosaicPlaybook repo (on merges and on a 06/12/18 UTC
-cron). The status and docs-insight snapshots are separate commits and rollback
-units. `data/pages.json` is regenerated at deploy from the real `features/`
+cron). They are built in one workflow and committed together, so homepage
+statistics and detailed documentation insight share one refresh and rollback
+unit. `data/pages.json` is regenerated at deploy from the real `features/`
 directories. Both get overwritten; hand edits are wasted. The homepage shows
 an amber warning automatically if the snapshot goes more than a day stale —
 if that fires, check the private repo's `publish-status` workflow runs, and
@@ -90,26 +91,21 @@ names, enum labels, legends, and explanatory copy live in
 `assets/docs-insight.js`; private prose, paths, headings, identities, issue
 numbers, citations, and evidence never enter the payload.
 
-Structural readiness is computed from the canonical documentation template.
-Substantive judgment remains a separate score and can enter only through a
-verifier-authored, commit-bound Phase 9 manifest. A verified older judgment is
-retained if docs change or a newer report is not verified; the renderer labels
-`current`, `docs_changed`, `newer_unverified_report`, or the combined state.
+Structural readiness is recomputed from the same `computeDocQuality()` result
+that writes the private governance report. Substantive judgment remains a
+separate score and is projected only from a valid report carrying an
+independent verifier. If canonical feature documentation changes after that
+review, the score remains visible but is labelled `docs_changed`.
 
-The rollout is consumer-first. The validator and renderer temporarily accept
-the old unversioned payload as well as strict schema 2. The private publisher
-must validate a candidate with the validator from the current public checkout
-before either the stable private issue or this repository is changed.
-Unsupported versions display an unavailable state and fail Pages validation.
+The private workflow clones this repository, builds both public payloads,
+validates docs-insight with this checkout's validator, and commits both files
+together. The committed payload and Pages deployment require strict schema 2.
+Unsupported or malformed data displays an unavailable state and fails Pages
+validation.
 
-Verified judgment publication is a compensated transaction: preflight both
-sides, capture the exact issue preimage, update the issue, push one isolated
-docs-insight commit, then post success. If the push fails, restore the exact
-issue body and labels. If restoration fails, stop publication and reconcile
-manually; never force-push. Structural-only refreshes do not touch the issue.
-If a pushed data commit later fails deployment, revert it with a normal public
-commit, restore the issue preimage where applicable, and re-run validation
-before another independently verified attempt.
+If a synchronized data commit later fails deployment, revert that public
+commit normally and rerun the private `publish-status` workflow. Never
+force-push and never repair either generated JSON file by hand.
 
 ## Build and verify locally
 
@@ -123,11 +119,11 @@ To preview properly: copy the site to a temp dir, run
 (`python -m http.server`). Never run the inline script in the working tree —
 it deletes the content.json files it inlines.
 
-## Known gaps (as of 2026-07-13)
+## Known gaps (as of 2026-07-27)
 
 - `briefing/`, `blog/`, `top-priorities/` are honest placeholders — no
-  publisher exists for them yet in the private repo (only status.json is
-  published). Populating them means extending the redaction boundary there;
+  publisher exists for them yet in the private repo. Populating them means
+  extending the redaction boundary there;
   design that deliberately, not casually.
 - EMAR calendar appears in the snapshot's governance table but has no public
   feature page yet; the homepage renders its row unlinked via

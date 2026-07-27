@@ -39,7 +39,7 @@ jobs:
       - name: Validate committed docs-insight data
         run: |
           node --test scripts/validate-docs-insight.test.mjs
-          node scripts/validate-docs-insight.mjs docs-insight/content.json --allow-legacy
+          node scripts/validate-docs-insight.mjs docs-insight/content.json --require-schema 2
       - name: Inline page content (removes standalone content.json files)
         # content.json is the curated source of truth kept in git, but
         # shipping it as its own file means it's directly fetchable and

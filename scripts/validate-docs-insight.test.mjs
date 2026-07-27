@@ -60,8 +60,12 @@ function renderPayload(payload) {
 }
 
 test('accepts a strict schema-2 candidate', () => assert.equal(validateDocsInsight(candidate()).schema, 2));
-test('accepts the committed legacy payload only with transition flag', () => {
-  const legacy = JSON.parse(readFileSync(new URL('../docs-insight/content.json', import.meta.url)));
+test('accepts a legacy payload only with the transition flag', () => {
+  const legacy = {
+    reconciledAt: '2026-07-13',
+    tally: { conformant: 1 },
+    features: [],
+  };
   assert.doesNotThrow(() => validateDocsInsight(legacy, { allowLegacy: true }));
   assert.throws(() => validateDocsInsight(legacy), /unsupported/);
 });

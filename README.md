@@ -12,7 +12,7 @@ Published via GitHub Pages from this repo's `main` branch.
 - no issue titles or free text;
 - no personal names, model identifiers, or evidence details.
 
-The docs-insight stream uses schema 2: structural readiness is kept separate from independently verified substantive judgment, and stale judgment lineage is labelled explicitly. During the consumer-first rollout the renderer also accepts the existing unversioned legacy payload. Unknown schema versions fail closed.
+The docs-insight stream uses schema 2: structural readiness is kept separate from independently verified substantive judgment, and stale judgment lineage is labelled explicitly. The committed payload and Pages workflow require schema 2; unknown versions fail closed.
 
 This repo has **no access** to the private repo — data flows one way, and only through those allowlists. Do not commit anything sensitive here; treat every file in this repo as public.
 
