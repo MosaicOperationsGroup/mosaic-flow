@@ -1,22 +1,24 @@
 # Reconciling this site against the private repo
 
 Maintainer guide for keeping mosaic-flow accurate. Everything in this repo is
-public — the redaction rules below are not optional. Last full reconcile:
-2026-07-13.
+public — the redaction rules below are not optional. Machine-owned payloads
+carry their own generation timestamp and source revision.
 
 ## The two content streams
 
-**Automated — never hand-edit.** `data/status.json` is pushed by a GitHub
+**Automated — never hand-edit.** `data/status.json` and
+`docs-insight/content.json` are pushed by a GitHub
 Action in the private MosaicPlaybook repo (on merges and on a 06/12/18 UTC
-cron). `data/pages.json` is regenerated at deploy from the real `features/`
+cron). They are built in one workflow and committed together, so homepage
+statistics and detailed documentation insight share one refresh and rollback
+unit. `data/pages.json` is regenerated at deploy from the real `features/`
 directories. Both get overwritten; hand edits are wasted. The homepage shows
 an amber warning automatically if the snapshot goes more than a day stale —
 if that fires, check the private repo's `publish-status` workflow runs, and
 remember a local clone that merely hasn't been pulled looks identical to a
 dead pipeline (`git fetch` first).
 
-**Hand-curated — this document's subject.** `features/<slug>/content.json`,
-`docs-insight/content.json`, and the other per-page content files. These are
+**Hand-curated.** `features/<slug>/content.json` and the other per-page content files. These are
 written by a person, for non-technical readers, and go stale as the private
 docs move. The site detects that drift itself (see hashes, below) — the job
 here is closing it.
@@ -82,28 +84,28 @@ here is closing it.
 
 ## Regenerating docs-insight
 
-`docs-insight/content.json` is a mechanical transform of the private repo's
-deterministic report — do not eyeball-edit the numbers. In the private clone:
-`node scripts/doc-quality-report.mjs --json <out>`. Then map into the public
-shape, preserving from the old public file: `intro`, `legend`,
-`preConvergenceNote`, `judgmentNote`, and every `judgment` object.
+`docs-insight/content.json` is machine-owned. Do not transcribe, preserve, or
+edit any field by hand. Schema 2 permits only canonical feature slugs, fixed
+enums, bounded counts, ISO dates, and non-reversible hashes. Public display
+names, enum labels, legends, and explanatory copy live in
+`assets/docs-insight.js`; private prose, paths, headings, identities, issue
+numbers, citations, and evidence never enter the payload.
 
-Transform rules (match the existing file exactly):
-- fields go snake_case → camelCase; `display` → `feature`;
-- doc entries keep `label, status, present, expected, missing, note`, with
-  `missing` section names Title-Cased;
-- off-template docs get `missing` as-is plus the note
-  `"doc has N sections of its own, none/few match the template"` (N =
-  `actual`); all other docs get `note: null`;
-- features sorted by readiness, descending; `tally` recounted from the ranked
-  features' doc statuses; `preConvergence` mapped the same way, no judgment;
-- `reconciledAt` set to today.
+Structural readiness is recomputed from the same `computeDocQuality()` result
+that writes the private governance report. Substantive judgment remains a
+separate score and is projected only from a valid report carrying an
+independent verifier. If canonical feature documentation changes after that
+review, the score remains visible but is labelled `docs_changed`.
 
-**Judgment scores are carried forward, never generated here.** They come only
-from the private repo's human-verified doc-judgment publish step. If a
-feature's report was re-run privately, the score arrives through that step —
-copying numbers out of report files by hand skips the verification the
-process requires.
+The private workflow clones this repository, builds both public payloads,
+validates docs-insight with this checkout's validator, and commits both files
+together. The committed payload and Pages deployment require strict schema 2.
+Unsupported or malformed data displays an unavailable state and fails Pages
+validation.
+
+If a synchronized data commit later fails deployment, revert that public
+commit normally and rerun the private `publish-status` workflow. Never
+force-push and never repair either generated JSON file by hand.
 
 ## Build and verify locally
 
@@ -117,11 +119,11 @@ To preview properly: copy the site to a temp dir, run
 (`python -m http.server`). Never run the inline script in the working tree —
 it deletes the content.json files it inlines.
 
-## Known gaps (as of 2026-07-13)
+## Known gaps (as of 2026-07-27)
 
 - `briefing/`, `blog/`, `top-priorities/` are honest placeholders — no
-  publisher exists for them yet in the private repo (only status.json is
-  published). Populating them means extending the redaction boundary there;
+  publisher exists for them yet in the private repo. Populating them means
+  extending the redaction boundary there;
   design that deliberately, not casually.
 - EMAR calendar appears in the snapshot's governance table but has no public
   feature page yet; the homepage renders its row unlinked via

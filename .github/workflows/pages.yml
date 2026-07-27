@@ -36,6 +36,10 @@ jobs:
         # page exists) renders unlinked instead of 404ing. Regenerated here
         # from the real directories so the committed copy can never drift.
         run: node -e "const fs=require('fs');const slugs=fs.readdirSync('features').filter(s=>fs.existsSync('features/'+s+'/index.html')).sort();fs.writeFileSync('data/pages.json',JSON.stringify(slugs,null,2)+'\n')"
+      - name: Validate committed docs-insight data
+        run: |
+          node --test scripts/validate-docs-insight.test.mjs
+          node scripts/validate-docs-insight.mjs docs-insight/content.json --require-schema 2
       - name: Inline page content (removes standalone content.json files)
         # content.json is the curated source of truth kept in git, but
         # shipping it as its own file means it's directly fetchable and
