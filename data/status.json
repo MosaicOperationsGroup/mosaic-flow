@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-27T09:59:50.709Z",
+  "generated_at": "2026-07-27T10:00:43.494Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 148,
-    "open": 9,
-    "pass": 132,
+    "open": 8,
+    "pass": 133,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -17,18 +17,18 @@
       "T3": 20,
       "T4": 28
     },
-    "acs_met": 995,
-    "acs_total": 1009
+    "acs_met": 1011,
+    "acs_total": 1025
   },
   "issues": {
     "open": 200,
     "p0": 11,
-    "p1": 36,
+    "p1": 35,
     "p2": 31,
     "areas": [
       {
         "label": "Task management",
-        "open": 1
+        "open": 2
       },
       {
         "label": "EMAR",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 69
+        "open": 68
       }
     ]
   },
