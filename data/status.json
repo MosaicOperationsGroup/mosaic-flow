@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-29T13:21:14.638Z",
+  "generated_at": "2026-07-29T13:44:06.149Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 170,
-    "open": 12,
-    "pass": 151,
+    "open": 11,
+    "pass": 152,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -17,12 +17,12 @@
       "T3": 21,
       "T4": 33
     },
-    "acs_met": 1167,
-    "acs_total": 1181
+    "acs_met": 1192,
+    "acs_total": 1207
   },
   "issues": {
     "open": 200,
-    "p0": 10,
+    "p0": 11,
     "p1": 52,
     "p2": 52,
     "areas": [
@@ -32,11 +32,11 @@
       },
       {
         "label": "EMAR",
-        "open": 15
+        "open": 13
       },
       {
         "label": "Trust & safety",
-        "open": 33
+        "open": 34
       },
       {
         "label": "Design system",
@@ -151,7 +151,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "c59319dc12f72910"
+      "content_hash": "ea0dea329fe86b7e"
     }
   ]
 }
