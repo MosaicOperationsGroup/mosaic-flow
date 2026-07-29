@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-29T09:56:24.554Z",
+  "generated_at": "2026-07-29T10:00:36.041Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 167,
+    "total": 168,
     "open": 11,
-    "pass": 149,
+    "pass": 150,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -13,22 +13,22 @@
     "by_tier": {
       "T0": 4,
       "T1": 42,
-      "T2": 68,
+      "T2": 69,
       "T3": 21,
       "T4": 32
     },
-    "acs_met": 1154,
-    "acs_total": 1168
+    "acs_met": 1165,
+    "acs_total": 1179
   },
   "issues": {
     "open": 200,
-    "p0": 11,
-    "p1": 52,
+    "p0": 13,
+    "p1": 50,
     "p2": 48,
     "areas": [
       {
         "label": "Task management",
-        "open": 25
+        "open": 24
       },
       {
         "label": "EMAR",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 33
+        "open": 35
       },
       {
         "label": "Design system",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Operations",
-        "open": 12
+        "open": 13
       },
       {
         "label": "Product",
