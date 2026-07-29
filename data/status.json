@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-29T09:24:38.826Z",
+  "generated_at": "2026-07-29T09:56:24.554Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 167,
-    "open": 12,
-    "pass": 148,
+    "open": 11,
+    "pass": 149,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -17,8 +17,8 @@
       "T3": 21,
       "T4": 32
     },
-    "acs_met": 1146,
-    "acs_total": 1160
+    "acs_met": 1154,
+    "acs_total": 1168
   },
   "issues": {
     "open": 200,
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 44
+        "open": 43
       }
     ]
   },
@@ -61,7 +61,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "ef426776ba3e9487"
+      "content_hash": "a4b2eeb1b7ae902f"
     },
     {
       "slug": "calendar",
@@ -101,7 +101,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "3dc83d3315de50e3"
+      "content_hash": "1fe6d62f2b81c79c"
     },
     {
       "slug": "cover-module",
