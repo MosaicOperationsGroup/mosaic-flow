@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-29T08:47:52.447Z",
+  "generated_at": "2026-07-29T09:24:38.826Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 167,
-    "open": 13,
-    "pass": 147,
+    "open": 12,
+    "pass": 148,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -17,18 +17,18 @@
       "T3": 21,
       "T4": 32
     },
-    "acs_met": 1140,
-    "acs_total": 1154
+    "acs_met": 1146,
+    "acs_total": 1160
   },
   "issues": {
     "open": 200,
     "p0": 11,
-    "p1": 51,
+    "p1": 52,
     "p2": 48,
     "areas": [
       {
         "label": "Task management",
-        "open": 24
+        "open": 25
       },
       {
         "label": "EMAR",
@@ -61,7 +61,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "e8e53ab4d6002c58"
+      "content_hash": "ef426776ba3e9487"
     },
     {
       "slug": "calendar",
