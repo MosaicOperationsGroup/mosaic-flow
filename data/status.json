@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "generated_at": "2026-07-29T10:00:36.041Z",
+  "generated_at": "2026-07-29T10:05:35.691Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 168,
-    "open": 11,
+    "total": 169,
+    "open": 12,
     "pass": 150,
     "self_closed_pending": 0,
     "concerns": 0,
@@ -15,20 +15,20 @@
       "T1": 42,
       "T2": 69,
       "T3": 21,
-      "T4": 32
+      "T4": 33
     },
     "acs_met": 1165,
     "acs_total": 1179
   },
   "issues": {
     "open": 200,
-    "p0": 13,
-    "p1": 50,
-    "p2": 48,
+    "p0": 11,
+    "p1": 51,
+    "p2": 49,
     "areas": [
       {
         "label": "Task management",
-        "open": 24
+        "open": 26
       },
       {
         "label": "EMAR",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 35
+        "open": 33
       },
       {
         "label": "Design system",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Operations",
-        "open": 13
+        "open": 11
       },
       {
         "label": "Product",
@@ -61,7 +61,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "a4b2eeb1b7ae902f"
+      "content_hash": "014b18d8755d5538"
     },
     {
       "slug": "calendar",
