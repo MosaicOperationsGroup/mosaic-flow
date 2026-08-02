@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-02T05:55:54.181Z",
+  "generated_at": "2026-08-02T08:30:01.922Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 180,
@@ -23,7 +23,7 @@
   "issues": {
     "open": 200,
     "p0": 10,
-    "p1": 51,
+    "p1": 50,
     "p2": 54,
     "areas": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "label": "EMAR",
-        "open": 14
+        "open": 13
       },
       {
         "label": "Trust & safety",
