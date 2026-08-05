@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-05T16:14:01.844Z",
+  "generated_at": "2026-08-05T16:37:17.671Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 185,
+    "total": 186,
     "open": 10,
-    "pass": 165,
+    "pass": 166,
     "self_closed_pending": 0,
     "concerns": 0,
     "fail": 0,
@@ -15,16 +15,16 @@
       "T1": 47,
       "T2": 77,
       "T3": 23,
-      "T4": 34
+      "T4": 35
     },
-    "acs_met": 1308,
-    "acs_total": 1323
+    "acs_met": 1324,
+    "acs_total": 1339
   },
   "issues": {
     "open": 200,
     "p0": 10,
     "p1": 42,
-    "p2": 58,
+    "p2": 59,
     "areas": [
       {
         "label": "Task management",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 26
+        "open": 25
       },
       {
         "label": "Design system",
@@ -48,7 +48,7 @@
       },
       {
         "label": "Product",
-        "open": 39
+        "open": 40
       }
     ]
   },
@@ -101,7 +101,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "bd9ba01668983197"
+      "content_hash": "2bae1cd28b64d038"
     },
     {
       "slug": "cover-module",
