@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-10T06:28:18.799Z",
+  "generated_at": "2026-08-10T07:49:37.198Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 209,
@@ -23,12 +23,12 @@
   "issues": {
     "open": 200,
     "p0": 2,
-    "p1": 31,
-    "p2": 57,
+    "p1": 30,
+    "p2": 58,
     "areas": [
       {
         "label": "Task management",
-        "open": 28
+        "open": 29
       },
       {
         "label": "EMAR",
