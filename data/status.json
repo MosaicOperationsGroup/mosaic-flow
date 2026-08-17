@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-17T00:36:11.319Z",
+  "generated_at": "2026-08-17T07:03:57.377Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 251,
@@ -32,7 +32,7 @@
       },
       {
         "label": "EMAR",
-        "open": 9
+        "open": 8
       },
       {
         "label": "Reporting & gradebook",
