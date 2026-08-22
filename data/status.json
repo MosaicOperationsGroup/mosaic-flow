@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-22T06:49:34.714Z",
+  "generated_at": "2026-08-22T12:47:31.468Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 270,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 23
+        "open": 24
       },
       {
         "label": "Operations",
