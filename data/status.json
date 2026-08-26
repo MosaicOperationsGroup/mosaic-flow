@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-26T07:08:49.888Z",
+  "generated_at": "2026-08-26T08:07:02.797Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 283,
+    "total": 284,
     "open": 16,
-    "pass": 245,
+    "pass": 246,
     "self_closed_pending": 3,
     "concerns": 1,
     "fail": 0,
@@ -13,22 +13,22 @@
     "by_tier": {
       "T0": 4,
       "T1": 56,
-      "T2": 130,
+      "T2": 131,
       "T3": 36,
       "T4": 57
     },
-    "acs_met": 2037,
-    "acs_total": 2064
+    "acs_met": 2042,
+    "acs_total": 2069
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 30,
+    "p1": 29,
     "p2": 37,
     "areas": [
       {
         "label": "Task management",
-        "open": 10
+        "open": 12
       },
       {
         "label": "Reporting & gradebook",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 30
+        "open": 31
       },
       {
         "label": "Operations",
@@ -117,7 +117,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "d344672aaf9e8325"
+      "content_hash": "6525aac227ef48e0"
     },
     {
       "slug": "lesson-observations",
