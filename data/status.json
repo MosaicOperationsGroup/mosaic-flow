@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-28T18:25:00.393Z",
+  "generated_at": "2026-08-28T23:46:04.278Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 310,
+    "total": 311,
     "open": 11,
-    "pass": 274,
+    "pass": 275,
     "self_closed_pending": 3,
     "concerns": 2,
     "fail": 0,
@@ -15,16 +15,16 @@
       "T1": 56,
       "T2": 148,
       "T3": 42,
-      "T4": 60
+      "T4": 61
     },
-    "acs_met": 2321,
-    "acs_total": 2358
+    "acs_met": 2331,
+    "acs_total": 2368
   },
   "issues": {
     "open": 200,
     "p0": 1,
     "p1": 29,
-    "p2": 36,
+    "p2": 34,
     "areas": [
       {
         "label": "Task management",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 30
+        "open": 29
       },
       {
         "label": "Operations",
@@ -57,7 +57,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "93677dddce20f496"
+      "content_hash": "5950909be9552e76"
     },
     {
       "slug": "calendar",
