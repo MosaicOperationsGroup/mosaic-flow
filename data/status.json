@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-29T15:43:03.114Z",
+  "generated_at": "2026-08-29T20:43:49.519Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 316,
@@ -23,12 +23,12 @@
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 26,
-    "p2": 34,
+    "p1": 27,
+    "p2": 33,
     "areas": [
       {
         "label": "Task management",
-        "open": 10
+        "open": 11
       },
       {
         "label": "Reporting & gradebook",
@@ -57,7 +57,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "57164935cb0fafc9"
+      "content_hash": "83c94e10726d937b"
     },
     {
       "slug": "calendar",
