@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-08-31T09:28:31.663Z",
+  "generated_at": "2026-08-31T10:39:18.911Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 331,
+    "total": 332,
     "open": 11,
-    "pass": 295,
+    "pass": 296,
     "self_closed_pending": 3,
     "concerns": 2,
     "fail": 1,
@@ -14,21 +14,21 @@
       "T0": 4,
       "T1": 57,
       "T2": 156,
-      "T3": 46,
+      "T3": 47,
       "T4": 68
     },
-    "acs_met": 2470,
-    "acs_total": 2507
+    "acs_met": 2477,
+    "acs_total": 2514
   },
   "issues": {
     "open": 200,
     "p0": 0,
     "p1": 24,
-    "p2": 33,
+    "p2": 35,
     "areas": [
       {
         "label": "Task management",
-        "open": 14
+        "open": 15
       },
       {
         "label": "Reporting & gradebook",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Operations",
-        "open": 4
+        "open": 5
       },
       {
         "label": "Product",
@@ -87,7 +87,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "a28444bab98d8d8e"
+      "content_hash": "9ed84ba953624c03"
     },
     {
       "slug": "roles-and-permissions",
