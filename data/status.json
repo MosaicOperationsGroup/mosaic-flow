@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-06T15:46:31.190Z",
+  "generated_at": "2026-09-06T16:53:16.489Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 355,
-    "open": 15,
+    "total": 356,
+    "open": 16,
     "pass": 315,
     "self_closed_pending": 3,
     "concerns": 2,
@@ -13,7 +13,7 @@
     "by_tier": {
       "T0": 4,
       "T1": 57,
-      "T2": 169,
+      "T2": 170,
       "T3": 53,
       "T4": 72
     },
@@ -24,11 +24,15 @@
     "open": 200,
     "p0": 0,
     "p1": 17,
-    "p2": 27,
+    "p2": 29,
     "areas": [
       {
         "label": "Task management",
         "open": 8
+      },
+      {
+        "label": "EMAR",
+        "open": 1
       },
       {
         "label": "Reporting & gradebook",
