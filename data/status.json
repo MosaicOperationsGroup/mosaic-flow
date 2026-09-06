@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-06T00:24:55.531Z",
+  "generated_at": "2026-09-06T10:38:11.854Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 352,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 25
+        "open": 24
       },
       {
         "label": "Operations",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 25
+        "open": 29
       }
     ]
   },
@@ -77,7 +77,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "8a814378da8051e0"
+      "content_hash": "02e427714e318e80"
     },
     {
       "slug": "analytics",
@@ -137,7 +137,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "f969b1bcc73a8a46"
+      "content_hash": "c4838e0012046f0a"
     },
     {
       "slug": "emar-calendar",
