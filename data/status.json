@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-07T12:28:54.424Z",
+  "generated_at": "2026-09-07T15:30:00.187Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 361,
+    "total": 362,
     "open": 17,
-    "pass": 319,
+    "pass": 320,
     "self_closed_pending": 3,
     "concerns": 2,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 58,
       "T2": 173,
-      "T3": 53,
+      "T3": 54,
       "T4": 73
     },
-    "acs_met": 2630,
-    "acs_total": 2667
+    "acs_met": 2635,
+    "acs_total": 2672
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 18,
-    "p2": 27,
+    "p1": 14,
+    "p2": 23,
     "areas": [
       {
         "label": "Task management",
@@ -36,19 +36,19 @@
       },
       {
         "label": "Reporting & gradebook",
-        "open": 7
+        "open": 6
       },
       {
         "label": "Trust & safety",
-        "open": 23
+        "open": 19
       },
       {
         "label": "Operations",
-        "open": 3
+        "open": 2
       },
       {
         "label": "Product",
-        "open": 40
+        "open": 38
       }
     ]
   },
