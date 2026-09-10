@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-09T19:48:51.108Z",
+  "generated_at": "2026-09-10T06:41:00.988Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 380,
+    "total": 381,
     "open": 16,
-    "pass": 339,
+    "pass": 340,
     "self_closed_pending": 3,
     "concerns": 2,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 4,
       "T1": 62,
-      "T2": 181,
+      "T2": 182,
       "T3": 56,
       "T4": 77
     },
-    "acs_met": 2769,
-    "acs_total": 2810
+    "acs_met": 2773,
+    "acs_total": 2814
   },
   "issues": {
     "open": 200,
@@ -52,7 +52,7 @@
       },
       {
         "label": "Product",
-        "open": 28
+        "open": 27
       }
     ]
   },
