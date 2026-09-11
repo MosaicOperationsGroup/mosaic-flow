@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-10T20:40:23.786Z",
+  "generated_at": "2026-09-11T05:17:23.722Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 382,
+    "total": 383,
     "open": 16,
-    "pass": 341,
+    "pass": 342,
     "self_closed_pending": 3,
     "concerns": 2,
     "fail": 1,
@@ -13,29 +13,21 @@
     "by_tier": {
       "T0": 4,
       "T1": 62,
-      "T2": 182,
+      "T2": 183,
       "T3": 57,
       "T4": 77
     },
-    "acs_met": 2778,
-    "acs_total": 2819
+    "acs_met": 2784,
+    "acs_total": 2825
   },
   "issues": {
     "open": 200,
     "p0": 0,
     "p1": 2,
-    "p2": 10,
+    "p2": 8,
     "areas": [
       {
-        "label": "Task management",
-        "open": 1
-      },
-      {
         "label": "EMAR",
-        "open": 1
-      },
-      {
-        "label": "Reporting & gradebook",
         "open": 1
       },
       {
@@ -52,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 25
+        "open": 26
       }
     ]
   },
@@ -105,7 +97,7 @@
       "decisions": true,
       "adversarial_review": false,
       "test_oracle": true,
-      "content_hash": "10983cdafbcc19cd"
+      "content_hash": "a881cc3d23fdc0c3"
     },
     {
       "slug": "cover-module",
