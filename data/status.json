@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-14T04:51:09.744Z",
+  "generated_at": "2026-09-14T12:19:22.994Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 393,
@@ -57,7 +57,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "a750acab59756d4e"
+      "content_hash": "35c74f6900551084"
     },
     {
       "slug": "calendar",
@@ -93,11 +93,11 @@
       "slug": "roles-and-permissions",
       "feature": "Roles & permissions",
       "readme": true,
-      "product_spec": true,
+      "product_spec": false,
       "decisions": true,
       "adversarial_review": false,
-      "test_oracle": true,
-      "content_hash": "f335d4ce90cd8a61"
+      "test_oracle": false,
+      "content_hash": "f3c6860e19754213"
     },
     {
       "slug": "cover-module",
@@ -127,7 +127,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "9a8edfed956874e3"
+      "content_hash": "70a8098801a7dd47"
     },
     {
       "slug": "school-development-action-planning",
@@ -147,7 +147,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "20b0d191a8d40820"
+      "content_hash": "4f222aeea270af43"
     }
   ]
 }
