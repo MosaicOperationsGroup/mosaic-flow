@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-20T21:08:44.494Z",
+  "generated_at": "2026-09-20T23:33:53.980Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 403,
+    "total": 404,
     "open": 17,
-    "pass": 359,
+    "pass": 360,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
@@ -15,10 +15,10 @@
       "T1": 63,
       "T2": 196,
       "T3": 58,
-      "T4": 82
+      "T4": 83
     },
-    "acs_met": 2955,
-    "acs_total": 3004
+    "acs_met": 2965,
+    "acs_total": 3014
   },
   "issues": {
     "open": 200,
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 24
+        "open": 23
       }
     ]
   },
@@ -57,7 +57,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "8af204d710341185"
+      "content_hash": "efb0da0827569e67"
     },
     {
       "slug": "calendar",
@@ -117,7 +117,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "e5eca657ed4a93e7"
+      "content_hash": "7f0d17516498577b"
     },
     {
       "slug": "lesson-observations",
