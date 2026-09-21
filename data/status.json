@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-21T12:25:45.509Z",
+  "generated_at": "2026-09-21T13:55:07.295Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 408,
+    "total": 409,
     "open": 16,
-    "pass": 365,
+    "pass": 366,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
@@ -15,16 +15,16 @@
       "T1": 65,
       "T2": 198,
       "T3": 58,
-      "T4": 83
+      "T4": 84
     },
-    "acs_met": 3007,
-    "acs_total": 3056
+    "acs_met": 3012,
+    "acs_total": 3061
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 4,
-    "p2": 7,
+    "p1": 3,
+    "p2": 8,
     "areas": [
       {
         "label": "EMAR",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 20
+        "open": 14
       }
     ]
   },
@@ -77,7 +77,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "b1d63ca8e98b2c37"
+      "content_hash": "147a43f475f1fb03"
     },
     {
       "slug": "analytics",
