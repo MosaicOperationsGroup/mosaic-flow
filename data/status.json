@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-22T06:42:00.049Z",
+  "generated_at": "2026-09-22T10:53:20.797Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 416,
+    "total": 417,
     "open": 16,
-    "pass": 373,
+    "pass": 374,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 65,
       "T2": 201,
-      "T3": 60,
+      "T3": 61,
       "T4": 86
     },
-    "acs_met": 3057,
-    "acs_total": 3107
+    "acs_met": 3067,
+    "acs_total": 3117
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 3,
-    "p2": 7,
+    "p1": 2,
+    "p2": 6,
     "areas": [
       {
         "label": "EMAR",
@@ -32,11 +32,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 3
-      },
-      {
-        "label": "Design system",
-        "open": 1
+        "open": 2
       },
       {
         "label": "Operations",
@@ -44,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 14
+        "open": 18
       }
     ]
   },
@@ -97,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "6dab5cb3d44fd2c6"
+      "content_hash": "407599ed5414cefe"
     },
     {
       "slug": "cover-module",
