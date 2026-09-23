@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-23T18:02:43.984Z",
+  "generated_at": "2026-09-23T21:01:39.001Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 427,
+    "total": 428,
     "open": 16,
-    "pass": 384,
+    "pass": 385,
     "self_closed_pending": 3,
     "concerns": 3,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 65,
       "T2": 207,
-      "T3": 64,
+      "T3": 65,
       "T4": 87
     },
-    "acs_met": 3128,
-    "acs_total": 3171
+    "acs_met": 3136,
+    "acs_total": 3179
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 2,
-    "p2": 7,
+    "p1": 3,
+    "p2": 8,
     "areas": [
       {
         "label": "EMAR",
@@ -36,7 +36,7 @@
       },
       {
         "label": "Design system",
-        "open": 1
+        "open": 2
       },
       {
         "label": "Operations",
@@ -44,7 +44,7 @@
       },
       {
         "label": "Product",
-        "open": 9
+        "open": 8
       }
     ]
   },
@@ -97,7 +97,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "58fdc7e8d482d6f1"
+      "content_hash": "9e83008e142b4a91"
     },
     {
       "slug": "cover-module",
