@@ -1,20 +1,20 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-22T16:03:01.155Z",
+  "generated_at": "2026-09-23T02:53:17.650Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 421,
+    "total": 422,
     "open": 16,
     "pass": 378,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
-    "waived": 19,
+    "waived": 20,
     "by_tier": {
       "T0": 4,
       "T1": 65,
       "T2": 204,
-      "T3": 62,
+      "T3": 63,
       "T4": 86
     },
     "acs_met": 3098,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Design system",
-        "open": 1
+        "open": 2
       },
       {
         "label": "Operations",
@@ -127,7 +127,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "5f2d253c2fa945c8"
+      "content_hash": "c5cec774b42b840e"
     },
     {
       "slug": "school-development-action-planning",
