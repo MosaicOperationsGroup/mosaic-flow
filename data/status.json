@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-09-28T16:23:50.210Z",
+  "generated_at": "2026-09-28T23:05:33.235Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 454,
@@ -40,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 10
+        "open": 11
       }
     ]
   },
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "93832cdfac3ab2fa"
+      "content_hash": "4e729ce4e4debd6b"
     },
     {
       "slug": "analytics",
