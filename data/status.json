@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-03T04:27:08.720Z",
+  "generated_at": "2026-10-03T06:36:36.029Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 469,
-    "open": 17,
+    "total": 471,
+    "open": 19,
     "pass": 424,
     "self_closed_pending": 3,
     "concerns": 4,
@@ -13,8 +13,8 @@
     "by_tier": {
       "T0": 4,
       "T1": 67,
-      "T2": 223,
-      "T3": 76,
+      "T2": 224,
+      "T3": 77,
       "T4": 99
     },
     "acs_met": 3381,
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "97c9ef6ab4ba8367"
+      "content_hash": "2d3a68f42f025cb8"
     },
     {
       "slug": "calendar",
@@ -83,7 +83,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "2eba6b70fb203380"
+      "content_hash": "657375350f35ffe0"
     },
     {
       "slug": "roles-and-permissions",
@@ -103,7 +103,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "8192947907650ba9"
+      "content_hash": "f7271e39690c0220"
     },
     {
       "slug": "reporting-gradebook",
@@ -113,7 +113,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "01617d486e509c0a"
+      "content_hash": "8e92e8b83ecfef6c"
     },
     {
       "slug": "lesson-observations",
@@ -123,7 +123,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "3513241b392a7f0b"
+      "content_hash": "383ad32a15b68203"
     },
     {
       "slug": "school-development-action-planning",
@@ -133,7 +133,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "93de393f7a6a83c7"
+      "content_hash": "ca38a44164914d2e"
     },
     {
       "slug": "emar-calendar",
@@ -143,7 +143,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "a593ca812db489fc"
+      "content_hash": "ad5bf8caad16cd5d"
     }
   ]
 }
