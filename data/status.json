@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-07T02:09:11.171Z",
+  "generated_at": "2026-10-07T09:29:37.277Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 481,
+    "total": 482,
     "open": 16,
-    "pass": 437,
+    "pass": 438,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
@@ -13,18 +13,18 @@
     "by_tier": {
       "T0": 4,
       "T1": 67,
-      "T2": 228,
+      "T2": 229,
       "T3": 79,
       "T4": 103
     },
-    "acs_met": 3447,
-    "acs_total": 3495
+    "acs_met": 3451,
+    "acs_total": 3500
   },
   "issues": {
     "open": 200,
     "p0": 0,
     "p1": 3,
-    "p2": 5,
+    "p2": 6,
     "areas": [
       {
         "label": "Trust & safety",
@@ -32,7 +32,7 @@
       },
       {
         "label": "Design system",
-        "open": 4
+        "open": 3
       },
       {
         "label": "Operations",
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "a09b6c0a551e0ce9"
+      "content_hash": "2ef750859e2e18fd"
     },
     {
       "slug": "calendar",
@@ -61,7 +61,7 @@
       "readme": true,
       "product_spec": true,
       "decisions": true,
-      "adversarial_review": false,
+      "adversarial_review": true,
       "test_oracle": true,
       "content_hash": "4f440bc2453486be"
     },
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "1d6b6fb2833913bb"
+      "content_hash": "8a469e91b2157a52"
     },
     {
       "slug": "analytics",
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "389808e4891083fc"
+      "content_hash": "b5a72872a3a0d20a"
     },
     {
       "slug": "cover-module",
