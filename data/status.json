@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-07T22:56:08.074Z",
+  "generated_at": "2026-10-08T03:37:34.216Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 483,
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "2ef750859e2e18fd"
+      "content_hash": "3ade10fef712928b"
     },
     {
       "slug": "calendar",
@@ -63,7 +63,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "d7fed6c7e76259da"
+      "content_hash": "7de51d881192f7d5"
     },
     {
       "slug": "self-evaluation",
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "b5a72872a3a0d20a"
+      "content_hash": "9b6b9118c79d0f52"
     },
     {
       "slug": "cover-module",
