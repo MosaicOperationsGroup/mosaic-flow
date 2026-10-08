@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-08T07:37:16.001Z",
+  "generated_at": "2026-10-08T13:07:44.697Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 483,
@@ -103,7 +103,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "f7271e39690c0220"
+      "content_hash": "dbc2795e125df2fd"
     },
     {
       "slug": "reporting-gradebook",
