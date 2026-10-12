@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-12T04:41:07.031Z",
+  "generated_at": "2026-10-12T04:52:19.267Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 487,
+    "total": 488,
     "open": 16,
-    "pass": 443,
+    "pass": 444,
     "self_closed_pending": 3,
     "concerns": 4,
     "fail": 1,
@@ -15,10 +15,10 @@
       "T1": 67,
       "T2": 232,
       "T3": 80,
-      "T4": 104
+      "T4": 105
     },
-    "acs_met": 3481,
-    "acs_total": 3530
+    "acs_met": 3494,
+    "acs_total": 3543
   },
   "issues": {
     "open": 200,
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "74eb47b587441948"
+      "content_hash": "50af91c522d0fcad"
     },
     {
       "slug": "calendar",
@@ -63,7 +63,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "8869565ba56fba5c"
+      "content_hash": "03c6f765af23d926"
     },
     {
       "slug": "self-evaluation",
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "ef702d0e49b88450"
+      "content_hash": "b663be32151187ea"
     },
     {
       "slug": "analytics",
@@ -83,7 +83,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "f258016d96a30255"
+      "content_hash": "34fd7b323851c260"
     },
     {
       "slug": "roles-and-permissions",
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "203306faa7f4a8eb"
+      "content_hash": "98acb3b2c956802a"
     },
     {
       "slug": "cover-module",
@@ -103,7 +103,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "9fae252a32ff3186"
+      "content_hash": "506e0d27f4e806f1"
     },
     {
       "slug": "reporting-gradebook",
@@ -113,7 +113,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "b25987c16be91871"
+      "content_hash": "3cbaf46e67a732ff"
     },
     {
       "slug": "lesson-observations",
@@ -123,7 +123,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "e3b6233365b6a741"
+      "content_hash": "4ee84bbf3c30d5d4"
     },
     {
       "slug": "school-development-action-planning",
@@ -133,7 +133,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "7e34f3e9f00c810c"
+      "content_hash": "2490a25a3af042f2"
     },
     {
       "slug": "emar-calendar",
@@ -143,7 +143,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "f67f03204bb8bbff"
+      "content_hash": "8d8df545f9c4d81c"
     }
   ]
 }
