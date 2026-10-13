@@ -1,29 +1,29 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-13T10:23:58.222Z",
+  "generated_at": "2026-10-13T10:59:42.422Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 496,
+    "total": 497,
     "open": 16,
     "pass": 451,
     "self_closed_pending": 3,
-    "concerns": 5,
+    "concerns": 6,
     "fail": 1,
     "waived": 20,
     "by_tier": {
       "T0": 4,
       "T1": 67,
       "T2": 235,
-      "T3": 86,
+      "T3": 87,
       "T4": 104
     },
-    "acs_met": 3545,
-    "acs_total": 3599
+    "acs_met": 3556,
+    "acs_total": 3612
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 3,
+    "p1": 4,
     "p2": 6,
     "areas": [
       {
@@ -36,7 +36,7 @@
       },
       {
         "label": "Operations",
-        "open": 2
+        "open": 1
       },
       {
         "label": "Product",
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "218760ee3b12456b"
+      "content_hash": "28afb8c4d91b8bb9"
     },
     {
       "slug": "analytics",
@@ -123,7 +123,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "6a64394a8fd40b66"
+      "content_hash": "783bbfbdadfcc29a"
     },
     {
       "slug": "school-development-action-planning",
