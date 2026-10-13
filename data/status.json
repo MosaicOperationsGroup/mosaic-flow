@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-13T10:59:42.422Z",
+  "generated_at": "2026-10-13T13:36:57.004Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 497,
+    "total": 498,
     "open": 16,
-    "pass": 451,
+    "pass": 452,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 67,
       "T2": 235,
-      "T3": 87,
+      "T3": 88,
       "T4": 104
     },
-    "acs_met": 3556,
-    "acs_total": 3612
+    "acs_met": 3561,
+    "acs_total": 3617
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 4,
-    "p2": 6,
+    "p1": 2,
+    "p2": 8,
     "areas": [
       {
         "label": "Trust & safety",
@@ -123,7 +123,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "783bbfbdadfcc29a"
+      "content_hash": "1e6a1c7f235c55dd"
     },
     {
       "slug": "school-development-action-planning",
