@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-14T07:04:56.714Z",
+  "generated_at": "2026-10-14T10:28:39.549Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 513,
+    "total": 514,
     "open": 16,
-    "pass": 467,
+    "pass": 468,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 4,
       "T1": 69,
       "T2": 241,
-      "T3": 93,
+      "T3": 94,
       "T4": 106
     },
-    "acs_met": 3653,
-    "acs_total": 3712
+    "acs_met": 3659,
+    "acs_total": 3718
   },
   "issues": {
     "open": 200,
     "p0": 0,
-    "p1": 2,
-    "p2": 8,
+    "p1": 3,
+    "p2": 10,
     "areas": [
       {
         "label": "Trust & safety",
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "5f546893df3e9726"
+      "content_hash": "3cc1e69ea9527904"
     },
     {
       "slug": "cover-module",
@@ -123,7 +123,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "40fa84b0942b3f42"
+      "content_hash": "7cb16cddb305123d"
     },
     {
       "slug": "school-development-action-planning",
@@ -133,7 +133,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "4baec459f781312a"
+      "content_hash": "319a50d558bc3eaa"
     },
     {
       "slug": "emar-calendar",
