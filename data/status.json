@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-23T06:04:38.350Z",
+  "generated_at": "2026-10-23T16:47:21.582Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 561,
@@ -36,7 +36,7 @@
       },
       {
         "label": "Product",
-        "open": 10
+        "open": 9
       }
     ]
   },
