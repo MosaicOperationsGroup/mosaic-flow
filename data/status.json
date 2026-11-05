@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-05T06:05:40.936Z",
+  "generated_at": "2026-11-05T12:00:49.035Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 598,
+    "total": 599,
     "open": 15,
-    "pass": 553,
+    "pass": 554,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -14,17 +14,17 @@
       "T0": 5,
       "T1": 75,
       "T2": 280,
-      "T3": 113,
+      "T3": 114,
       "T4": 125
     },
-    "acs_met": 4109,
-    "acs_total": 4182
+    "acs_met": 4115,
+    "acs_total": 4188
   },
   "issues": {
     "open": 200,
     "p0": 0,
     "p1": 0,
-    "p2": 9,
+    "p2": 8,
     "areas": [
       {
         "label": "Task management",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 15
+        "open": 14
       }
     ]
   },
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "c3719d0adc7a7bda"
+      "content_hash": "ccc8bd79a1637ef7"
     },
     {
       "slug": "calendar",
@@ -63,7 +63,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "60a4fd2a295d6458"
+      "content_hash": "923114937ab4a7e7"
     },
     {
       "slug": "self-evaluation",
