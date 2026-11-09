@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-09T15:43:51.621Z",
+  "generated_at": "2026-11-09T23:24:19.635Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 604,
+    "total": 605,
     "open": 15,
-    "pass": 559,
+    "pass": 560,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -15,10 +15,10 @@
       "T1": 75,
       "T2": 281,
       "T3": 115,
-      "T4": 128
+      "T4": 129
     },
-    "acs_met": 4133,
-    "acs_total": 4206
+    "acs_met": 4141,
+    "acs_total": 4214
   },
   "issues": {
     "open": 200,
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "ba3ffad026a26ed9"
+      "content_hash": "9d1045392960fa31"
     },
     {
       "slug": "calendar",
@@ -63,7 +63,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "9071436858470e8a"
+      "content_hash": "1f80d3e89b6cfd66"
     },
     {
       "slug": "self-evaluation",
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "0dcb6d80e239248e"
+      "content_hash": "8e444c820fca5b03"
     },
     {
       "slug": "cover-module",
