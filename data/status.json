@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-12T04:37:18.103Z",
+  "generated_at": "2026-11-12T05:57:18.448Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 618,
+    "total": 619,
     "open": 15,
-    "pass": 573,
+    "pass": 574,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -15,16 +15,16 @@
       "T1": 77,
       "T2": 287,
       "T3": 119,
-      "T4": 130
+      "T4": 131
     },
-    "acs_met": 4215,
-    "acs_total": 4288
+    "acs_met": 4223,
+    "acs_total": 4296
   },
   "issues": {
     "open": 200,
     "p0": 0,
     "p1": 5,
-    "p2": 27,
+    "p2": 28,
     "areas": [
       {
         "label": "Task management",
@@ -83,7 +83,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "2cd66957655e495a"
+      "content_hash": "8ca41f9312f51aa8"
     },
     {
       "slug": "roles-and-permissions",
@@ -113,7 +113,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "6c999c41bf4ed8a6"
+      "content_hash": "8faa8427445c0bb3"
     },
     {
       "slug": "lesson-observations",
