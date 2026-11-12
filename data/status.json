@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-12T20:06:55.296Z",
+  "generated_at": "2026-11-12T21:01:33.634Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 635,
+    "total": 636,
     "open": 15,
-    "pass": 590,
+    "pass": 591,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 5,
       "T1": 80,
-      "T2": 297,
+      "T2": 298,
       "T3": 122,
       "T4": 131
     },
-    "acs_met": 4283,
-    "acs_total": 4358
+    "acs_met": 4286,
+    "acs_total": 4361
   },
   "issues": {
     "open": 200,
@@ -40,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 19
+        "open": 18
       }
     ]
   },
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "91fa1f256d55daaf"
+      "content_hash": "f5d25d357619a877"
     },
     {
       "slug": "analytics",
