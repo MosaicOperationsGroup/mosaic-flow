@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-13T01:37:26.945Z",
+  "generated_at": "2026-11-13T14:20:02.714Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 640,
@@ -24,7 +24,7 @@
     "open": 200,
     "p0": 0,
     "p1": 5,
-    "p2": 20,
+    "p2": 22,
     "areas": [
       {
         "label": "Task management",
@@ -32,7 +32,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 6
+        "open": 8
       },
       {
         "label": "Operations",
