@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-15T22:04:50.290Z",
+  "generated_at": "2026-11-15T22:39:39.771Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 656,
@@ -24,7 +24,7 @@
     "open": 200,
     "p0": 0,
     "p1": 2,
-    "p2": 23,
+    "p2": 22,
     "areas": [
       {
         "label": "Task management",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 16
+        "open": 15
       }
     ]
   },
