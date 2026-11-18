@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-18T02:24:20.660Z",
+  "generated_at": "2026-11-18T03:52:35.479Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
     "total": 669,
@@ -24,7 +24,7 @@
     "open": 200,
     "p0": 0,
     "p1": 1,
-    "p2": 22,
+    "p2": 21,
     "areas": [
       {
         "label": "Task management",
@@ -40,7 +40,7 @@
       },
       {
         "label": "Product",
-        "open": 15
+        "open": 16
       }
     ]
   },
@@ -73,7 +73,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "8782e119196ac048"
+      "content_hash": "760821d6d6605389"
     },
     {
       "slug": "analytics",
