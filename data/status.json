@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-19T17:27:08.405Z",
+  "generated_at": "2026-11-19T18:18:49.110Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 703,
+    "total": 704,
     "open": 15,
-    "pass": 658,
+    "pass": 659,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 12,
       "T1": 81,
-      "T2": 329,
+      "T2": 330,
       "T3": 126,
       "T4": 155
     },
-    "acs_met": 4552,
-    "acs_total": 4665
+    "acs_met": 4554,
+    "acs_total": 4668
   },
   "issues": {
     "open": 200,
@@ -83,7 +83,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "5bd5a8f03d9d0491"
+      "content_hash": "ec496ac6a5795a38"
     },
     {
       "slug": "roles-and-permissions",
