@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-20T09:21:29.102Z",
+  "generated_at": "2026-11-20T09:47:17.081Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 722,
+    "total": 723,
     "open": 15,
-    "pass": 677,
+    "pass": 678,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 12,
       "T1": 81,
-      "T2": 346,
+      "T2": 347,
       "T3": 128,
       "T4": 155
     },
-    "acs_met": 4591,
-    "acs_total": 4721
+    "acs_met": 4593,
+    "acs_total": 4724
   },
   "issues": {
     "open": 200,
@@ -113,7 +113,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "7036a5a2297afef3"
+      "content_hash": "c57d436dfbe6e4ea"
     },
     {
       "slug": "lesson-observations",
