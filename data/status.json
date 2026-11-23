@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-23T01:31:12.322Z",
+  "generated_at": "2026-11-23T02:15:23.636Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 750,
+    "total": 751,
     "open": 15,
-    "pass": 705,
+    "pass": 706,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 12,
       "T1": 81,
-      "T2": 373,
+      "T2": 374,
       "T3": 128,
       "T4": 156
     },
-    "acs_met": 4637,
-    "acs_total": 4807
+    "acs_met": 4638,
+    "acs_total": 4810
   },
   "issues": {
     "open": 200,
@@ -32,7 +32,7 @@
       },
       {
         "label": "Trust & safety",
-        "open": 10
+        "open": 12
       },
       {
         "label": "Operations",
@@ -143,7 +143,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "c0297e25542be7b6"
+      "content_hash": "7c8dc51ea8fc8e1c"
     }
   ]
 }
