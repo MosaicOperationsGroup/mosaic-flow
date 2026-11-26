@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-26T22:31:21.942Z",
+  "generated_at": "2026-11-26T23:29:34.212Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 789,
+    "total": 790,
     "open": 15,
-    "pass": 744,
+    "pass": 745,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -15,10 +15,10 @@
       "T1": 81,
       "T2": 401,
       "T3": 128,
-      "T4": 167
+      "T4": 168
     },
-    "acs_met": 4736,
-    "acs_total": 4955
+    "acs_met": 4738,
+    "acs_total": 4957
   },
   "issues": {
     "open": 200,
@@ -93,7 +93,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "23d42efa9a611407"
+      "content_hash": "ab643d8fe3d60485"
     },
     {
       "slug": "cover-module",
