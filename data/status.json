@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-27T08:26:19.138Z",
+  "generated_at": "2026-11-27T10:30:31.317Z",
   "source": "Curated snapshot from the private MosaicPlaybook repo. Allowlisted aggregate fields only - no titles, names, code, or evidence.",
   "gates": {
-    "total": 793,
+    "total": 794,
     "open": 15,
-    "pass": 748,
+    "pass": 749,
     "self_closed_pending": 3,
     "concerns": 6,
     "fail": 1,
@@ -13,12 +13,12 @@
     "by_tier": {
       "T0": 12,
       "T1": 81,
-      "T2": 404,
+      "T2": 405,
       "T3": 128,
       "T4": 168
     },
-    "acs_met": 4759,
-    "acs_total": 4984
+    "acs_met": 4762,
+    "acs_total": 4989
   },
   "issues": {
     "open": 200,
@@ -53,7 +53,7 @@
       "decisions": true,
       "adversarial_review": true,
       "test_oracle": true,
-      "content_hash": "2b306c8168377f4c"
+      "content_hash": "fb7984ae534b4193"
     },
     {
       "slug": "calendar",
